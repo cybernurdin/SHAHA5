@@ -24,7 +24,6 @@ class BolloApp extends StatelessWidget {
           primary: const Color(0xFF0D7377),
           secondary: const Color(0xFF14FFEC),
           surface: Colors.white,
-          background: const Color(0xFFF8FAFC),
         ),
         scaffoldBackgroundColor: const Color(0xFFF8FAFC),
         appBarTheme: const AppBarTheme(
