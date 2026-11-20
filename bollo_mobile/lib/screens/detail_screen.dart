@@ -26,7 +26,7 @@ class DetailScreen extends StatelessWidget {
           SliverAppBar(
             expandedHeight: 260,
             pinned: true,
-            backgroundColor: const Color(0xFF0D7377),
+            backgroundColor: const Color(0xFF1E40AF),
             flexibleSpace: FlexibleSpaceBar(
               background: Stack(
                 fit: StackFit.expand,
@@ -55,7 +55,7 @@ class DetailScreen extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                           decoration: BoxDecoration(
-                            color: const Color(0xFF0D7377),
+                            color: const Color(0xFF1E40AF),
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Text(
@@ -115,7 +115,7 @@ class DetailScreen extends StatelessWidget {
                               const SizedBox(height: 2),
                               Text(
                                 service.provider.badge,
-                                style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Color(0xFF0D7377)),
+                                style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Color(0xFF1E40AF)),
                               ),
                               const SizedBox(height: 4),
                               Row(
@@ -145,7 +145,7 @@ class DetailScreen extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        const Icon(Icons.location_on, color: Color(0xFF0D7377)),
+                        const Icon(Icons.location_on, color: Color(0xFF1E40AF)),
                         const SizedBox(width: 10),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -168,18 +168,18 @@ class DetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
 
-                  // Bollo Trust Features
+                  // MboaWork Trust Features
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFF0FDFA),
+                      color: const Color(0xFFEFF6FF),
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: const Color(0xFF0D7377).withOpacity(0.2)),
+                      border: Border.all(color: const Color(0xFF1E40AF).withOpacity(0.2)),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
-                        Text('Bollo Trust & Guarantees', style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF0D7377))),
+                        Text('MboaWork Trust & Guarantees', style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF1E40AF))),
                         SizedBox(height: 8),
                         Text('• Identity & background check verified in Cameroon\n• Pay securely with MTN MoMo, Orange Money or Cash\n• 24/7 dedicated support team in Douala & Yaoundé',
                             style: TextStyle(fontSize: 12, color: Color(0xFF0F172A), height: 1.6)),
@@ -210,7 +210,7 @@ class DetailScreen extends StatelessWidget {
                     const Text('Total Estimated Rate', style: TextStyle(fontSize: 11, color: Color(0xFF64748B))),
                     Text(
                       '${service.priceXaf.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (m) => '${m[1]},')} XAF',
-                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: Color(0xFF0D7377)),
+                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: Color(0xFF1E40AF)),
                     ),
                   ],
                 ),
@@ -218,7 +218,7 @@ class DetailScreen extends StatelessWidget {
               ElevatedButton(
                 onPressed: () => _openBooking(context),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF0D7377),
+                  backgroundColor: const Color(0xFF1E40AF),
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),

@@ -10,14 +10,14 @@ class BookingsScreen extends StatefulWidget {
 }
 
 class _BookingsScreenState extends State<BookingsScreen> {
-  final List<TaskBooking> _bookings = List.from(BolloData.sampleBookings);
+  final List<TaskBooking> _bookings = List.from(MboaData.sampleBookings);
 
   Color _getStatusColor(String status) {
     switch (status) {
       case 'Confirmed':
         return const Color(0xFF10B981);
       case 'In Progress':
-        return const Color(0xFF0D7377);
+        return const Color(0xFF1E40AF);
       case 'Completed':
         return const Color(0xFF64748B);
       default:
@@ -117,7 +117,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                       // Provider and Location
                       Row(
                         children: [
-                          const Icon(Icons.person_outline, size: 16, color: Color(0xFF0D7377)),
+                          const Icon(Icons.person_outline, size: 16, color: Color(0xFF1E40AF)),
                           const SizedBox(width: 6),
                           Text(
                             b.providerName,
@@ -126,7 +126,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                           const Spacer(),
                           Text(
                             '${b.priceXaf.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (m) => '${m[1]},')} XAF',
-                            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: Color(0xFF0D7377)),
+                            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: Color(0xFF1E40AF)),
                           ),
                         ],
                       ),
@@ -164,8 +164,8 @@ class _BookingsScreenState extends State<BookingsScreen> {
                               icon: const Icon(Icons.phone, size: 16),
                               label: const Text('Call Pro', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
                               style: OutlinedButton.styleFrom(
-                                foregroundColor: const Color(0xFF0D7377),
-                                side: const BorderSide(color: Color(0xFF0D7377)),
+                                foregroundColor: const Color(0xFF1E40AF),
+                                side: const BorderSide(color: Color(0xFF1E40AF)),
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                               ),
                             ),
@@ -181,7 +181,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                               icon: const Icon(Icons.chat, size: 16),
                               label: const Text('WhatsApp', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF0D7377),
+                                backgroundColor: const Color(0xFF1E40AF),
                                 foregroundColor: Colors.white,
                                 elevation: 0,
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),

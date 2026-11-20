@@ -23,7 +23,7 @@ class ServiceCard extends StatelessWidget {
         border: Border.all(color: Colors.grey.shade200),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF0D7377).withOpacity(0.05),
+            color: const Color(0xFF1E40AF).withOpacity(0.05),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -66,7 +66,7 @@ class ServiceCard extends StatelessWidget {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Icon(Icons.location_on, size: 14, color: Color(0xFF0D7377)),
+                          const Icon(Icons.location_on, size: 14, color: Color(0xFF1E40AF)),
                           const SizedBox(width: 4),
                           Text(
                             '${service.city} • ${service.neighborhood}',
@@ -86,7 +86,7 @@ class ServiceCard extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF0D7377),
+                        color: const Color(0xFF1E40AF),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(
@@ -198,12 +198,12 @@ class ServiceCard extends StatelessWidget {
                         ElevatedButton(
                           onPressed: onBook,
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFFF0FDFA),
-                            foregroundColor: const Color(0xFF0D7377),
+                            backgroundColor: const Color(0xFFEFF6FF),
+                            foregroundColor: const Color(0xFF1E40AF),
                             elevation: 0,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
-                              side: const BorderSide(color: Color(0xFF0D7377), width: 1),
+                              side: const BorderSide(color: Color(0xFF1E40AF), width: 1),
                             ),
                             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                             visualDensity: VisualDensity.compact,

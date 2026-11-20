@@ -15,7 +15,7 @@ class _PostTaskScreenState extends State<PostTaskScreen> {
   final _addressController = TextEditingController();
   final _phoneController = TextEditingController();
 
-  String _selectedCategory = BolloData.categories.first.id;
+  String _selectedCategory = MboaData.categories.first.id;
   String _selectedCity = 'Douala';
 
   @override
@@ -65,7 +65,7 @@ class _PostTaskScreenState extends State<PostTaskScreen> {
               _phoneController.clear();
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF0D7377),
+              backgroundColor: const Color(0xFF1E40AF),
               foregroundColor: Colors.white,
             ),
             child: const Text('Great, View My Tasks'),
@@ -96,18 +96,18 @@ class _PostTaskScreenState extends State<PostTaskScreen> {
             Container(
               padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
-                color: const Color(0xFFF0FDFA),
+                color: const Color(0xFFEFF6FF),
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: const Color(0xFF0D7377).withOpacity(0.2)),
+                border: Border.all(color: const Color(0xFF1E40AF).withOpacity(0.2)),
               ),
               child: Row(
                 children: const [
-                  Icon(Icons.flash_on, color: Color(0xFF0D7377)),
+                  Icon(Icons.flash_on, color: Color(0xFF1E40AF)),
                   SizedBox(width: 10),
                   Expanded(
                     child: Text(
                       'Receive competitive quotes from local rated technicians within 15 minutes.',
-                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Color(0xFF0D7377)),
+                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Color(0xFF1E40AF)),
                     ),
                   ),
                 ],
@@ -132,7 +132,7 @@ class _PostTaskScreenState extends State<PostTaskScreen> {
                   onChanged: (val) {
                     if (val != null) setState(() => _selectedCategory = val);
                   },
-                  items: BolloData.categories
+                  items: MboaData.categories
                       .map((c) => DropdownMenuItem(value: c.id, child: Text(c.name, style: const TextStyle(fontSize: 14))))
                       .toList(),
                 ),
@@ -178,7 +178,7 @@ class _PostTaskScreenState extends State<PostTaskScreen> {
                             onChanged: (val) {
                               if (val != null) setState(() => _selectedCity = val);
                             },
-                            items: BolloData.cities
+                            items: MboaData.cities
                                 .where((c) => c != 'All Cameroon')
                                 .map((c) => DropdownMenuItem(value: c, child: Text(c, style: const TextStyle(fontSize: 14))))
                                 .toList(),
@@ -220,7 +220,7 @@ class _PostTaskScreenState extends State<PostTaskScreen> {
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 suffixText: 'XAF',
-                suffixStyle: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF0D7377)),
+                suffixStyle: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF1E40AF)),
                 hintText: 'e.g. 15,000',
                 filled: true,
                 fillColor: Colors.white,
@@ -271,7 +271,7 @@ class _PostTaskScreenState extends State<PostTaskScreen> {
               child: ElevatedButton(
                 onPressed: _submitTask,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF0D7377),
+                  backgroundColor: const Color(0xFF1E40AF),
                   foregroundColor: Colors.white,
                   elevation: 0,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),

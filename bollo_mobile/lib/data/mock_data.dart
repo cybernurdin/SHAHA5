@@ -1,6 +1,6 @@
 import '../models/models.dart';
 
-class BolloData {
+class MboaData {
   static const List<ServiceCategory> categories = [
     ServiceCategory(
       id: 'repairs',

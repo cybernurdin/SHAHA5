@@ -28,7 +28,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
   }
 
   List<ServiceListing> get _results {
-    return BolloData.listings.where((s) {
+    return MboaData.listings.where((s) {
       final matchesCat = _selectedCategory == 'all' || s.categoryId == _selectedCategory;
       final matchesCity = _selectedCity == 'All Cameroon' || s.city.toLowerCase() == _selectedCity.toLowerCase();
       final matchesQuery = _searchQuery.isEmpty ||
@@ -91,7 +91,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                   decoration: InputDecoration(
                     hintText: 'Search service, task or technician...',
                     hintStyle: TextStyle(fontSize: 13, color: Colors.grey.shade400),
-                    prefixIcon: const Icon(Icons.search, size: 20, color: Color(0xFF0D7377)),
+                    prefixIcon: const Icon(Icons.search, size: 20, color: Color(0xFF1E40AF)),
                     filled: true,
                     fillColor: const Color(0xFFF1F5F9),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
@@ -113,7 +113,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                           decoration: BoxDecoration(
-                            color: _selectedCity != 'All Cameroon' ? const Color(0xFF0D7377) : const Color(0xFFF1F5F9),
+                            color: _selectedCity != 'All Cameroon' ? const Color(0xFF1E40AF) : const Color(0xFFF1F5F9),
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Row(
@@ -132,7 +132,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                             ],
                           ),
                         ),
-                        itemBuilder: (_) => BolloData.cities
+                        itemBuilder: (_) => MboaData.cities
                             .map((c) => PopupMenuItem(value: c, child: Text(c, style: const TextStyle(fontSize: 13))))
                             .toList(),
                       ),
@@ -145,7 +145,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                           decoration: BoxDecoration(
-                            color: _priceFilter != 'any' ? const Color(0xFF0D7377) : const Color(0xFFF1F5F9),
+                            color: _priceFilter != 'any' ? const Color(0xFF1E40AF) : const Color(0xFFF1F5F9),
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Row(
@@ -176,11 +176,11 @@ class _BrowseScreenState extends State<BrowseScreen> {
                         label: const Text('★ 4.5+'),
                         selected: _minRating >= 4.5,
                         onSelected: (selected) => setState(() => _minRating = selected ? 4.5 : 0),
-                        selectedColor: const Color(0xFFF0FDFA),
+                        selectedColor: const Color(0xFFEFF6FF),
                         labelStyle: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
-                          color: _minRating >= 4.5 ? const Color(0xFF0D7377) : const Color(0xFF475569),
+                          color: _minRating >= 4.5 ? const Color(0xFF1E40AF) : const Color(0xFF475569),
                         ),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                       ),
@@ -210,7 +210,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                       _minRating = 0;
                       _searchQuery = '';
                     }),
-                    child: const Text('Reset', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF0D7377))),
+                    child: const Text('Reset', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF1E40AF))),
                   ),
               ],
             ),

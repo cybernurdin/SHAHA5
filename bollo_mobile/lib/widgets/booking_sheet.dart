@@ -66,15 +66,15 @@ class _BookingSheetState extends State<BookingSheet> {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: const Color(0xFFF0FDFA),
+                color: const Color(0xFFEFF6FF),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: const Color(0xFF0D7377).withOpacity(0.2)),
+                border: Border.all(color: const Color(0xFF1E40AF).withOpacity(0.2)),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('Estimated Total: ${widget.service.priceXaf} XAF',
-                      style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF0D7377))),
+                      style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF1E40AF))),
                   const SizedBox(height: 4),
                   Text('Scheduled: ${_selectedDate.day}/${_selectedDate.month}/${_selectedDate.year} at ${_selectedTime.format(context)}',
                       style: const TextStyle(fontSize: 12, color: Color(0xFF64748B))),
@@ -89,7 +89,7 @@ class _BookingSheetState extends State<BookingSheet> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('Done', style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF0D7377))),
+            child: const Text('Done', style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF1E40AF))),
           ),
         ],
       ),
@@ -147,7 +147,7 @@ class _BookingSheetState extends State<BookingSheet> {
                       ),
                       Text(
                         '${widget.service.provider.name} • ${widget.service.priceXaf} XAF',
-                        style: const TextStyle(fontSize: 12, color: Color(0xFF0D7377), fontWeight: FontWeight.w600),
+                        style: const TextStyle(fontSize: 12, color: Color(0xFF1E40AF), fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),
@@ -216,7 +216,7 @@ class _BookingSheetState extends State<BookingSheet> {
                           ),
                           child: Row(
                             children: [
-                              const Icon(Icons.calendar_today, size: 16, color: Color(0xFF0D7377)),
+                              const Icon(Icons.calendar_today, size: 16, color: Color(0xFF1E40AF)),
                               const SizedBox(width: 8),
                               Text('${_selectedDate.day}/${_selectedDate.month}/${_selectedDate.year}', style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
                             ],
@@ -250,7 +250,7 @@ class _BookingSheetState extends State<BookingSheet> {
                           ),
                           child: Row(
                             children: [
-                              const Icon(Icons.access_time, size: 16, color: Color(0xFF0D7377)),
+                              const Icon(Icons.access_time, size: 16, color: Color(0xFF1E40AF)),
                               const SizedBox(width: 8),
                               Text(_selectedTime.format(context), style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
                             ],
@@ -288,9 +288,9 @@ class _BookingSheetState extends State<BookingSheet> {
                     label: const Text('MTN MoMo', style: TextStyle(fontSize: 12)),
                     selected: _paymentMethod == 'MTN Mobile Money',
                     onSelected: (val) => setState(() => _paymentMethod = 'MTN Mobile Money'),
-                    selectedColor: const Color(0xFFF0FDFA),
+                    selectedColor: const Color(0xFFEFF6FF),
                     labelStyle: TextStyle(
-                      color: _paymentMethod == 'MTN Mobile Money' ? const Color(0xFF0D7377) : Colors.black87,
+                      color: _paymentMethod == 'MTN Mobile Money' ? const Color(0xFF1E40AF) : Colors.black87,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -301,9 +301,9 @@ class _BookingSheetState extends State<BookingSheet> {
                     label: const Text('Orange Money', style: TextStyle(fontSize: 12)),
                     selected: _paymentMethod == 'Orange Money',
                     onSelected: (val) => setState(() => _paymentMethod = 'Orange Money'),
-                    selectedColor: const Color(0xFFF0FDFA),
+                    selectedColor: const Color(0xFFEFF6FF),
                     labelStyle: TextStyle(
-                      color: _paymentMethod == 'Orange Money' ? const Color(0xFF0D7377) : Colors.black87,
+                      color: _paymentMethod == 'Orange Money' ? const Color(0xFF1E40AF) : Colors.black87,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -314,9 +314,9 @@ class _BookingSheetState extends State<BookingSheet> {
                     label: const Text('Cash', style: TextStyle(fontSize: 12)),
                     selected: _paymentMethod == 'Cash on Completion',
                     onSelected: (val) => setState(() => _paymentMethod = 'Cash on Completion'),
-                    selectedColor: const Color(0xFFF0FDFA),
+                    selectedColor: const Color(0xFFEFF6FF),
                     labelStyle: TextStyle(
-                      color: _paymentMethod == 'Cash on Completion' ? const Color(0xFF0D7377) : Colors.black87,
+                      color: _paymentMethod == 'Cash on Completion' ? const Color(0xFF1E40AF) : Colors.black87,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -332,7 +332,7 @@ class _BookingSheetState extends State<BookingSheet> {
               child: ElevatedButton(
                 onPressed: _submit,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF0D7377),
+                  backgroundColor: const Color(0xFF1E40AF),
                   foregroundColor: Colors.white,
                   elevation: 0,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),

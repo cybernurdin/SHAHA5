@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   String _searchQuery = '';
 
   List<ServiceListing> get _filteredServices {
-    return BolloData.listings.filter((s) {
+    return MboaData.listings.filter((s) {
       final matchesCity = _selectedCity == 'All Cameroon' || s.city.toLowerCase() == _selectedCity.toLowerCase();
       final matchesQuery = _searchQuery.isEmpty ||
           s.title.toLowerCase().contains(_searchQuery.toLowerCase()) ||
@@ -60,18 +60,18 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
-                color: const Color(0xFFF0FDFA),
+                color: const Color(0xFFEFF6FF),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: const Icon(Icons.handyman, color: Color(0xFF0D7377), size: 22),
+              child: const Icon(Icons.handyman, color: Color(0xFF1E40AF), size: 22),
             ),
             const SizedBox(width: 8),
             RichText(
               text: const TextSpan(
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: Color(0xFF0F172A)),
                 children: [
-                  TextSpan(text: 'bollo'),
-                  TextSpan(text: '.work', style: TextStyle(color: Color(0xFF0D7377))),
+                  TextSpan(text: 'MboaWork'),
+                  TextSpan(text: '.work', style: TextStyle(color: Color(0xFF1E40AF))),
                 ],
               ),
             ),
@@ -98,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFF0FDFA),
+                      color: const Color(0xFFEFF6FF),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Row(
@@ -108,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         SizedBox(width: 6),
                         Text(
                           '500+ Verified Service Pros in Cameroon',
-                          style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF0D7377)),
+                          style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF1E40AF)),
                         ),
                       ],
                     ),
@@ -139,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       decoration: InputDecoration(
                         hintText: 'Search service, AC technician, plumber...',
                         hintStyle: TextStyle(fontSize: 13, color: Colors.grey.shade500),
-                        prefixIcon: const Icon(Icons.search, color: Color(0xFF0D7377)),
+                        prefixIcon: const Icon(Icons.search, color: Color(0xFF1E40AF)),
                         suffixIcon: _searchQuery.isNotEmpty
                             ? IconButton(
                                 icon: const Icon(Icons.clear, size: 18),
@@ -166,10 +166,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   padding: const EdgeInsets.symmetric(horizontal: 16),
-                  itemCount: BolloData.cities.length,
+                  itemCount: MboaData.cities.length,
                   separatorBuilder: (_, __) => const SizedBox(width: 8),
                   itemBuilder: (ctx, i) {
-                    final city = BolloData.cities[i];
+                    final city = MboaData.cities[i];
                     final isSelected = _selectedCity == city;
                     return ChoiceChip(
                       label: Text(city),
@@ -177,7 +177,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onSelected: (val) {
                         if (val) setState(() => _selectedCity = city);
                       },
-                      selectedColor: const Color(0xFF0D7377),
+                      selectedColor: const Color(0xFF1E40AF),
                       backgroundColor: const Color(0xFFF1F5F9),
                       labelStyle: TextStyle(
                         fontSize: 12,
@@ -205,7 +205,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w900, color: Color(0xFF0F172A)),
                   ),
                   Text(
-                    '${BolloData.categories.length} Sectors',
+                    '${MboaData.categories.length} Sectors',
                     style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey.shade500),
                   ),
                 ],
@@ -219,10 +219,10 @@ class _HomeScreenState extends State<HomeScreen> {
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                itemCount: BolloData.categories.length,
+                itemCount: MboaData.categories.length,
                 separatorBuilder: (_, __) => const SizedBox(width: 12),
                 itemBuilder: (ctx, i) {
-                  final cat = BolloData.categories[i];
+                  final cat = MboaData.categories[i];
                   return GestureDetector(
                     onTap: () {
                       if (widget.onSelectCategory != null) {
@@ -243,10 +243,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           Container(
                             padding: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
-                              color: const Color(0xFFF0FDFA),
+                              color: const Color(0xFFEFF6FF),
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            child: const Icon(Icons.handyman, color: Color(0xFF0D7377), size: 20),
+                            child: const Icon(Icons.handyman, color: Color(0xFF1E40AF), size: 20),
                           ),
                           const SizedBox(height: 6),
                           Text(
@@ -276,7 +276,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 gradient: const LinearGradient(
-                  colors: [Color(0xFF0D7377), Color(0xFF0A5A5D)],
+                  colors: [Color(0xFF1E40AF), Color(0xFF1E3A8A)],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
@@ -302,7 +302,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           onPressed: widget.onPostTask,
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
-                            foregroundColor: const Color(0xFF0D7377),
+                            foregroundColor: const Color(0xFF1E40AF),
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                             elevation: 0,
@@ -339,7 +339,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Text(
                     '${_filteredServices.length} Results',
-                    style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Color(0xFF0D7377)),
+                    style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Color(0xFF1E40AF)),
                   ),
                 ],
               ),

@@ -5,24 +5,24 @@ import 'screens/post_task_screen.dart';
 import 'screens/bookings_screen.dart';
 
 void main() {
-  runApp(const BolloApp());
+  runApp(const MboaWorkApp());
 }
 
-class BolloApp extends StatelessWidget {
-  const BolloApp({super.key});
+class MboaWorkApp extends StatelessWidget {
+  const MboaWorkApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Bollo Cameroon',
+      title: 'MboaWork Cameroon',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
-        primaryColor: const Color(0xFF0D7377),
+        primaryColor: const Color(0xFF1E40AF),
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF0D7377),
-          primary: const Color(0xFF0D7377),
-          secondary: const Color(0xFF14FFEC),
+          seedColor: const Color(0xFF1E40AF),
+          primary: const Color(0xFF1E40AF),
+          secondary: const Color(0xFFF59E0B),
           surface: Colors.white,
         ),
         scaffoldBackgroundColor: const Color(0xFFF8FAFC),
@@ -90,7 +90,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           onTap: (index) => setState(() => _currentIndex = index),
           type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.white,
-          selectedItemColor: const Color(0xFF0D7377),
+          selectedItemColor: const Color(0xFF1E40AF),
           unselectedItemColor: const Color(0xFF94A3B8),
           selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 11),
           unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w500, fontSize: 11),
