@@ -3,14 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bollo | Trusted Professionals for Every Task in Cameroon</title>
-  <meta name="description" content="Bollo connects you with reliable service providers across Cameroon. Post a task or find the right expert in minutes." />
-  
+  <title>Bamenda Marketplace | Shop, Book Services & Custom Orders</title>
+  <meta name="description" content="Bamenda's trusted local marketplace for buying authentic products, booking skilled artisans, and ordering custom creations. From Achu and Toghu to salon and home repair." />
+
   <!-- Fonts: Plus Jakarta Sans & DM Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   
+  <!-- Font Awesome 6.5.1 CDN (Bulletproof Vector Icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -18,15 +24,18 @@
       theme: {
         extend: {
           colors: {
-            bollo: {
-              50: '#f0fdfa',
-              100: '#ccfbf1',
-              500: '#14b8a6',
-              600: '#0d7377',
-              700: '#0a5a5d',
-              800: '#115e59',
-              accent: '#14ffec',
-              dark: '#0f172a'
+            brand: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+              navy: '#0f172a',
+              amber: '#f59e0b',
+              amberDark: '#d97706',
+              royal: '#1e3a8a'
             }
           },
           fontFamily: {
@@ -37,695 +46,1330 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
   <style>
-    .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      vertical-align: middle;
+    /* Custom Scrollbar and Transitions */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+    .tab-active {
+      background-color: #059669;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+    }
+    .tab-inactive {
+      background-color: #ffffff;
+      color: #475569;
+    }
+    .tab-inactive:hover {
+      background-color: #f1f5f9;
+      color: #0f172a;
+    }
+
+    @keyframes pulseSoft {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.9; }
+    }
+    .recording-pulse {
+      animation: pulseSoft 1.2s infinite ease-in-out;
     }
   </style>
 </head>
-<body class="bg-[#f8fafc] text-slate-800 font-sans antialiased min-h-screen flex flex-col">
 
-  <!-- Top Announcement -->
-  <div class="bg-bollo-600 text-white text-xs py-2 px-4 text-center font-medium flex justify-between items-center max-w-7xl mx-auto w-full">
-    <span>🇨🇲 Connect with 500+ Verified Service Pros across Douala, Yaoundé &amp; Buea</span>
-    <div class="flex items-center gap-4">
-      <a href="https://wa.me/237670000000" target="_blank" class="hover:underline flex items-center gap-1 font-semibold">
-        <span class="material-symbols-outlined text-sm">support_agent</span> WhatsApp Support
-      </a>
+<body class="bg-[#f8fafc] text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
+
+  <!-- ============================================================ -->
+  <!-- IN-APP NOTIFICATION / OTP TOAST -->
+  <!-- ============================================================ -->
+  <div id="inAppNotification" class="fixed top-5 right-5 z-50 max-w-sm w-full bg-slate-900 text-white rounded-2xl shadow-2xl p-4 border border-slate-700 hidden transition-all duration-300 transform translate-y-0">
+    <div class="flex items-start gap-3">
+      <div class="w-10 h-10 rounded-xl bg-brand-600/30 text-brand-500 flex items-center justify-center shrink-0">
+        <i class="fa-solid fa-shield-halved text-lg text-emerald-400"></i>
+      </div>
+      <div class="flex-1">
+        <div class="flex justify-between items-center">
+          <span class="text-[11px] font-bold text-amber-400 tracking-wider uppercase">BAMENDA VERIFICATION</span>
+          <span class="text-[10px] text-slate-400">Instant</span>
+        </div>
+        <h4 class="text-sm font-bold text-white mt-0.5">Your Temporary Login OTP</h4>
+        <p class="text-xs text-slate-300 mt-1 leading-relaxed">
+          Verification Code: <span class="font-mono font-bold text-amber-400 bg-slate-800 px-2.5 py-0.5 rounded text-sm tracking-widest" id="notifCode">7391</span>
+        </p>
+      </div>
+      <button onclick="dismissNotification()" class="text-slate-400 hover:text-white">
+        <i class="fa-solid fa-xmark text-sm"></i>
+      </button>
     </div>
   </div>
 
-  <!-- Header Navigation -->
-  <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+  <!-- ============================================================ -->
+  <!-- TOP ANNOUNCEMENT & COMMUNITY BAR -->
+  <!-- ============================================================ -->
+  <div class="bg-slate-950 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-emerald-500 text-slate-950 rounded font-black text-[10px] tracking-wide">
+          <i class="fa-solid fa-mountain-sun"></i> BAMENDA
+        </span>
+        <span class="text-slate-300">Grassfields Community Marketplace &bull; Commercial Ave, Up Station, Nkwen &amp; Mankon</span>
+      </div>
+      
+      <div class="flex items-center gap-4 text-xs">
+        <!-- Language Switcher -->
+        <div class="flex items-center bg-slate-900 rounded-lg p-0.5 border border-slate-800">
+          <button id="langEn" onclick="setLanguage('en')" class="px-2 py-0.5 rounded font-bold text-[10px] bg-brand-600 text-white">EN</button>
+          <button id="langFr" onclick="setLanguage('fr')" class="px-2 py-0.5 rounded font-medium text-[10px] text-slate-400 hover:text-white">FR</button>
+        </div>
+
+        <!-- Mode Toggle -->
+        <div class="flex items-center bg-slate-900 rounded-lg p-0.5 border border-slate-800">
+          <button id="btnRoleCustomer" onclick="switchRole('customer')" class="px-2.5 py-1 rounded text-[11px] font-bold bg-brand-600 text-white transition">
+            Customer
+          </button>
+          <button id="btnRolePro" onclick="switchRole('creator')" class="px-2.5 py-1 rounded text-[11px] font-medium text-slate-300 hover:text-white transition">
+            Artisan / Creator
+          </button>
+        </div>
+
+        <button onclick="openAuthModal()" class="text-amber-400 hover:underline flex items-center gap-1 font-semibold">
+          <i class="fa-solid fa-user-circle text-xs"></i>
+          <span id="authBtnLabel">Sign In</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- MAIN NAVBAR -->
+  <!-- ============================================================ -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <div class="flex items-center gap-8">
-        <a href="#" class="flex items-center gap-2 text-bollo-600">
-          <span class="material-symbols-outlined text-3xl font-extrabold text-bollo-600">handyman</span>
-          <span class="font-display font-black text-2xl tracking-tight text-slate-900">bollo<span class="text-bollo-600">.work</span></span>
-        </a>
-        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
-          <a href="#services" class="hover:text-bollo-600 transition">Browse Services</a>
-          <a href="#categories" class="hover:text-bollo-600 transition">Categories</a>
-          <a href="#how-it-works" class="hover:text-bollo-600 transition">How It Works</a>
-        </nav>
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-700 via-brand-600 to-emerald-500 text-white flex items-center justify-center shadow-md shadow-brand-600/20">
+          <i class="fa-solid fa-store text-xl"></i>
+        </div>
+        <div>
+          <div class="font-display font-extrabold text-2xl tracking-tight text-slate-900 flex items-center gap-1">
+            Mboa<span class="text-brand-600">Bamenda</span>
+          </div>
+          <div class="text-[10px] font-semibold tracking-wider text-slate-400 uppercase -mt-1">
+            Shop &bull; Services &bull; Custom Orders
+          </div>
+        </div>
+      </a>
+
+      <!-- Quick Search Bar in Header -->
+      <div class="hidden lg:flex items-center bg-slate-100 rounded-full px-4 py-2 w-80 border border-slate-200 focus-within:border-brand-500 focus-within:bg-white transition">
+        <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm mr-2.5"></i>
+        <input type="text" id="navSearchInput" oninput="handleGlobalSearch(this.value)" placeholder="Search Achu, Toghu, Tailor, Plumber..." class="bg-transparent text-xs w-full focus:outline-none text-slate-800" />
       </div>
 
+      <!-- Header CTAs -->
       <div class="flex items-center gap-3">
-        <button onclick="openPostTaskModal()" class="hidden sm:inline-flex items-center gap-2 border border-bollo-600 text-bollo-600 px-4 py-2.5 rounded-xl font-medium text-sm hover:bg-bollo-50 transition">
-          <span class="material-symbols-outlined text-sm">add_circle</span> Post a Task
+        <button onclick="openVoiceModal()" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 transition">
+          <i class="fa-solid fa-microphone text-emerald-600"></i>
+          <span>Voice Search / Note</span>
         </button>
-        <button onclick="openBookingModal()" class="bg-bollo-600 hover:bg-bollo-700 text-white px-5 py-2.5 rounded-xl font-semibold text-sm shadow-sm transition">
-          Book a Pro
+
+        <button onclick="openCustomOrderModal()" class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-md shadow-brand-600/20 transition">
+          <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
+          <span>Make It For Me</span>
         </button>
       </div>
+
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="relative bg-gradient-to-b from-bollo-50/60 to-white py-16 sm:py-24 border-b border-slate-100">
-    <div class="max-w-5xl mx-auto px-4 text-center">
-      <div class="inline-flex items-center gap-2 bg-bollo-100 text-bollo-800 px-3.5 py-1.5 rounded-full text-xs font-semibold mb-6">
-        <span class="w-2 h-2 rounded-full bg-bollo-600 animate-pulse"></span>
-        Over 500+ Verified Technicians in Cameroon
+  <!-- ============================================================ -->
+  <!-- 3-PILLAR INTERACTIVE NAVIGATION CONTROLLER (Shop | Services | Make It) -->
+  <!-- ============================================================ -->
+  <div class="bg-white border-b border-slate-200 shadow-sm sticky top-20 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-3">
+        
+        <!-- Pillar Tabs -->
+        <div class="flex items-center p-1 bg-slate-100 rounded-2xl w-full md:w-auto border border-slate-200 overflow-x-auto">
+          <button id="tabBtnShop" onclick="switchPillar('shop')" class="flex-1 md:flex-initial flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition tab-active whitespace-nowrap">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span>1. Shop Products</span>
+          </button>
+          <button id="tabBtnServices" onclick="switchPillar('services')" class="flex-1 md:flex-initial flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition tab-inactive whitespace-nowrap">
+            <i class="fa-solid fa-wrench"></i>
+            <span>2. Book a Service</span>
+          </button>
+          <button id="tabBtnCustom" onclick="switchPillar('custom')" class="flex-1 md:flex-initial flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition tab-inactive whitespace-nowrap">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>3. Make It for Me</span>
+          </button>
+        </div>
+
+        <!-- Bamenda Neighborhoods Filter -->
+        <div class="flex items-center gap-2 w-full md:w-auto justify-end">
+          <div class="flex items-center bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-700 w-full sm:w-auto">
+            <i class="fa-solid fa-location-dot text-brand-600 mr-2 text-sm"></i>
+            <span class="font-semibold text-slate-500 mr-1.5 hidden sm:inline">Quarter:</span>
+            <select id="quarterSelect" onchange="filterContent()" class="bg-transparent font-medium focus:outline-none cursor-pointer w-full sm:w-auto text-slate-900">
+              <option value="all">📍 All Bamenda Quarters</option>
+              <option value="commercial_ave">Commercial Avenue</option>
+              <option value="up_station">Up Station</option>
+              <option value="nkwen">Nkwen (Mile 2 &amp; 3)</option>
+              <option value="mile4">Mile 4 Mankon</option>
+              <option value="cow_street">Cow Street</option>
+              <option value="food_market">Main Food Market</option>
+              <option value="old_council">Old Council</option>
+            </select>
+          </div>
+        </div>
+
       </div>
-      <h1 class="font-display font-extrabold text-4xl sm:text-6xl text-slate-900 tracking-tight leading-tight">
-        Trusted Professionals for <br class="hidden sm:inline" />
-        <span class="text-bollo-600">Every Task</span> in Cameroon
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- DYNAMIC HERO SECTION -->
+  <!-- ============================================================ -->
+  <section class="relative bg-gradient-to-b from-emerald-50/70 via-slate-50 to-white py-12 sm:py-16 border-b border-slate-100 overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
+      
+      <!-- Grassfields Trust Badge -->
+      <div class="inline-flex items-center gap-2 bg-emerald-100 text-emerald-900 px-3.5 py-1.5 rounded-full text-xs font-bold mb-4 shadow-sm">
+        <i class="fa-solid fa-circle-check text-emerald-600"></i>
+        <span>Connecting Bamenda Talents, Homemakers &amp; Local Customers</span>
+      </div>
+
+      <h1 class="font-display font-black text-3xl sm:text-5xl text-slate-900 tracking-tight leading-tight" id="heroHeadline">
+        Buy Products, Book Services &amp; Order <span class="text-brand-600">Custom Made</span> in Bamenda
       </h1>
-      <p class="mt-5 text-lg text-slate-600 max-w-2xl mx-auto font-normal">
-        From emergency AC repair in Bonapriso to home deep cleaning in Bastos. Hire rated, insured, and verified experts in minutes.
+
+      <p class="mt-4 text-sm sm:text-base text-slate-600 max-w-2xl mx-auto" id="heroSubtitle">
+        From a mother who cooks hot authentic Achu, to master Toghu embroiderers and trusted plumbers. Everyone has a skill, and everyone can earn.
       </p>
 
-      <!-- Search Bar Pill (Exactly as Bollo.work) -->
-      <div class="mt-10 bg-white p-3 rounded-2xl sm:rounded-full shadow-lg border border-slate-200 flex flex-col sm:flex-row items-center gap-3 max-w-4xl mx-auto">
-        <div class="flex items-center gap-3 flex-1 w-full px-4 py-2">
-          <span class="material-symbols-outlined text-slate-400">search</span>
-          <input type="text" id="searchInput" oninput="filterServices()" placeholder="Search a service, provider or task..." class="w-full bg-transparent text-sm focus:outline-none text-slate-800" />
+      <!-- Search Input Pill with Voice Button -->
+      <div class="mt-8 bg-white p-2.5 rounded-2xl sm:rounded-full shadow-lg border border-slate-200 flex flex-col sm:flex-row items-center gap-2 max-w-3xl mx-auto">
+        <div class="flex items-center gap-3 flex-1 w-full px-3 py-1.5">
+          <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+          <input type="text" id="mainSearchInput" oninput="filterContent()" placeholder="Search products, services, or describe what you need..." class="w-full bg-transparent text-sm focus:outline-none text-slate-800" />
         </div>
-        <div class="h-8 w-px bg-slate-200 hidden sm:block"></div>
-        <div class="flex items-center gap-3 flex-1 w-full px-4 py-2">
-          <span class="material-symbols-outlined text-slate-400">location_on</span>
-          <select id="townSelect" onchange="filterServices()" class="w-full bg-transparent text-sm focus:outline-none text-slate-800 cursor-pointer">
-            <option value="all">Anywhere in Cameroon</option>
-            <option value="douala">Douala (Bonapriso, Akwa, Makepe)</option>
-            <option value="yaounde">Yaoundé (Bastos, Mvan, Mendong)</option>
-            <option value="buea">Buea (Molyko, Clerks Qtrs)</option>
-            <option value="limbe">Limbe (Down Beach, New Town)</option>
-            <option value="bamenda">Bamenda</option>
-          </select>
+        
+        <div class="flex items-center gap-2 w-full sm:w-auto">
+          <button onclick="openVoiceModal()" title="Voice Record / Search" class="p-2.5 bg-slate-100 hover:bg-emerald-100 text-slate-700 hover:text-emerald-700 rounded-xl sm:rounded-full transition flex items-center justify-center">
+            <i class="fa-solid fa-microphone text-sm"></i>
+          </button>
+          
+          <button onclick="filterContent()" class="w-full sm:w-auto bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm px-6 py-2.5 rounded-xl sm:rounded-full transition flex items-center justify-center gap-2 shadow-sm">
+            <span>Find</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </button>
         </div>
-        <button onclick="filterServices()" class="w-full sm:w-auto bg-bollo-600 hover:bg-bollo-700 text-white font-semibold text-sm px-7 py-3.5 rounded-xl sm:rounded-full transition flex items-center justify-center gap-2">
-          <span>Search</span>
-          <span class="material-symbols-outlined text-sm">arrow_forward</span>
-        </button>
       </div>
 
       <!-- Quick Category Pills -->
-      <div class="mt-8 flex flex-wrap justify-center gap-2" id="quickCategories"></div>
-    </div>
-  </section>
-
-  <!-- Categories Section -->
-  <section id="categories" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-    <div class="flex justify-between items-end mb-8">
-      <div>
-        <h2 class="font-display font-bold text-2xl text-slate-900">Popular Categories</h2>
-        <p class="text-sm text-slate-500 mt-1">Explore verified services requested every day across Cameroon</p>
+      <div class="mt-6 flex flex-wrap justify-center gap-2" id="filterCategoryPills">
+        <!-- Rendered by JS based on current pillar -->
       </div>
-      <button onclick="resetFilters()" class="text-sm font-semibold text-bollo-600 hover:underline">View All</button>
+
     </div>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="categoriesGrid"></div>
   </section>
 
-  <!-- Marketplace Services Catalog -->
-  <section id="services" class="py-12 bg-slate-50 border-t border-slate-200 flex-1">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+  <!-- ============================================================ -->
+  <!-- MAIN CONTENT CONTAINER (Controlled by 3-Pillar Switcher) -->
+  <!-- ============================================================ -->
+  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+
+    <!-- ------------------------------------------------------------ -->
+    <!-- PILLAR 1: SHOP READY-MADE PRODUCTS VIEW -->
+    <!-- ------------------------------------------------------------ -->
+    <div id="viewShop" class="space-y-8">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <div>
-          <h2 class="font-display font-bold text-2xl text-slate-900">Featured Service Listings</h2>
-          <p class="text-sm text-slate-500 mt-1" id="resultsCount">Showing verified providers</p>
+          <h2 class="font-display font-extrabold text-2xl text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-store text-brand-600"></i>
+            <span>Shop Ready Products in Bamenda</span>
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Fresh local food, Toghu fashion, handmade crafts, pastries and household items.</p>
         </div>
-        <div class="flex items-center gap-3">
-          <select id="priceFilter" onchange="filterServices()" class="bg-white border border-slate-200 text-xs font-medium px-3 py-2 rounded-lg text-slate-700">
-            <option value="any">Any Price</option>
-            <option value="15000">Under 15,000 XAF</option>
-            <option value="25000">Under 25,000 XAF</option>
-            <option value="50000">Under 50,000 XAF</option>
-          </select>
-          <select id="ratingFilter" onchange="filterServices()" class="bg-white border border-slate-200 text-xs font-medium px-3 py-2 rounded-lg text-slate-700">
-            <option value="0">Any Rating</option>
-            <option value="4.5">★ 4.5 &amp; Up</option>
-            <option value="4.8">★ 4.8 &amp; Up</option>
-          </select>
+        <div class="text-xs font-semibold text-slate-500 bg-white px-3 py-1.5 rounded-lg border border-slate-200">
+          Showing <span id="shopCount" class="font-bold text-brand-700">8 items</span> ready for pickup or delivery
         </div>
       </div>
 
-      <!-- Service Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="servicesGrid"></div>
-    </div>
-  </section>
-
-  <!-- Mobile App Banner (Bollo Native App) -->
-  <section class="bg-bollo-800 text-white py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-8">
-      <div>
-        <span class="text-bollo-accent font-semibold text-xs uppercase tracking-wider">Fast &amp; Reliable on Mobile</span>
-        <h2 class="font-display font-extrabold text-3xl sm:text-4xl mt-2">Get the Bollo App</h2>
-        <p class="text-slate-300 mt-2 max-w-xl text-sm">Post tasks on the go, chat directly with technicians in Cameroon, track arrivals, and pay securely via Mobile Money.</p>
-      </div>
-      <div class="flex flex-wrap items-center gap-4">
-        <a href="https://play.google.com" target="_blank" class="bg-slate-900 hover:bg-black text-white px-5 py-3 rounded-xl flex items-center gap-3 border border-slate-700 transition">
-          <span class="material-symbols-outlined text-2xl">android</span>
-          <div class="text-left">
-            <div class="text-[10px] uppercase text-slate-400">Get it on</div>
-            <div class="text-sm font-bold leading-tight">Google Play</div>
-          </div>
-        </a>
-        <a href="https://apple.com" target="_blank" class="bg-slate-900 hover:bg-black text-white px-5 py-3 rounded-xl flex items-center gap-3 border border-slate-700 transition">
-          <span class="material-symbols-outlined text-2xl">phone_iphone</span>
-          <div class="text-left">
-            <div class="text-[10px] uppercase text-slate-400">Download on</div>
-            <div class="text-sm font-bold leading-tight">App Store</div>
-          </div>
-        </a>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="shopGrid">
+        <!-- Injected via JavaScript -->
       </div>
     </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="bg-slate-900 text-slate-400 py-12 text-sm border-t border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
-      <div>
-        <div class="flex items-center gap-2 text-white mb-4">
-          <span class="material-symbols-outlined text-2xl text-bollo-500">handyman</span>
-          <span class="font-display font-bold text-xl text-white">bollo.work</span>
+    <!-- ------------------------------------------------------------ -->
+    <!-- PILLAR 2: BOOK A SERVICE VIEW (Preserved & Enhanced) -->
+    <!-- ------------------------------------------------------------ -->
+    <div id="viewServices" class="hidden space-y-8">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+        <div>
+          <h2 class="font-display font-extrabold text-2xl text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-user-gear text-brand-600"></i>
+            <span>Book a Skilled Service Provider</span>
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Hairdressers, tailors, cooks, electricians, carpenters and home technicians.</p>
         </div>
-        <p class="text-xs text-slate-400 leading-relaxed">
-          The verified marketplace connecting Cameroon with reliable everyday service professionals.
+        <div class="text-xs font-semibold text-slate-500 bg-white px-3 py-1.5 rounded-lg border border-slate-200">
+          Showing <span id="servicesCount" class="font-bold text-brand-700">6 verified pros</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="servicesGrid">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+
+    <!-- ------------------------------------------------------------ -->
+    <!-- PILLAR 3: MAKE IT FOR ME (Custom Orders Reverse Marketplace) -->
+    <!-- ------------------------------------------------------------ -->
+    <div id="viewCustom" class="hidden space-y-10">
+      
+      <!-- Custom Order Banner & Call-to-Action -->
+      <div class="bg-gradient-to-r from-brand-900 via-brand-800 to-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden">
+        <div class="relative z-10 max-w-2xl">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-400 text-slate-950 uppercase tracking-wider mb-3">
+            <i class="fa-solid fa-sparkles"></i> Custom Request Engine
+          </span>
+          <h2 class="font-display font-black text-2xl sm:text-4xl text-white tracking-tight leading-tight">
+            Can't find what you need ready-made? Have it specially created for you.
+          </h2>
+          <p class="text-slate-300 text-xs sm:text-sm mt-3 leading-relaxed">
+            Upload a dress style, birthday cake photo, or describe a custom furniture piece. Local Bamenda artisans will review your request, offer their prices, and deliver on time.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <button onclick="openCustomOrderModal()" class="bg-amber-400 hover:bg-amber-300 text-slate-950 px-6 py-3 rounded-xl font-bold text-sm shadow-md transition flex items-center gap-2">
+              <i class="fa-solid fa-plus-circle"></i>
+              <span>Post a Custom Request Now</span>
+            </button>
+            <button onclick="openVoiceModal()" class="bg-slate-800 hover:bg-slate-700 text-white px-5 py-3 rounded-xl font-semibold text-sm border border-slate-700 transition flex items-center gap-2">
+              <i class="fa-solid fa-microphone text-amber-400"></i>
+              <span>Record Voice Description</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Custom Orders Currently Looking For Creators -->
+      <div>
+        <div class="flex justify-between items-center mb-6">
+          <div>
+            <h3 class="font-display font-bold text-xl text-slate-900">Active Custom Orders in Bamenda</h3>
+            <p class="text-xs text-slate-500">Local customers looking for creators and artisans right now</p>
+          </div>
+          <button onclick="openCustomOrderModal()" class="text-xs font-bold text-brand-600 hover:underline">
+            + Request Something
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="customOrdersGrid">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ============================================================ -->
+  <!-- MODAL 1: MAKE IT FOR ME / POST CUSTOM ORDER -->
+  <!-- ============================================================ -->
+  <div id="customOrderModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-between items-center pb-4 border-b border-slate-100">
+        <div>
+          <span class="text-[11px] font-bold text-brand-600 uppercase tracking-wider">Custom Creation</span>
+          <h3 class="font-display font-black text-xl text-slate-900">Request Custom Item</h3>
+        </div>
+        <button onclick="closeCustomOrderModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="customOrderForm" onsubmit="handleCustomOrderSubmit(event)" class="mt-5 space-y-4 text-xs sm:text-sm">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">What would you like made? *</label>
+          <input type="text" id="custTitle" required placeholder="e.g. 2-Tier Spiderman Birthday Cake or Toghu Wedding Gown" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:outline-none" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Category *</label>
+            <select id="custCategory" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:outline-none bg-white">
+              <option value="Toghu & Fashion">Toghu &amp; Tailoring</option>
+              <option value="Cake & Pastries">Cakes &amp; Food Catering</option>
+              <option value="Furniture & Crafts">Furniture &amp; Crafts</option>
+              <option value="Hair & Beauty">Hair &amp; Beauty Style</option>
+              <option value="Other Skills">Other Special Request</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Bamenda Quarter *</label>
+            <select id="custQuarter" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:outline-none bg-white">
+              <option value="Commercial Avenue">Commercial Avenue</option>
+              <option value="Up Station">Up Station</option>
+              <option value="Nkwen (Mile 2/3)">Nkwen (Mile 2/3)</option>
+              <option value="Mile 4 Mankon">Mile 4 Mankon</option>
+              <option value="Cow Street">Cow Street</option>
+              <option value="Main Food Market">Main Food Market</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Your Budget (FCFA) *</label>
+            <input type="number" id="custBudget" required placeholder="e.g. 25000" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:outline-none" />
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Need It By (Deadline) *</label>
+            <input type="date" id="custDeadline" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:outline-none bg-white" />
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between items-center mb-1">
+            <label class="font-bold text-slate-700">Detailed Description *</label>
+            <button type="button" onclick="openVoiceModal()" class="text-xs text-brand-600 hover:underline flex items-center gap-1 font-semibold">
+              <i class="fa-solid fa-microphone"></i> Use Voice Note
+            </button>
+          </div>
+          <textarea id="custDesc" rows="3" required placeholder="Describe dimensions, colors, ingredients or specific preferences..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:outline-none"></textarea>
+        </div>
+
+        <!-- Reference Photo Upload Mock -->
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Upload Reference Picture (Optional)</label>
+          <div class="border-2 border-dashed border-slate-300 rounded-2xl p-4 text-center hover:border-brand-500 cursor-pointer transition bg-slate-50" onclick="document.getElementById('fileUploadRef').click()">
+            <i class="fa-solid fa-cloud-arrow-up text-2xl text-slate-400 mb-1"></i>
+            <p class="text-xs text-slate-600 font-semibold" id="uploadLabel">Click to upload photo of dress, cake, or craft sample</p>
+            <p class="text-[10px] text-slate-400">PNG, JPG up to 10MB</p>
+            <input type="file" id="fileUploadRef" accept="image/*" class="hidden" onchange="previewUploadImage(event)" />
+          </div>
+          <div id="imagePreviewContainer" class="hidden mt-2 flex items-center gap-2 p-2 bg-emerald-50 rounded-xl border border-emerald-200">
+            <i class="fa-solid fa-check-circle text-emerald-600"></i>
+            <span class="text-xs font-semibold text-emerald-800" id="previewFileName">Sample image attached</span>
+          </div>
+        </div>
+
+        <div class="pt-3">
+          <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3.5 rounded-xl shadow-md transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span>Submit Request to Bamenda Creators</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- MODAL 2: VOICE NOTE RECORDING ASSISTANT -->
+  <!-- ============================================================ -->
+  <div id="voiceModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 text-center shadow-2xl border border-slate-200">
+      <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 mx-auto flex items-center justify-center text-2xl mb-3" id="voiceMicCircle">
+        <i class="fa-solid fa-microphone"></i>
+      </div>
+      <h3 class="font-display font-extrabold text-xl text-slate-900">Voice Note Assistant</h3>
+      <p class="text-xs text-slate-500 mt-1">
+        Designed for mothers, artisans, and elders. Speak naturally in English, French, or Pidgin to describe your product or order.
+      </p>
+
+      <div class="my-6 p-4 bg-slate-50 rounded-2xl border border-slate-200 text-left">
+        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Voice Transcription:</span>
+        <p class="text-xs text-slate-700 mt-1 italic font-medium" id="voiceTranscript">
+          "Tap start recording and speak what you want to make or buy..."
         </p>
       </div>
-      <div>
-        <h4 class="text-white font-semibold text-xs uppercase tracking-wider mb-3">Popular Towns</h4>
-        <ul class="space-y-2 text-xs">
-          <li><a href="#" onclick="setTown('douala'); return false;" class="hover:text-white">Services in Douala</a></li>
-          <li><a href="#" onclick="setTown('yaounde'); return false;" class="hover:text-white">Services in Yaoundé</a></li>
-          <li><a href="#" onclick="setTown('buea'); return false;" class="hover:text-white">Services in Buea</a></li>
-          <li><a href="#" onclick="setTown('limbe'); return false;" class="hover:text-white">Services in Limbe</a></li>
-        </ul>
+
+      <div class="flex items-center justify-center gap-3">
+        <button id="btnToggleRecord" onclick="toggleVoiceRecording()" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-5 py-2.5 rounded-xl text-xs flex items-center gap-2 transition">
+          <i class="fa-solid fa-play"></i>
+          <span id="recordBtnText">Start Speaking</span>
+        </button>
+        <button onclick="applyVoiceNote()" class="bg-slate-900 hover:bg-black text-white font-bold px-4 py-2.5 rounded-xl text-xs transition">
+          Use This Description
+        </button>
       </div>
-      <div>
-        <h4 class="text-white font-semibold text-xs uppercase tracking-wider mb-3">Company</h4>
-        <ul class="space-y-2 text-xs">
-          <li><a href="#" class="hover:text-white">About Bollo</a></li>
-          <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
-          <li><a href="#" class="hover:text-white">Terms of Service</a></li>
-          <li><a href="#" class="hover:text-white">Support &amp; Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-white font-semibold text-xs uppercase tracking-wider mb-3">Contact Support</h4>
-        <p class="text-xs text-slate-400">Douala &amp; Yaoundé, Cameroon</p>
-        <p class="text-xs text-bollo-accent mt-2 font-medium">+237 670 000 000</p>
-        <p class="text-xs text-slate-400">contact@bollo.work</p>
+      
+      <div class="mt-4 pt-3 border-t border-slate-100">
+        <button onclick="closeVoiceModal()" class="text-xs text-slate-400 hover:text-slate-600">Close</button>
       </div>
     </div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-8 border-t border-slate-800 text-center text-xs text-slate-500">
-      &copy; 2026 Bollo.work. All rights reserved. Built for Cameroon.
-    </div>
-  </footer>
+  </div>
 
-  <!-- Booking Modal Wizard -->
-  <div id="bookingModal" class="fixed inset-0 bg-slate-900/60 z-50 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative">
-      <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
-        <span class="material-symbols-outlined">close</span>
-      </button>
-      <div class="flex items-center gap-2 text-bollo-600 font-semibold text-xs uppercase">
-        <span class="material-symbols-outlined text-sm">verified</span> Direct Booking Wizard
+  <!-- ============================================================ -->
+  <!-- MODAL 3: INSTANT CHECKOUT & BOOKING (MoMo / Orange / Cash) -->
+  <!-- ============================================================ -->
+  <div id="checkoutModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+        <div>
+          <span class="text-[11px] font-bold text-emerald-600 uppercase tracking-wider" id="checkoutTypeBadge">ORDER CONFIRMATION</span>
+          <h3 class="font-display font-black text-xl text-slate-900" id="checkoutItemTitle">Item Title</h3>
+        </div>
+        <button onclick="closeCheckoutModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
       </div>
-      <h3 class="font-display font-bold text-xl text-slate-900 mt-1" id="modalServiceTitle">Book a Verified Pro</h3>
-      <p class="text-xs text-slate-500 mt-1" id="modalServiceDetails">Direct booking connected with Mobile Money and WhatsApp confirmation.</p>
 
-      <form onsubmit="submitBooking(event)" class="mt-6 space-y-4 text-left">
+      <div class="mt-4 p-4 bg-slate-50 rounded-2xl flex justify-between items-center border border-slate-200">
         <div>
-          <label class="block text-xs font-semibold text-slate-700 mb-1">Your Full Name</label>
-          <input type="text" id="custName" required placeholder="e.g. Samuel Eto'o" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-bollo-600" />
+          <span class="text-xs text-slate-500">Amount to Pay</span>
+          <div class="font-display font-extrabold text-2xl text-slate-900" id="checkoutPrice">2,500 XAF</div>
         </div>
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">Cameroon Phone / WhatsApp</label>
-            <input type="tel" id="custPhone" required placeholder="+237 6..." class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-bollo-600" />
+        <div class="text-right">
+          <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">DIRECT TO SELLER</span>
+          <div class="text-xs text-slate-600 mt-1" id="checkoutSeller">Mama Gladys Kitchen</div>
+        </div>
+      </div>
+
+      <form onsubmit="processCheckout(event)" class="mt-5 space-y-4 text-xs sm:text-sm">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Your Full Name *</label>
+          <input type="text" id="custName" required placeholder="e.g. Ndi Fru Emmanuel" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:outline-none" />
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Phone Number (MTN / Orange) *</label>
+          <input type="tel" id="custPhone" required placeholder="67X XXX XXX or 69X XXX XXX" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:outline-none" />
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1.5">Payment Method</label>
+          <div class="grid grid-cols-3 gap-2">
+            <label class="border border-slate-300 rounded-xl p-3 flex flex-col items-center justify-center text-center cursor-pointer hover:border-amber-400 bg-white">
+              <input type="radio" name="paymentMethod" value="mtn" checked class="hidden" />
+              <div class="w-6 h-6 rounded-full bg-amber-400 text-slate-950 font-black text-[10px] flex items-center justify-center mb-1">MoMo</div>
+              <span class="font-bold text-[11px] text-slate-800">MTN MoMo</span>
+            </label>
+            <label class="border border-slate-300 rounded-xl p-3 flex flex-col items-center justify-center text-center cursor-pointer hover:border-orange-500 bg-white">
+              <input type="radio" name="paymentMethod" value="orange" class="hidden" />
+              <div class="w-6 h-6 rounded-full bg-orange-500 text-white font-black text-[10px] flex items-center justify-center mb-1">OM</div>
+              <span class="font-bold text-[11px] text-slate-800">Orange Money</span>
+            </label>
+            <label class="border border-slate-300 rounded-xl p-3 flex flex-col items-center justify-center text-center cursor-pointer hover:border-emerald-600 bg-white">
+              <input type="radio" name="paymentMethod" value="cash" class="hidden" />
+              <div class="w-6 h-6 rounded-full bg-emerald-600 text-white font-black text-[10px] flex items-center justify-center mb-1">
+                <i class="fa-solid fa-handshake"></i>
+              </div>
+              <span class="font-bold text-[11px] text-slate-800">Pay on Delivery</span>
+            </label>
           </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 mb-1">Preferred Date</label>
-            <input type="date" id="custDate" required class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-bollo-600" />
-          </div>
         </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 mb-1">Task Location / Neighborhood</label>
-          <input type="text" id="custAddress" required placeholder="e.g. Bonapriso, near Super U" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-bollo-600" />
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 mb-1">Task Details &amp; Instructions</label>
-          <textarea id="custNotes" rows="2" placeholder="Briefly describe what needs to be done..." class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-bollo-600"></textarea>
-        </div>
-        <button type="submit" class="w-full bg-bollo-600 hover:bg-bollo-700 text-white font-semibold py-3 rounded-xl transition flex items-center justify-center gap-2">
-          <span>Confirm Task &amp; WhatsApp Pro</span>
-          <span class="material-symbols-outlined text-sm">send</span>
+
+        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-md transition flex items-center justify-center gap-2 mt-2">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Confirm &amp; Place Order</span>
         </button>
       </form>
     </div>
   </div>
 
-  <!-- Application Script -->
-  <script>
-    const DATA = {
-  "brand": {
-    "name": "Bollo",
-    "domain": "bollo.work",
-    "tagline": "Trusted Professionals for Every Task in Cameroon",
-    "description": "Bollo connects you with reliable service providers across Cameroon. Post a task or find the right expert in minutes. 500+ providers. Rated & reviewed.",
-    "themeColor": "#0d7377",
-    "accentColor": "#14ffec",
-    "currency": "XAF",
-    "supportPhone": "+237 670 000 000",
-    "supportEmail": "contact@bollo.work",
-    "socials": {
-      "facebook": "https://facebook.com/bollowork",
-      "instagram": "https://instagram.com/bollowork",
-      "tiktok": "https://tiktok.com/@bollowork"
-    }
-  },
-  "cities": [
-    {
-      "id": "all",
-      "name": "All Cameroon",
-      "region": "National"
-    },
-    {
-      "id": "douala",
-      "name": "Douala",
-      "region": "Littoral",
-      "neighborhoods": [
-        "Akwa",
-        "Bonanjo",
-        "Bonapriso",
-        "Deido",
-        "Makepe",
-        "Bonamoussadi",
-        "Logpom"
-      ]
-    },
-    {
-      "id": "yaounde",
-      "name": "Yaoundé",
-      "region": "Centre",
-      "neighborhoods": [
-        "Bastos",
-        "Mvan",
-        "Biyem-Assi",
-        "Omnisports",
-        "Mendong",
-        "Nlongkak"
-      ]
-    },
-    {
-      "id": "buea",
-      "name": "Buea",
-      "region": "South West",
-      "neighborhoods": [
-        "Molyko",
-        "Clerks Quarters",
-        "Mile 16",
-        "Check Point",
-        "Federal Quarters"
-      ]
-    },
-    {
-      "id": "limbe",
-      "name": "Limbe",
-      "region": "South West",
-      "neighborhoods": [
-        "Down Beach",
-        "New Town",
-        "Mile 4",
-        "Bota"
-      ]
-    },
-    {
-      "id": "bamenda",
-      "name": "Bamenda",
-      "region": "North West",
-      "neighborhoods": [
-        "Commercial Avenue",
-        "Up Station",
-        "Mile 2",
-        "Nkwen"
-      ]
-    }
-  ],
-  "categories": [
-    {
-      "id": "repairs",
-      "name": "Repairs & Maintenance",
-      "icon": "wrench",
-      "description": "AC technicians, plumbers, electricians, generator repairs and carpentry.",
-      "servicesCount": 184
-    },
-    {
-      "id": "cleaning",
-      "name": "Cleaning Services",
-      "icon": "sparkles",
-      "description": "Residential deep cleaning, post-construction cleaning, laundry and sofa washing.",
-      "servicesCount": 128
-    },
-    {
-      "id": "home",
-      "name": "Home & Moving",
-      "icon": "home",
-      "description": "Furniture assembly, movers with trucks, painting and gardening.",
-      "servicesCount": 94
-    },
-    {
-      "id": "auto",
-      "name": "Auto Services",
-      "icon": "car",
-      "description": "Mobile auto diagnostics, emergency towing, oil changes and car wash.",
-      "servicesCount": 62
-    },
-    {
-      "id": "beauty",
-      "name": "Beauty & Grooming",
-      "icon": "scissors",
-      "description": "Braids, makeup artists, mobile barbering and manicure/pedicure at your home.",
-      "servicesCount": 85
-    },
-    {
-      "id": "catering",
-      "name": "Food & Catering",
-      "icon": "utensils",
-      "description": "Event buffet caterers, private barbecue chefs, pastries and traditional banquets.",
-      "servicesCount": 47
-    },
-    {
-      "id": "it",
-      "name": "IT & Tech Support",
-      "icon": "laptop",
-      "description": "Laptop repairs, CCTV camera installation, Wi-Fi configuration and solar setup.",
-      "servicesCount": 56
-    }
-  ],
-  "listings": [
-    {
-      "id": "srv-001",
-      "title": "Air Conditioner Installation, Deep Wash & Gas Refill",
-      "category": "repairs",
-      "provider": {
-        "id": "pro-101",
-        "name": "Ferdinand Ebelle",
-        "badge": "Verified Pro",
-        "rating": 4.95,
-        "reviewsCount": 84,
-        "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
-        "completedTasks": 192,
-        "responseTime": "< 15 mins",
-        "joined": "2024"
-      },
-      "city": "douala",
-      "neighborhood": "Bonapriso & Akwa",
-      "price": 15000,
-      "priceUnit": "task",
-      "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80",
-      "rating": 4.95,
-      "reviews": 84,
-      "featured": true,
-      "description": "Certified HVAC professional with 8+ years experience servicing Split ACs, inverter systems, and multi-split units. Fast response with modern vacuum and pressure gauges."
-    },
-    {
-      "id": "srv-002",
-      "title": "Full Villa & Apartment Deep Cleaning Service",
-      "category": "cleaning",
-      "provider": {
-        "id": "pro-102",
-        "name": "CleanPro Douala Team",
-        "badge": "Top Rated Agency",
-        "rating": 4.9,
-        "reviewsCount": 112,
-        "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80",
-        "completedTasks": 340,
-        "responseTime": "< 30 mins",
-        "joined": "2023"
-      },
-      "city": "douala",
-      "neighborhood": "Makepe, Denver & Bonamoussadi",
-      "price": 25000,
-      "priceUnit": "apartment",
-      "image": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80",
-      "rating": 4.9,
-      "reviews": 112,
-      "featured": true,
-      "description": "Complete sanitation and disinfection for residential homes and corporate offices. We supply all eco-friendly industrial cleaning materials and steam machinery."
-    },
-    {
-      "id": "srv-003",
-      "title": "Emergency Electrical Wiring, Breaker & Generator Sync",
-      "category": "repairs",
-      "provider": {
-        "id": "pro-103",
-        "name": "Jean-Paul Mbida",
-        "badge": "Verified Pro",
-        "rating": 4.88,
-        "reviewsCount": 67,
-        "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
-        "completedTasks": 145,
-        "responseTime": "< 20 mins",
-        "joined": "2024"
-      },
-      "city": "yaounde",
-      "neighborhood": "Bastos, Santa Barbara & Mvan",
-      "price": 12000,
-      "priceUnit": "inspection",
-      "image": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=800&q=80",
-      "rating": 4.88,
-      "reviews": 67,
-      "featured": true,
-      "description": "Licensed residential and commercial electrician. Emergency fault detection, automatic generator changeover switch installation, and grounding protection."
-    },
-    {
-      "id": "srv-004",
-      "title": "Mobile Auto Mechanic & Computer Diagnostic Scan",
-      "category": "auto",
-      "provider": {
-        "id": "pro-104",
-        "name": "Garage Express 237",
-        "badge": "Verified Pro",
-        "rating": 4.82,
-        "reviewsCount": 53,
-        "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
-        "completedTasks": 98,
-        "responseTime": "< 25 mins",
-        "joined": "2024"
-      },
-      "city": "buea",
-      "neighborhood": "Molyko & Check Point",
-      "price": 10000,
-      "priceUnit": "scan",
-      "image": "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=800&q=80",
-      "rating": 4.82,
-      "reviews": 53,
-      "featured": false,
-      "description": "On-site OBD2 diagnostics, brake pad replacement, battery jumpstart, and fluid servicing at your office or home driveway anywhere in Buea or Limbe."
-    },
-    {
-      "id": "srv-005",
-      "title": "Professional Moving Van & Packing Crew",
-      "category": "home",
-      "provider": {
-        "id": "pro-105",
-        "name": "SwiftMovers Cameroon",
-        "badge": "Top Rated Agency",
-        "rating": 4.96,
-        "reviewsCount": 140,
-        "avatar": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=200&q=80",
-        "completedTasks": 310,
-        "responseTime": "< 10 mins",
-        "joined": "2023"
-      },
-      "city": "douala",
-      "neighborhood": "All Douala / Inter-city",
-      "price": 45000,
-      "priceUnit": "starting",
-      "image": "https://images.unsplash.com/photo-1600518464441-9154a4dea21b?auto=format&fit=crop&w=800&q=80",
-      "rating": 4.96,
-      "reviews": 140,
-      "featured": true,
-      "description": "Stress-free residential and business relocation. Includes heavy lifting, bubble wrapping for TVs/glassware, furniture disassembly and reassembly."
-    },
-    {
-      "id": "srv-006",
-      "title": "Private Hair Braiding, Knotless & Wigs at Home",
-      "category": "beauty",
-      "provider": {
-        "id": "pro-106",
-        "name": "Clarisse Glamour",
-        "badge": "Verified Pro",
-        "rating": 4.98,
-        "reviewsCount": 94,
-        "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80",
-        "completedTasks": 180,
-        "responseTime": "< 15 mins",
-        "joined": "2024"
-      },
-      "city": "yaounde",
-      "neighborhood": "Bastos, Essos & Mendong",
-      "price": 15000,
-      "priceUnit": "style",
-      "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80",
-      "rating": 4.98,
-      "reviews": 94,
-      "featured": true,
-      "description": "Luxurious braiding in the comfort of your living room. Knotless box braids, goddess locs, cornrows, and frontal wig installations with premium finish."
-    }
-  ]
-};
-    let activeCategory = 'all';
+  <!-- ============================================================ -->
+  <!-- MODAL 4: AUTH & INSTANT OTP MODAL -->
+  <!-- ============================================================ -->
+  <div id="authModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl border border-slate-200">
+      <div class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-600 mx-auto flex items-center justify-center text-xl mb-3">
+        <i class="fa-solid fa-lock"></i>
+      </div>
+      <h3 class="font-display font-extrabold text-xl text-slate-900">Sign In to Bamenda Hub</h3>
+      <p class="text-xs text-slate-500 mt-1">Enter your mobile phone number. We provide an instant notification code with zero SMS charges.</p>
 
-    function init() {
-      renderCategories();
-      renderServices(DATA.listings);
-    }
-
-    function renderCategories() {
-      const grid = document.getElementById('categoriesGrid');
-      const quick = document.getElementById('quickCategories');
-      
-      grid.innerHTML = DATA.categories.map(c => `
-        <div onclick="selectCategory('${c.id}')" class="bg-white p-5 rounded-2xl border border-slate-200 hover:border-bollo-600 hover:shadow-md transition cursor-pointer group">
-          <div class="w-12 h-12 rounded-xl bg-bollo-50 text-bollo-600 flex items-center justify-center mb-3 group-hover:bg-bollo-600 group-hover:text-white transition">
-            <span class="material-symbols-outlined">${c.icon}</span>
-          </div>
-          <h4 class="font-display font-bold text-slate-900 group-hover:text-bollo-600 transition text-base">${c.name}</h4>
-          <p class="text-xs text-slate-500 mt-1 line-clamp-2">${c.description}</p>
-          <span class="inline-block mt-3 text-[11px] font-semibold text-bollo-600">${c.servicesCount} Pros Available</span>
+      <div class="mt-4 space-y-3 text-left">
+        <div>
+          <label class="text-[11px] font-bold text-slate-700">Mobile Number</label>
+          <input type="tel" id="authPhone" placeholder="+237 6XX XXX XXX" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:outline-none text-xs" />
         </div>
-      `).join('');
+        <button onclick="requestInstantOtp()" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-xs transition">
+          Send Instant Code
+        </button>
+      </div>
 
-      quick.innerHTML = `
-        <button onclick="selectCategory('all')" class="bg-white border border-slate-200 text-xs font-semibold px-3 py-1.5 rounded-full hover:border-bollo-600 transition">All Tasks</button>
-      ` + DATA.categories.slice(0, 5).map(c => `
-        <button onclick="selectCategory('${c.id}')" class="bg-white border border-slate-200 text-xs font-semibold px-3 py-1.5 rounded-full hover:border-bollo-600 transition">${c.name}</button>
-      `).join('');
-    }
+      <div id="otpInputSection" class="mt-4 pt-4 border-t border-slate-100 hidden text-left">
+        <label class="text-[11px] font-bold text-slate-700">Enter 4-Digit Code</label>
+        <div class="flex gap-2 mt-1">
+          <input type="text" maxlength="4" id="otpCodeInput" placeholder="8492" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-center font-mono font-bold tracking-widest focus:outline-none" />
+          <button onclick="verifyOtp()" class="bg-slate-900 text-white px-4 rounded-xl text-xs font-bold">Verify</button>
+        </div>
+      </div>
 
-    function renderServices(items) {
-      const grid = document.getElementById('servicesGrid');
-      const countEl = document.getElementById('resultsCount');
-      countEl.innerText = `Showing ${items.length} verified listings`;
+      <button onclick="closeAuthModal()" class="mt-4 text-xs text-slate-400 hover:text-slate-600">Cancel</button>
+    </div>
+  </div>
 
-      if (items.length === 0) {
-        grid.innerHTML = `
-          <div class="col-span-full py-16 text-center">
-            <span class="material-symbols-outlined text-5xl text-slate-300">search_off</span>
-            <p class="text-base text-slate-600 mt-2 font-medium">No service providers match your current filters.</p>
-            <button onclick="resetFilters()" class="mt-4 bg-bollo-600 text-white text-xs font-semibold px-4 py-2 rounded-lg">Reset Filters</button>
+  <!-- ============================================================ -->
+  <!-- FOOTER -->
+  <!-- ============================================================ -->
+  <footer class="bg-slate-950 text-slate-400 py-12 text-xs border-t border-slate-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <div class="flex items-center gap-2.5 text-white mb-3">
+          <div class="w-8 h-8 rounded-xl bg-brand-600 text-white flex items-center justify-center">
+            <i class="fa-solid fa-store"></i>
           </div>
-        `;
-        return;
+          <span class="font-display font-bold text-lg text-white">MboaBamenda</span>
+        </div>
+        <p class="text-slate-400 leading-relaxed">
+          The Grassfields community marketplace empowering mothers, craftspersons, youths, and artisans in Bamenda.
+        </p>
+      </div>
+      <div>
+        <h4 class="text-white font-bold uppercase tracking-wider mb-2">Bamenda Quarters</h4>
+        <ul class="space-y-1.5 text-slate-400">
+          <li>Commercial Avenue</li>
+          <li>Up Station &amp; Governor's Office</li>
+          <li>Nkwen (Mile 2, Mile 3)</li>
+          <li>Cow Street &amp; Food Market</li>
+          <li>Mile 4 Mankon &amp; Old Council</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold uppercase tracking-wider mb-2">3 Marketplace Pillars</h4>
+        <ul class="space-y-1.5 text-slate-400">
+          <li><a href="#" onclick="switchPillar('shop'); return false;" class="hover:text-emerald-400">1. Shop Ready Products</a></li>
+          <li><a href="#" onclick="switchPillar('services'); return false;" class="hover:text-emerald-400">2. Book a Service Provider</a></li>
+          <li><a href="#" onclick="switchPillar('custom'); return false;" class="hover:text-emerald-400">3. Make It For Me (Custom Orders)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold uppercase tracking-wider mb-2">Community &amp; Contact</h4>
+        <p class="text-slate-400 mb-2">Have questions or want to register an artisan who doesn't use smartphones?</p>
+        <a href="https://wa.me/237670000000" target="_blank" class="inline-flex items-center gap-2 px-3 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-bold transition">
+          <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Support
+        </a>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 mt-8 pt-6 border-t border-slate-800 text-center text-slate-500">
+      &copy; 2026 MboaBamenda Marketplace. All rights reserved. Connecting local talents across the North West Region.
+    </div>
+  </footer>
+
+  <!-- ============================================================ -->
+  <!-- JAVASCRIPT LOGIC & AUTHENTIC BAMENDA DATA -->
+  <!-- ============================================================ -->
+  <script>
+    // -------------------------------------------------------------
+    // 1. DATA SOURCE: AUTHENTIC BAMENDA MARKETPLACE ITEMS
+    // -------------------------------------------------------------
+    
+    // Pillar A: Shop Products
+    const shopProducts = [
+      {
+        id: "prod-1",
+        title: "Traditional Achu & Yellow Soup (Cow Skin & Kanda)",
+        category: "Traditional Meals",
+        price: 2500,
+        quarter: "Main Food Market",
+        seller: "Mama Gladys Kitchen",
+        rating: 4.9,
+        reviews: 84,
+        image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
+        badge: "Hot & Fresh Today",
+        description: "Pounded cocoyam achu with traditional yellow limestone soup, seasoned beef, kanda and garden eggs."
+      },
+      {
+        id: "prod-2",
+        title: "Authentic Hand-Embroidered Toghu Royal Gown",
+        category: "Toghu & Fashion",
+        price: 45000,
+        quarter: "Commercial Avenue",
+        seller: "Pa Foncha Atelier",
+        rating: 5.0,
+        reviews: 42,
+        image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80",
+        badge: "Handmade Masterpiece",
+        description: "Heavy black velvet fabric with authentic Bamenda Grassfields golden-yellow and red geometric stitching."
+      },
+      {
+        id: "prod-3",
+        title: "Custom 3-Tier Birthday & Event Fondant Cake",
+        category: "Cakes & Bakery",
+        price: 18000,
+        quarter: "Up Station",
+        seller: "SweetBam Delights",
+        rating: 4.8,
+        reviews: 31,
+        image: "https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=600&q=80",
+        badge: "Bespoke Flavors",
+        description: "Rich vanilla & red velvet filling with custom sugarcraft flowers, personalized birthday lettering."
+      },
+      {
+        id: "prod-4",
+        title: "Handcrafted Cane Laundry & Veranda Baskets",
+        category: "Crafts & Furniture",
+        price: 8500,
+        quarter: "Nkwen (Mile 2/3)",
+        seller: "Mbah Cane Art",
+        rating: 4.7,
+        reviews: 29,
+        image: "https://images.unsplash.com/photo-1595855759920-86582396756a?auto=format&fit=crop&w=600&q=80",
+        badge: "Eco Cane",
+        description: "Durable woven rattan and bamboo cane baskets, pest-resistant and varnished for living rooms."
+      },
+      {
+        id: "prod-5",
+        title: "Bamenda Royal Beaded Bangles & Choker Set",
+        category: "Jewellery & Beads",
+        price: 6000,
+        quarter: "Old Council",
+        seller: "Che Heritage Beads",
+        rating: 4.9,
+        reviews: 19,
+        image: "https://images.unsplash.com/photo-1611591475870-7463690d7945?auto=format&fit=crop&w=600&q=80",
+        badge: "Cultural Wear",
+        description: "Traditional chevron beadwork crafted by elder Bamenda artisan women for ceremonies and weddings."
+      },
+      {
+        id: "prod-6",
+        title: "Smoked Savory Bushmeat & Kati-Kati with Corn Fufu",
+        category: "Traditional Meals",
+        price: 3500,
+        quarter: "Nkwen (Mile 2/3)",
+        seller: "Achu & Grill Master",
+        rating: 4.9,
+        reviews: 67,
+        image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80",
+        badge: "Chef Special",
+        description: "Flame-grilled chicken Kati-Kati with authentic country butter and steamed organic corn fufu."
+      },
+      {
+        id: "prod-7",
+        title: "Handmade Bamenda Carved Solid Stool",
+        category: "Crafts & Furniture",
+        price: 28000,
+        quarter: "Mile 4 Mankon",
+        seller: "Woodcraft Mankon",
+        rating: 4.8,
+        reviews: 15,
+        image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80",
+        badge: "Solid Iroko",
+        description: "Carved from a single log of Iroko hardwood depicting traditional Grassfields spider symbols."
+      },
+      {
+        id: "prod-8",
+        title: "Raw Shea Butter & Natural Hair Cream (500ml)",
+        category: "Beauty & Health",
+        price: 3000,
+        quarter: "Cow Street",
+        seller: "Abang Naturals",
+        rating: 4.8,
+        reviews: 53,
+        image: "https://images.unsplash.com/photo-1608248597359-5613589b2123?auto=format&fit=crop&w=600&q=80",
+        badge: "100% Organic",
+        description: "Cold-pressed pure shea butter with local herbal extracts for hair growth and dry skin relief."
+      }
+    ];
+
+    // Pillar B: Services & Artisans
+    const servicesList = [
+      {
+        id: "serv-1",
+        name: "Awa Che Florence",
+        trade: "Hairdresser & Mobile Cornrows Specialist",
+        rate: "4,000 XAF",
+        rateType: "per styling",
+        quarter: "Cow Street",
+        rating: 4.9,
+        reviews: 48,
+        image: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=500&q=80",
+        verified: true,
+        responseTime: "15 mins",
+        phone: "+237 671 223 344",
+        skills: ["Box Braids", "Knotless Cornrows", "Home Visits", "Kid Styling"]
+      },
+      {
+        id: "serv-2",
+        name: "Bih Denis & Sons",
+        trade: "Master Tailor & Toghu Designer",
+        rate: "7,500 XAF",
+        rateType: "base stitch",
+        quarter: "Commercial Avenue",
+        rating: 5.0,
+        reviews: 62,
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80",
+        verified: true,
+        responseTime: "30 mins",
+        phone: "+237 677 889 900",
+        skills: ["Toghu Outfits", "Men Suits", "Embroidery", "Alterations"]
+      },
+      {
+        id: "serv-3",
+        name: "Tanyi Electrical & Solar",
+        trade: "Home Electrician & Inverter Installation",
+        rate: "10,000 XAF",
+        rateType: "visit & repair",
+        quarter: "Commercial Avenue",
+        rating: 4.9,
+        reviews: 35,
+        image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=500&q=80",
+        verified: true,
+        responseTime: "20 mins",
+        phone: "+237 674 112 233",
+        skills: ["Solar Backup", "Inverter Repair", "House Wiring", "Generator Fix"]
+      },
+      {
+        id: "serv-4",
+        name: "Mama Therese Catering",
+        trade: "Traditional Event Cook & Achu Pot Specialist",
+        rate: "25,000 XAF",
+        rateType: "full day cooking",
+        quarter: "Main Food Market",
+        rating: 4.9,
+        reviews: 73,
+        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80",
+        verified: true,
+        responseTime: "45 mins",
+        phone: "+237 675 334 455",
+        skills: ["Achu Preparation", "Kati-Kati", "Ndoleh", "Family Gatherings"]
+      },
+      {
+        id: "serv-5",
+        name: "Peter Nkwen Plumbing",
+        trade: "Borehole, Pump & Household Plumber",
+        rate: "8,000 XAF",
+        rateType: "per job",
+        quarter: "Nkwen (Mile 2/3)",
+        rating: 4.8,
+        reviews: 28,
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80",
+        verified: true,
+        responseTime: "25 mins",
+        phone: "+237 670 998 877",
+        skills: ["Water Tank Hookup", "Pipe Leaks", "Toilet Install", "Water Pumps"]
+      },
+      {
+        id: "serv-6",
+        name: "Bamenda Tech Lab",
+        trade: "Smartphone & Laptop Hardware Fix",
+        rate: "5,000 XAF",
+        rateType: "diagnostic & fix",
+        quarter: "Commercial Avenue",
+        rating: 4.8,
+        reviews: 44,
+        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80",
+        verified: true,
+        responseTime: "10 mins",
+        phone: "+237 679 445 566",
+        skills: ["Screen Replacement", "Charging Port Fix", "Battery Repair", "Windows / Mac"]
+      }
+    ];
+
+    // Pillar C: Custom Orders (Make It for Me)
+    const customOrders = [
+      {
+        id: "cust-1",
+        title: "Custom Toghu Wedding Gown with Gold Velvet Cape",
+        category: "Toghu & Fashion",
+        client: "Bih Mirabel",
+        quarter: "Up Station",
+        budget: 65000,
+        deadline: "Nov 30, 2026",
+        bidsCount: 4,
+        lowestBid: 55000,
+        image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=500&q=80",
+        desc: "Looking for an experienced tailor to stitch a fitted bridal gown with traditional Bamenda floral embroidery and matching headwrap."
+      },
+      {
+        id: "cust-2",
+        title: "2-Tier Spiderman Birthday Cake for 5-Year Old",
+        category: "Cakes & Pastries",
+        client: "Ngu Christian",
+        quarter: "Nkwen (Mile 2/3)",
+        budget: 20000,
+        deadline: "Nov 25, 2026",
+        bidsCount: 6,
+        lowestBid: 16000,
+        image: "https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?auto=format&fit=crop&w=500&q=80",
+        desc: "Chocolate inside, blue and red Spiderman fondant on the outside with 'Happy 5th Birthday Jayden' printed in sugar icing."
+      },
+      {
+        id: "cust-3",
+        title: "Set of 6 Solid Cane Veranda Chairs & Low Table",
+        category: "Furniture & Crafts",
+        client: "Dr. Fon Kenneth",
+        quarter: "Mile 4 Mankon",
+        budget: 90000,
+        deadline: "Dec 10, 2026",
+        bidsCount: 3,
+        lowestBid: 78000,
+        image: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=500&q=80",
+        desc: "Need robust raffia cane chairs woven with protective finish for an outdoor balcony. Must be delivered to Mankon."
+      }
+    ];
+
+    // -------------------------------------------------------------
+    // 2. STATE MANAGEMENT
+    // -------------------------------------------------------------
+    let currentPillar = 'shop'; // 'shop' | 'services' | 'custom'
+    let selectedQuarter = 'all';
+    let searchQuery = '';
+    let selectedCategory = 'all';
+    let currentRole = 'customer';
+    let isRecording = false;
+
+    // -------------------------------------------------------------
+    // 3. PILLAR SWITCHING & UI RENDERING
+    // -------------------------------------------------------------
+    function switchPillar(pillar) {
+      currentPillar = pillar;
+      
+      // Update Tab Styles
+      const btnShop = document.getElementById('tabBtnShop');
+      const btnServ = document.getElementById('tabBtnServices');
+      const btnCust = document.getElementById('tabBtnCustom');
+      
+      [btnShop, btnServ, btnCust].forEach(btn => {
+        btn.className = "flex-1 md:flex-initial flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition tab-inactive whitespace-nowrap";
+      });
+
+      if (pillar === 'shop') {
+        btnShop.className = "flex-1 md:flex-initial flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition tab-active whitespace-nowrap";
+        document.getElementById('viewShop').classList.remove('hidden');
+        document.getElementById('viewServices').classList.add('hidden');
+        document.getElementById('viewCustom').classList.add('hidden');
+        document.getElementById('heroHeadline').innerHTML = 'Shop Authentic <span class="text-brand-600">Bamenda Products</span> Ready Today';
+        document.getElementById('heroSubtitle').innerText = 'Achu with yellow soup, hand-stitched Toghu gowns, cane baskets, fresh pastries and Grassfield crafts.';
+      } else if (pillar === 'services') {
+        btnServ.className = "flex-1 md:flex-initial flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition tab-active whitespace-nowrap";
+        document.getElementById('viewShop').classList.add('hidden');
+        document.getElementById('viewServices').classList.remove('hidden');
+        document.getElementById('viewCustom').classList.add('hidden');
+        document.getElementById('heroHeadline').innerHTML = 'Book Reliable <span class="text-brand-600">Artisans &amp; Skilled Pros</span> in Bamenda';
+        document.getElementById('heroSubtitle').innerText = 'Hairdressers, plumbers, electricians, tailors, cooks and phone repairers ready to assist you.';
+      } else if (pillar === 'custom') {
+        btnCust.className = "flex-1 md:flex-initial flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition tab-active whitespace-nowrap";
+        document.getElementById('viewShop').classList.add('hidden');
+        document.getElementById('viewServices').classList.add('hidden');
+        document.getElementById('viewCustom').classList.remove('hidden');
+        document.getElementById('heroHeadline').innerHTML = 'Have It <span class="text-brand-600">Custom Made For You</span> by Local Creators';
+        document.getElementById('heroSubtitle').innerText = 'Upload a photo of a dress, birthday cake or craft. Local artisans will bid with their best prices and dates.';
       }
 
-      grid.innerHTML = items.map(s => `
-        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg transition flex flex-col">
-          <div class="relative h-48 w-full bg-slate-100 overflow-hidden">
-            <img src="${s.image}" alt="${s.title}" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
-            <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-slate-800 text-[11px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
-              <span class="material-symbols-outlined text-xs text-bollo-600">location_on</span>
-              ${s.neighborhood}
-            </span>
-            <span class="absolute top-3 right-3 bg-bollo-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">
-              ${s.price.toLocaleString()} XAF
-            </span>
-          </div>
+      renderCategoryPills();
+      filterContent();
+    }
 
-          <div class="p-5 flex-1 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-2 mb-2">
-                <img src="${s.provider.avatar}" class="w-7 h-7 rounded-full object-cover border border-slate-200" />
-                <span class="text-xs font-medium text-slate-700">${s.provider.name}</span>
-                <span class="material-symbols-outlined text-xs text-emerald-500" title="Verified Professional">verified</span>
+    function renderCategoryPills() {
+      const container = document.getElementById('filterCategoryPills');
+      let categories = [];
+      if (currentPillar === 'shop') {
+        categories = ['All Items', 'Traditional Meals', 'Toghu & Fashion', 'Cakes & Bakery', 'Crafts & Furniture', 'Jewellery & Beads'];
+      } else if (currentPillar === 'services') {
+        categories = ['All Services', 'Hair & Beauty', 'Tailor & Toghu', 'Electrician & Solar', 'Catering & Cooking', 'Plumbing', 'Tech & Repairs'];
+      } else {
+        categories = ['All Requests', 'Toghu & Fashion', 'Cakes & Pastries', 'Furniture & Crafts'];
+      }
+
+      container.innerHTML = categories.map(cat => {
+        const isSelected = (selectedCategory === cat || (selectedCategory === 'all' && cat.startsWith('All')));
+        return `
+          <button onclick="selectCategory('${cat}')" class="px-3.5 py-1.5 rounded-full text-xs font-semibold transition ${isSelected ? 'bg-slate-900 text-white' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'}">
+            ${cat}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectCategory(cat) {
+      selectedCategory = cat.startsWith('All') ? 'all' : cat;
+      renderCategoryPills();
+      filterContent();
+    }
+
+    // -------------------------------------------------------------
+    // 4. FILTERING & RENDERING ENGINE
+    // -------------------------------------------------------------
+    function filterContent() {
+      const quarterVal = document.getElementById('quarterSelect').value;
+      const searchVal = (document.getElementById('mainSearchInput').value || searchQuery).toLowerCase().trim();
+
+      // Normalize quarter mapping
+      const quarterMap = {
+        'all': 'all',
+        'commercial_ave': 'Commercial Avenue',
+        'up_station': 'Up Station',
+        'nkwen': 'Nkwen',
+        'mile4': 'Mile 4',
+        'cow_street': 'Cow Street',
+        'food_market': 'Food Market',
+        'old_council': 'Old Council'
+      };
+
+      // 1. Render Shop Products
+      const filteredShop = shopProducts.filter(item => {
+        const matchSearch = !searchVal || item.title.toLowerCase().includes(searchVal) || item.description.toLowerCase().includes(searchVal) || item.category.toLowerCase().includes(searchVal);
+        const matchQuarter = quarterVal === 'all' || item.quarter.includes(quarterMap[quarterVal]);
+        const matchCat = selectedCategory === 'all' || item.category === selectedCategory;
+        return matchSearch && matchQuarter && matchCat;
+      });
+
+      const shopGrid = document.getElementById('shopGrid');
+      document.getElementById('shopCount').innerText = `${filteredShop.length} items`;
+      
+      if (filteredShop.length === 0) {
+        shopGrid.innerHTML = `
+          <div class="col-span-full py-12 text-center bg-white rounded-2xl border border-slate-200 p-8">
+            <i class="fa-solid fa-store-slash text-4xl text-slate-300 mb-3"></i>
+            <h4 class="font-bold text-slate-700">No products match your search in this quarter</h4>
+            <p class="text-xs text-slate-400 mt-1">Try clearing your filters or select 'All Bamenda Quarters'.</p>
+          </div>
+        `;
+      } else {
+        shopGrid.innerHTML = filteredShop.map(prod => `
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col group">
+            <div class="relative h-48 overflow-hidden bg-slate-100">
+              <img src="${prod.image}" alt="${prod.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+              <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                ${prod.badge}
+              </span>
+              <span class="absolute bottom-3 right-3 bg-emerald-600 text-white font-extrabold text-xs px-2.5 py-1 rounded-lg shadow">
+                ${prod.price.toLocaleString()} XAF
+              </span>
+            </div>
+            
+            <div class="p-4 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-1.5 text-[11px] text-slate-400 mb-1">
+                  <i class="fa-solid fa-location-dot text-brand-600 text-xs"></i>
+                  <span>${prod.quarter}</span>
+                  <span>&bull;</span>
+                  <span class="text-slate-600 font-semibold">${prod.seller}</span>
+                </div>
+                <h3 class="font-display font-bold text-sm text-slate-900 leading-snug group-hover:text-brand-600 transition">
+                  ${prod.title}
+                </h3>
+                <p class="text-xs text-slate-500 mt-1.5 line-clamp-2">
+                  ${prod.description}
+                </p>
               </div>
-              <h3 class="font-display font-bold text-slate-900 text-base leading-snug hover:text-bollo-600 cursor-pointer" onclick="openBookingModal('${s.title}', ${s.price})">${s.title}</h3>
-              <p class="text-xs text-slate-500 mt-2 line-clamp-2">${s.description}</p>
+
+              <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                <div class="flex items-center gap-1 text-xs font-bold text-amber-500">
+                  <i class="fa-solid fa-star"></i>
+                  <span class="text-slate-800">${prod.rating}</span>
+                  <span class="text-slate-400 text-[10px] font-normal">(${prod.reviews})</span>
+                </div>
+                <button onclick="openCheckout('product', '${prod.title}', ${prod.price}, '${prod.seller}')" class="bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm">
+                  <i class="fa-solid fa-cart-shopping text-xs"></i>
+                  <span>Buy Now</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // 2. Render Services Catalog
+      const filteredServices = servicesList.filter(serv => {
+        const matchSearch = !searchVal || serv.name.toLowerCase().includes(searchVal) || serv.trade.toLowerCase().includes(searchVal) || serv.skills.some(s => s.toLowerCase().includes(searchVal));
+        const matchQuarter = quarterVal === 'all' || serv.quarter.includes(quarterMap[quarterVal]);
+        return matchSearch && matchQuarter;
+      });
+
+      const servicesGrid = document.getElementById('servicesGrid');
+      document.getElementById('servicesCount').innerText = `${filteredServices.length} verified pros`;
+
+      servicesGrid.innerHTML = filteredServices.map(serv => `
+        <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+          <div>
+            <div class="flex items-start gap-4">
+              <img src="${serv.image}" alt="${serv.name}" class="w-16 h-16 rounded-2xl object-cover border-2 border-emerald-100" />
+              <div class="flex-1">
+                <div class="flex items-center gap-1.5">
+                  <h3 class="font-display font-bold text-base text-slate-900">${serv.name}</h3>
+                  <i class="fa-solid fa-circle-check text-brand-600 text-xs" title="Verified Artisan"></i>
+                </div>
+                <p class="text-xs font-semibold text-brand-700">${serv.trade}</p>
+                <div class="flex items-center gap-2 text-[11px] text-slate-500 mt-1">
+                  <span><i class="fa-solid fa-location-dot text-slate-400"></i> ${serv.quarter}</span>
+                  <span>&bull;</span>
+                  <span class="text-amber-500 font-bold"><i class="fa-solid fa-star"></i> ${serv.rating} (${serv.reviews})</span>
+                </div>
+              </div>
             </div>
 
-            <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
-              <div class="flex items-center gap-1 text-xs font-bold text-slate-800">
-                <span class="text-amber-500">★</span> ${s.rating}
-                <span class="text-slate-400 font-normal">(${s.reviews})</span>
+            <div class="mt-4 flex flex-wrap gap-1.5">
+              ${serv.skills.map(s => `<span class="bg-slate-100 text-slate-700 text-[10px] font-semibold px-2.5 py-1 rounded-md">${s}</span>`).join('')}
+            </div>
+          </div>
+
+          <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-400 block uppercase font-bold">Standard Rate</span>
+              <div class="font-display font-black text-slate-900 text-base">
+                ${serv.rate} <span class="text-[10px] text-slate-500 font-normal">/${serv.rateType}</span>
               </div>
-              <button onclick="openBookingModal('${s.title}', ${s.price})" class="bg-bollo-50 hover:bg-bollo-600 hover:text-white text-bollo-600 text-xs font-bold px-3.5 py-2 rounded-lg transition">
-                Book Task
+            </div>
+            <div class="flex items-center gap-2">
+              <a href="tel:${serv.phone}" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs transition" title="Call directly">
+                <i class="fa-solid fa-phone"></i>
+              </a>
+              <button onclick="openCheckout('service', '${serv.trade} with ${serv.name}', 5000, '${serv.name}')" class="bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold px-4 py-2 rounded-xl transition shadow-sm">
+                Book Pro
               </button>
             </div>
           </div>
         </div>
       `).join('');
+
+      // 3. Render Custom Orders
+      const customOrdersGrid = document.getElementById('customOrdersGrid');
+      customOrdersGrid.innerHTML = customOrders.map(co => `
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+          <div>
+            <div class="relative h-40 overflow-hidden bg-slate-100">
+              <img src="${co.image}" alt="${co.title}" class="w-full h-full object-cover" />
+              <span class="absolute top-3 left-3 bg-amber-500 text-slate-950 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                ${co.category}
+              </span>
+              <span class="absolute bottom-3 right-3 bg-slate-900/90 text-white text-xs font-black px-2.5 py-1 rounded-lg">
+                Budget: ${co.budget.toLocaleString()} XAF
+              </span>
+            </div>
+
+            <div class="p-4">
+              <div class="flex justify-between items-center text-[11px] text-slate-400 mb-1">
+                <span><i class="fa-solid fa-location-dot text-brand-600"></i> ${co.quarter}</span>
+                <span>Due: <strong class="text-slate-700">${co.deadline}</strong></span>
+              </div>
+              <h4 class="font-display font-bold text-sm text-slate-900 leading-snug">${co.title}</h4>
+              <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">${co.desc}</p>
+            </div>
+          </div>
+
+          <div class="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-400 font-bold block">CURRENT BIDS</span>
+              <span class="text-xs font-bold text-emerald-700">${co.bidsCount} local creators bid</span>
+            </div>
+            <button onclick="openBidSubmission('${co.title}', ${co.budget})" class="bg-slate-900 hover:bg-black text-white text-xs font-bold px-3.5 py-2 rounded-xl transition">
+              Bid on Task
+            </button>
+          </div>
+        </div>
+      `).join('');
     }
 
-    function filterServices() {
-      const q = document.getElementById('searchInput').value.toLowerCase().trim();
-      const town = document.getElementById('townSelect').value;
-      const maxPrice = document.getElementById('priceFilter').value;
-      const minRating = parseFloat(document.getElementById('ratingFilter').value);
+    // -------------------------------------------------------------
+    // 5. MODAL HANDLERS & INTERACTIONS
+    // -------------------------------------------------------------
+    function openCustomOrderModal() {
+      document.getElementById('customOrderModal').classList.remove('hidden');
+      document.getElementById('customOrderModal').classList.add('flex');
+    }
 
-      const filtered = DATA.listings.filter(item => {
-        const matchesQuery = !q || item.title.toLowerCase().includes(q) || item.description.toLowerCase().includes(q) || item.provider.name.toLowerCase().includes(q);
-        const matchesTown = town === 'all' || item.city === town;
-        const matchesCategory = activeCategory === 'all' || item.category === activeCategory;
-        const matchesPrice = maxPrice === 'any' || item.price <= parseInt(maxPrice);
-        const matchesRating = minRating === 0 || item.rating >= minRating;
-        return matchesQuery && matchesTown && matchesCategory && matchesPrice && matchesRating;
+    function closeCustomOrderModal() {
+      document.getElementById('customOrderModal').classList.add('hidden');
+      document.getElementById('customOrderModal').classList.remove('flex');
+    }
+
+    function handleCustomOrderSubmit(e) {
+      e.preventDefault();
+      const title = document.getElementById('custTitle').value;
+      const category = document.getElementById('custCategory').value;
+      const quarter = document.getElementById('custQuarter').value;
+      const budget = parseInt(document.getElementById('custBudget').value) || 20000;
+      const deadline = document.getElementById('custDeadline').value || "Next Week";
+      const desc = document.getElementById('custDesc').value;
+
+      // Add to custom orders list
+      customOrders.unshift({
+        id: `cust-${Date.now()}`,
+        title: title,
+        category: category,
+        client: "You (Current User)",
+        quarter: quarter,
+        budget: budget,
+        deadline: deadline,
+        bidsCount: 0,
+        lowestBid: budget,
+        image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=500&q=80",
+        desc: desc
       });
 
-      renderServices(filtered);
+      closeCustomOrderModal();
+      switchPillar('custom');
+      showInAppNotification("CUSTOM ORDER BROADCASTED", `Your request '${title}' has been sent to verified artisans in ${quarter}!`, "7391");
     }
 
-    function selectCategory(catId) {
-      activeCategory = catId;
-      filterServices();
-      const el = document.getElementById('services');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function setTown(townId) {
-      document.getElementById('townSelect').value = townId;
-      filterServices();
-      const el = document.getElementById('services');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function resetFilters() {
-      document.getElementById('searchInput').value = '';
-      document.getElementById('townSelect').value = 'all';
-      document.getElementById('priceFilter').value = 'any';
-      document.getElementById('ratingFilter').value = '0';
-      activeCategory = 'all';
-      filterServices();
-    }
-
-    function openBookingModal(title = 'Bespoke Task Service', price = null) {
-      document.getElementById('modalServiceTitle').innerText = title;
-      if (price) {
-        document.getElementById('modalServiceDetails').innerText = `Estimated Task Rate: ${price.toLocaleString()} XAF • Response time: < 30 mins`;
+    function previewUploadImage(e) {
+      const file = e.target.files[0];
+      if (file) {
+        document.getElementById('uploadLabel').innerText = `Attached: ${file.name}`;
+        document.getElementById('previewFileName').innerText = `Photo: ${file.name} (Ready for artisan bidding)`;
+        document.getElementById('imagePreviewContainer').classList.remove('hidden');
       }
-      document.getElementById('bookingModal').classList.remove('hidden');
     }
 
-    function closeBookingModal() {
-      document.getElementById('bookingModal').classList.add('hidden');
+    // -------------------------------------------------------------
+    // 6. VOICE NOTE RECORDING SIMULATOR
+    // -------------------------------------------------------------
+    function openVoiceModal() {
+      document.getElementById('voiceModal').classList.remove('hidden');
+      document.getElementById('voiceModal').classList.add('flex');
     }
 
-    function openPostTaskModal() {
-      openBookingModal('Post a Custom Task in Cameroon');
+    function closeVoiceModal() {
+      document.getElementById('voiceModal').classList.add('hidden');
+      document.getElementById('voiceModal').classList.remove('flex');
     }
 
-    function submitBooking(e) {
+    function toggleVoiceRecording() {
+      const micCircle = document.getElementById('voiceMicCircle');
+      const transcript = document.getElementById('voiceTranscript');
+      const btnText = document.getElementById('recordBtnText');
+
+      if (!isRecording) {
+        isRecording = true;
+        micCircle.classList.add('recording-pulse', 'bg-red-500', 'text-white');
+        btnText.innerText = "Listening... (Tap to Finish)";
+        transcript.innerText = "Listening to your voice in Bamenda English / Pidgin...";
+
+        setTimeout(() => {
+          if (isRecording) {
+            transcript.innerText = `"I want make someone sew one fine Toghu gown for my sister wedding for Commercial Avenue, blue embroidery, size 38."`;
+          }
+        }, 1800);
+      } else {
+        isRecording = false;
+        micCircle.classList.remove('recording-pulse', 'bg-red-500', 'text-white');
+        micCircle.classList.add('bg-emerald-100', 'text-emerald-700');
+        btnText.innerText = "Start Speaking Again";
+      }
+    }
+
+    function applyVoiceNote() {
+      const recorded = document.getElementById('voiceTranscript').innerText.replace(/"/g, '');
+      closeVoiceModal();
+      
+      // Auto populate into search or open custom order form
+      document.getElementById('mainSearchInput').value = recorded;
+      filterContent();
+      showInAppNotification("VOICE TRANSCRIBED", "Voice description applied to your search!", "VOICE-OK");
+    }
+
+    // -------------------------------------------------------------
+    // 7. CHECKOUT & BOOKING FLOW
+    // -------------------------------------------------------------
+    function openCheckout(type, title, price, seller) {
+      document.getElementById('checkoutTypeBadge').innerText = type === 'product' ? 'PRODUCT PURCHASE' : 'SERVICE BOOKING';
+      document.getElementById('checkoutItemTitle').innerText = title;
+      document.getElementById('checkoutPrice').innerText = `${price.toLocaleString()} XAF`;
+      document.getElementById('checkoutSeller').innerText = seller;
+
+      document.getElementById('checkoutModal').classList.remove('hidden');
+      document.getElementById('checkoutModal').classList.add('flex');
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkoutModal').classList.add('hidden');
+      document.getElementById('checkoutModal').classList.remove('flex');
+    }
+
+    function processCheckout(e) {
       e.preventDefault();
       const name = document.getElementById('custName').value;
       const phone = document.getElementById('custPhone').value;
-      const date = document.getElementById('custDate').value;
-      const addr = document.getElementById('custAddress').value;
-      const title = document.getElementById('modalServiceTitle').innerText;
-      const notes = document.getElementById('custNotes').value;
+      const method = document.querySelector('input[name="paymentMethod"]:checked').value;
 
-      const message = `Hello Bollo.work Cameroon!%0A%0A*Task Booking Request*%0A*Service:* ${title}%0A*Client Name:* ${name}%0A*Phone:* ${phone}%0A*Date:* ${date}%0A*Location:* ${addr}%0A*Notes:* ${notes}`;
-      window.open(`https://wa.me/237670000000?text=${message}`, '_blank');
-      closeBookingModal();
-      alert('Thank you! Your task booking has been forwarded to the technician and Bollo support.');
+      closeCheckoutModal();
+      showInAppNotification("ORDER CONFIRMED", `Thank you ${name}! Seller has received your order via ${method.toUpperCase()}. Contact: ${phone}`, "SUCCESS");
     }
 
-    window.onload = init;
+    function openBidSubmission(orderTitle, budget) {
+      const bidAmount = prompt(`Enter your quote in XAF for: "${orderTitle}" (Budget: ${budget.toLocaleString()} XAF):`, budget - 2000);
+      if (bidAmount) {
+        showInAppNotification("BID SUBMITTED", `Your offer of ${parseInt(bidAmount).toLocaleString()} XAF has been submitted to the customer!`, "BID-SENT");
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 8. AUTH & IN-APP OTP SYSTEM
+    // -------------------------------------------------------------
+    function openAuthModal() {
+      document.getElementById('authModal').classList.remove('hidden');
+      document.getElementById('authModal').classList.add('flex');
+    }
+
+    function closeAuthModal() {
+      document.getElementById('authModal').classList.add('hidden');
+      document.getElementById('authModal').classList.remove('flex');
+    }
+
+    function requestInstantOtp() {
+      const phone = document.getElementById('authPhone').value || "670 123 456";
+      const randomCode = Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('otpInputSection').classList.remove('hidden');
+      document.getElementById('otpCodeInput').value = randomCode;
+
+      showInAppNotification("TEMPORARY LOGIN CODE", `Your Bamenda access code is: ${randomCode}`, randomCode);
+    }
+
+    function verifyOtp() {
+      closeAuthModal();
+      document.getElementById('authBtnLabel').innerText = "Account (Verified)";
+      showInAppNotification("WELCOME TO BAMENDA HUB", "You are logged in! You can now shop, book and bid.", "ACTIVE");
+    }
+
+    function showInAppNotification(title, msg, code) {
+      const notif = document.getElementById('inAppNotification');
+      document.getElementById('notifCode').innerText = code;
+      notif.classList.remove('hidden');
+      setTimeout(() => {
+        notif.classList.add('hidden');
+      }, 7000);
+    }
+
+    function dismissNotification() {
+      document.getElementById('inAppNotification').classList.add('hidden');
+    }
+
+    function switchRole(role) {
+      currentRole = role;
+      const btnC = document.getElementById('btnRoleCustomer');
+      const btnP = document.getElementById('btnRolePro');
+      if (role === 'customer') {
+        btnC.className = "px-2.5 py-1 rounded text-[11px] font-bold bg-brand-600 text-white transition";
+        btnP.className = "px-2.5 py-1 rounded text-[11px] font-medium text-slate-300 hover:text-white transition";
+        switchPillar('shop');
+      } else {
+        btnP.className = "px-2.5 py-1 rounded text-[11px] font-bold bg-brand-600 text-white transition";
+        btnC.className = "px-2.5 py-1 rounded text-[11px] font-medium text-slate-300 hover:text-white transition";
+        switchPillar('custom');
+      }
+    }
+
+    function setLanguage(lang) {
+      const btnEn = document.getElementById('langEn');
+      const btnFr = document.getElementById('langFr');
+      if (lang === 'en') {
+        btnEn.className = "px-2 py-0.5 rounded font-bold text-[10px] bg-brand-600 text-white";
+        btnFr.className = "px-2 py-0.5 rounded font-medium text-[10px] text-slate-400 hover:text-white";
+      } else {
+        btnFr.className = "px-2 py-0.5 rounded font-bold text-[10px] bg-brand-600 text-white";
+        btnEn.className = "px-2 py-0.5 rounded font-medium text-[10px] text-slate-400 hover:text-white";
+        showInAppNotification("LANGUE CHANGÉE", "La plateforme est maintenant configurée en Français.", "FR-OK");
+      }
+    }
+
+    function handleGlobalSearch(val) {
+      document.getElementById('mainSearchInput').value = val;
+      filterContent();
+    }
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', () => {
+      switchPillar('shop');
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    });
   </script>
 </body>
 </html>
