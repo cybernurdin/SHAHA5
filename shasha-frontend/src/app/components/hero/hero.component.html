@@ -1,0 +1,107 @@
+<section id="hero" class="hero-section">
+  <div class="container-couture">
+    <!-- Hero Header Text Grid -->
+    <div class="hero-grid">
+      <!-- Left Column: Editorial Statement -->
+      <div class="hero-editorial">
+        <div class="hero-meta">
+          <span class="badge-gold">AUTUMN / WINTER COUTURE &bull; DOUALA</span>
+          <span class="label-caps edition-tag">VOLUME 2026</span>
+        </div>
+
+        <h1 class="headline-display hero-title">
+          @if (shasha.language() === 'en') {
+            Crafted in Cameroon.<br>
+            <em>Worn Without Borders.</em>
+          } @else {
+            Créé au Cameroun.<br>
+            <em>Porté Sans Frontières.</em>
+          }
+        </h1>
+
+        <p class="hero-description">
+          @if (shasha.language() === 'en') {
+            ShaSha Designs is a Douala-born haute couture house redefining modern luxury through the architectural precision of Toghu needlework, sculptural silk brocades, and zero-compromise bespoke tailoring.
+          } @else {
+            ShaSha Designs est une maison de haute couture née à Douala, redéfinissant le luxe moderne par la précision architecturale de la broderie Toghu, des soieries sculpturales et un sur-mesure d’exception.
+          }
+        </p>
+
+        <div class="hero-cta-group">
+          <button class="btn-obsidian" (click)="scrollTo('collections')">
+            {{ shasha.language() === 'en' ? 'Explore Collections' : 'Explorer les Collections' }}
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+          <button class="btn-ghost" (click)="shasha.openConsultation()">
+            {{ shasha.language() === 'en' ? 'Book Private Fitting' : 'Réserver un Essayage' }}
+          </button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-num">200+</span>
+            <span class="label-caps stat-label">Artisan Hours / Gown</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num">AMVCA</span>
+            <span class="label-caps stat-label">Red Carpet Official</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num">100%</span>
+            <span class="label-caps stat-label">Handcrafted in Douala</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Visual Couture Canvas -->
+      <div class="hero-imagery">
+        <!-- Main Primary Visual Frame -->
+        <div class="main-visual-frame img-couture-frame">
+          <img 
+            src="/shasha/hero/shasha-sculptural-pearl-couture-front.png" 
+            alt="ShaSha Sculptural Pearl Couture Front Silhouette"
+            loading="eager"
+            onerror="this.src='/shasha/hero0img.png'">
+          
+          <div class="frame-tag">
+            <span class="label-caps">FLAGSHIP LOOK 01 &bull; SCULPTURAL PEARL</span>
+          </div>
+        </div>
+
+        <!-- Overlapping Inset Visual Frame (Editorial Scrapbook Style per DESIGN.md) -->
+        <div class="inset-visual-frame img-couture-frame">
+          <img 
+            src="/shasha/hero/shasha-blue-white-signature-suit-full-look.png" 
+            alt="Combo Collection Tailored Suit featuring Michèle-Ange Minkata"
+            loading="lazy">
+          <div class="inset-tag">
+            <span class="label-caps">MICHÈLE-ANGE MINKATA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Brand Ticker Strip -->
+  <div class="brand-ticker">
+    <div class="ticker-track">
+      <span class="ticker-item label-caps">DOUALA ATELIER &bull; BONAMOUSSADI</span>
+      <span class="ticker-dot">&bull;</span>
+      <span class="ticker-item label-caps">TOGHU HERITAGE NEEDLEPOINT</span>
+      <span class="ticker-dot">&bull;</span>
+      <span class="ticker-item label-caps">MIMIE AT AMVCA 2026</span>
+      <span class="ticker-dot">&bull;</span>
+      <span class="ticker-item label-caps">BESPOKE CEREMONIAL &amp; BRIDAL</span>
+      <span class="ticker-dot">&bull;</span>
+      <span class="ticker-item label-caps">INTERNATIONAL CLIENT WHITE-GLOVE SERVICE</span>
+      <span class="ticker-dot">&bull;</span>
+      <span class="ticker-item label-caps">DOUALA ATELIER &bull; BONAMOUSSADI</span>
+      <span class="ticker-dot">&bull;</span>
+      <span class="ticker-item label-caps">TOGHU HERITAGE NEEDLEPOINT</span>
+      <span class="ticker-dot">&bull;</span>
+      <span class="ticker-item label-caps">MIMIE AT AMVCA 2026</span>
+    </div>
+  </div>
+</section>

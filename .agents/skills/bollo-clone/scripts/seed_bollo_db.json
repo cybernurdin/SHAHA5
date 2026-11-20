@@ -1,0 +1,229 @@
+{
+  "brand": {
+    "name": "Bollo",
+    "domain": "bollo.work",
+    "tagline": "Trusted Professionals for Every Task in Cameroon",
+    "description": "Bollo connects you with reliable service providers across Cameroon. Post a task or find the right expert in minutes. 500+ providers. Rated & reviewed.",
+    "themeColor": "#0d7377",
+    "accentColor": "#14ffec",
+    "currency": "XAF",
+    "supportPhone": "+237 670 000 000",
+    "supportEmail": "contact@bollo.work",
+    "socials": {
+      "facebook": "https://facebook.com/bollowork",
+      "instagram": "https://instagram.com/bollowork",
+      "tiktok": "https://tiktok.com/@bollowork"
+    }
+  },
+  "cities": [
+    { "id": "all", "name": "All Cameroon", "region": "National" },
+    { "id": "douala", "name": "Douala", "region": "Littoral", "neighborhoods": ["Akwa", "Bonanjo", "Bonapriso", "Deido", "Makepe", "Bonamoussadi", "Logpom"] },
+    { "id": "yaounde", "name": "Yaoundé", "region": "Centre", "neighborhoods": ["Bastos", "Mvan", "Biyem-Assi", "Omnisports", "Mendong", "Nlongkak"] },
+    { "id": "buea", "name": "Buea", "region": "South West", "neighborhoods": ["Molyko", "Clerks Quarters", "Mile 16", "Check Point", "Federal Quarters"] },
+    { "id": "limbe", "name": "Limbe", "region": "South West", "neighborhoods": ["Down Beach", "New Town", "Mile 4", "Bota"] },
+    { "id": "bamenda", "name": "Bamenda", "region": "North West", "neighborhoods": ["Commercial Avenue", "Up Station", "Mile 2", "Nkwen"] }
+  ],
+  "categories": [
+    {
+      "id": "repairs",
+      "name": "Repairs & Maintenance",
+      "icon": "wrench",
+      "description": "AC technicians, plumbers, electricians, generator repairs and carpentry.",
+      "servicesCount": 184
+    },
+    {
+      "id": "cleaning",
+      "name": "Cleaning Services",
+      "icon": "sparkles",
+      "description": "Residential deep cleaning, post-construction cleaning, laundry and sofa washing.",
+      "servicesCount": 128
+    },
+    {
+      "id": "home",
+      "name": "Home & Moving",
+      "icon": "home",
+      "description": "Furniture assembly, movers with trucks, painting and gardening.",
+      "servicesCount": 94
+    },
+    {
+      "id": "auto",
+      "name": "Auto Services",
+      "icon": "car",
+      "description": "Mobile auto diagnostics, emergency towing, oil changes and car wash.",
+      "servicesCount": 62
+    },
+    {
+      "id": "beauty",
+      "name": "Beauty & Grooming",
+      "icon": "scissors",
+      "description": "Braids, makeup artists, mobile barbering and manicure/pedicure at your home.",
+      "servicesCount": 85
+    },
+    {
+      "id": "catering",
+      "name": "Food & Catering",
+      "icon": "utensils",
+      "description": "Event buffet caterers, private barbecue chefs, pastries and traditional banquets.",
+      "servicesCount": 47
+    },
+    {
+      "id": "it",
+      "name": "IT & Tech Support",
+      "icon": "laptop",
+      "description": "Laptop repairs, CCTV camera installation, Wi-Fi configuration and solar setup.",
+      "servicesCount": 56
+    }
+  ],
+  "listings": [
+    {
+      "id": "srv-001",
+      "title": "Air Conditioner Installation, Deep Wash & Gas Refill",
+      "category": "repairs",
+      "provider": {
+        "id": "pro-101",
+        "name": "Ferdinand Ebelle",
+        "badge": "Verified Pro",
+        "rating": 4.95,
+        "reviewsCount": 84,
+        "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+        "completedTasks": 192,
+        "responseTime": "< 15 mins",
+        "joined": "2024"
+      },
+      "city": "douala",
+      "neighborhood": "Bonapriso & Akwa",
+      "price": 15000,
+      "priceUnit": "task",
+      "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80",
+      "rating": 4.95,
+      "reviews": 84,
+      "featured": true,
+      "description": "Certified HVAC professional with 8+ years experience servicing Split ACs, inverter systems, and multi-split units. Fast response with modern vacuum and pressure gauges."
+    },
+    {
+      "id": "srv-002",
+      "title": "Full Villa & Apartment Deep Cleaning Service",
+      "category": "cleaning",
+      "provider": {
+        "id": "pro-102",
+        "name": "CleanPro Douala Team",
+        "badge": "Top Rated Agency",
+        "rating": 4.9,
+        "reviewsCount": 112,
+        "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80",
+        "completedTasks": 340,
+        "responseTime": "< 30 mins",
+        "joined": "2023"
+      },
+      "city": "douala",
+      "neighborhood": "Makepe, Denver & Bonamoussadi",
+      "price": 25000,
+      "priceUnit": "apartment",
+      "image": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80",
+      "rating": 4.9,
+      "reviews": 112,
+      "featured": true,
+      "description": "Complete sanitation and disinfection for residential homes and corporate offices. We supply all eco-friendly industrial cleaning materials and steam machinery."
+    },
+    {
+      "id": "srv-003",
+      "title": "Emergency Electrical Wiring, Breaker & Generator Sync",
+      "category": "repairs",
+      "provider": {
+        "id": "pro-103",
+        "name": "Jean-Paul Mbida",
+        "badge": "Verified Pro",
+        "rating": 4.88,
+        "reviewsCount": 67,
+        "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+        "completedTasks": 145,
+        "responseTime": "< 20 mins",
+        "joined": "2024"
+      },
+      "city": "yaounde",
+      "neighborhood": "Bastos, Santa Barbara & Mvan",
+      "price": 12000,
+      "priceUnit": "inspection",
+      "image": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=800&q=80",
+      "rating": 4.88,
+      "reviews": 67,
+      "featured": true,
+      "description": "Licensed residential and commercial electrician. Emergency fault detection, automatic generator changeover switch installation, and grounding protection."
+    },
+    {
+      "id": "srv-004",
+      "title": "Mobile Auto Mechanic & Computer Diagnostic Scan",
+      "category": "auto",
+      "provider": {
+        "id": "pro-104",
+        "name": "Garage Express 237",
+        "badge": "Verified Pro",
+        "rating": 4.82,
+        "reviewsCount": 53,
+        "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
+        "completedTasks": 98,
+        "responseTime": "< 25 mins",
+        "joined": "2024"
+      },
+      "city": "buea",
+      "neighborhood": "Molyko & Check Point",
+      "price": 10000,
+      "priceUnit": "scan",
+      "image": "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=800&q=80",
+      "rating": 4.82,
+      "reviews": 53,
+      "featured": false,
+      "description": "On-site OBD2 diagnostics, brake pad replacement, battery jumpstart, and fluid servicing at your office or home driveway anywhere in Buea or Limbe."
+    },
+    {
+      "id": "srv-005",
+      "title": "Professional Moving Van & Packing Crew",
+      "category": "home",
+      "provider": {
+        "id": "pro-105",
+        "name": "SwiftMovers Cameroon",
+        "badge": "Top Rated Agency",
+        "rating": 4.96,
+        "reviewsCount": 140,
+        "avatar": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=200&q=80",
+        "completedTasks": 310,
+        "responseTime": "< 10 mins",
+        "joined": "2023"
+      },
+      "city": "douala",
+      "neighborhood": "All Douala / Inter-city",
+      "price": 45000,
+      "priceUnit": "starting",
+      "image": "https://images.unsplash.com/photo-1600518464441-9154a4dea21b?auto=format&fit=crop&w=800&q=80",
+      "rating": 4.96,
+      "reviews": 140,
+      "featured": true,
+      "description": "Stress-free residential and business relocation. Includes heavy lifting, bubble wrapping for TVs/glassware, furniture disassembly and reassembly."
+    },
+    {
+      "id": "srv-006",
+      "title": "Private Hair Braiding, Knotless & Wigs at Home",
+      "category": "beauty",
+      "provider": {
+        "id": "pro-106",
+        "name": "Clarisse Glamour",
+        "badge": "Verified Pro",
+        "rating": 4.98,
+        "reviewsCount": 94,
+        "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80",
+        "completedTasks": 180,
+        "responseTime": "< 15 mins",
+        "joined": "2024"
+      },
+      "city": "yaounde",
+      "neighborhood": "Bastos, Essos & Mendong",
+      "price": 15000,
+      "priceUnit": "style",
+      "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80",
+      "rating": 4.98,
+      "reviews": 94,
+      "featured": true,
+      "description": "Luxurious braiding in the comfort of your living room. Knotless box braids, goddess locs, cornrows, and frontal wig installations with premium finish."
+    }
+  ]
+}

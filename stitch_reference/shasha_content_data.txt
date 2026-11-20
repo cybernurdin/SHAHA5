@@ -1,0 +1,25 @@
+# ShaSha Designs Content Data
+
+## Brand Information
+- **Name**: ShaSha Designs
+- **Identity**: @shasha_designs5 (Instagram)
+- **Positioning**: Cameroonian couture / luxury fashion.
+- **Location**: Bonamoussadi, Douala, Cameroon.
+- **Contact**: +237 673 967 583 / +237 674 798 007
+- **Languages**: English, French
+
+## Collections Data
+- **Combo Collection (2024)**: Verified reference. Featuring Michèle-Ange Minkata.
+- **Signature Looks**: "The Force of Nature" — Worn by Mimie at AMVCA 2026.
+
+## Page Structure
+- Home
+- Collections
+- Collection Detail
+- Look Detail
+- The House (About)
+- Atelier
+- Signature Looks
+- International Clients
+- Contact
+- Consultation

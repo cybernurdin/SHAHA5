@@ -1,0 +1,108 @@
+<section id="collections" class="collections-section">
+  <div class="container-couture">
+    <!-- Section Header -->
+    <div class="section-header">
+      <div class="header-left">
+        <span class="label-caps section-sub">ARCHIVE &amp; CURRENT COLLECTIONS</span>
+        <h2 class="headline-section">
+          @if (shasha.language() === 'en') {
+            The Silent Gallery
+          } @else {
+            La Galerie Silencieuse
+          }
+        </h2>
+      </div>
+      <p class="header-desc">
+        @if (shasha.language() === 'en') {
+          Each creation is drafted, tailored, and hand-embroidered inside our Douala atelier. Explore limited editions and commissioned masterpieces.
+        } @else {
+          Chaque création est conçue, coupée et brodée à la main dans notre atelier de Douala. Découvrez nos éditions limitées et pièces uniques.
+        }
+      </p>
+    </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="filter-bar">
+      @for (cat of categories; track cat.id) {
+        <button 
+          type="button" 
+          class="filter-btn label-caps" 
+          [class.active]="shasha.selectedCategory() === cat.id"
+          (click)="selectCategory(cat.id)">
+          {{ cat.label }}
+        </button>
+      }
+    </div>
+
+    <!-- Looks Grid -->
+    <div class="looks-grid">
+      @for (look of shasha.filteredLooks(); track look.id) {
+        <article class="look-card" (click)="openLook(look)">
+          <!-- Look Image Container -->
+          <div class="look-img-wrapper img-couture-frame">
+            <img [src]="look.image" [alt]="look.title" loading="lazy">
+            
+            <!-- Category & Badge -->
+            <div class="card-badges">
+              <span class="badge-gold">{{ look.categoryLabel }}</span>
+              @if (look.featuredClient) {
+                <span class="badge-toghu">{{ look.featuredClient }}</span>
+              }
+            </div>
+
+            <!-- Wishlist Button -->
+            <button 
+              type="button" 
+              class="wishlist-toggle-btn" 
+              [class.active]="shasha.isInWishlist(look.id)"
+              (click)="toggleWishlist($event, look)"
+              title="Add to Private Selection">
+              <span class="material-symbols-outlined">
+                {{ shasha.isInWishlist(look.id) ? 'bookmark' : 'bookmark_border' }}
+              </span>
+            </button>
+
+            <!-- Quick Action Overlay -->
+            <div class="card-hover-actions">
+              <span class="action-label label-caps">
+                {{ shasha.language() === 'en' ? 'Inspect Silhouette &amp; Craft' : 'Inspecter la Silhouette' }}
+                <span class="material-symbols-outlined">visibility</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Look Meta Information -->
+          <div class="look-meta">
+            <div class="look-title-row">
+              <h3 class="look-title">{{ look.title }}</h3>
+              <span class="look-edition label-caps">{{ look.edition || 'Bespoke Order' }}</span>
+            </div>
+            
+            <p class="look-subtitle">{{ look.subtitle }}</p>
+
+            <div class="look-details-row">
+              <span class="hours-tag label-caps">
+                <span class="material-symbols-outlined">schedule</span>
+                {{ look.hours }} Couture Hours
+              </span>
+              <button 
+                type="button" 
+                class="inquire-btn label-caps" 
+                (click)="inquireWhatsApp($event, look)">
+                Inquire <span class="material-symbols-outlined">arrow_outward</span>
+              </button>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+
+    <!-- Empty State if filter yields nothing -->
+    @if (shasha.filteredLooks().length === 0) {
+      <div class="empty-state">
+        <p class="font-display">No silhouettes found in this private archive category.</p>
+        <button class="btn-obsidian" (click)="selectCategory('all')">View All Silhouettes</button>
+      </div>
+    }
+  </div>
+</section>

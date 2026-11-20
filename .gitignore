@@ -1,0 +1,30 @@
+# Node / Angular
+node_modules/
+.angular/
+dist/
+
+# Large local binary dumps
+images/
+shasha/
+shasha-frontend/public/images/
+shasha-frontend/public/shasha/
+Screenshot*.png
+*.png.large
+
+# Raw bundles & scrape artifacts
+bollo_bundle.js
+bollo_landing.html
+bollo_style.css
+analyze_bollo*.js
+
+# Flutter / Dart
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Logs
+*.log
+.DS_Store
+Thumbs.db

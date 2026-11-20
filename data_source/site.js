@@ -1,0 +1,15 @@
+export const SITE = {
+  name: "ShaSha Designs",
+  tagline: "Cameroonian Couture & Luxury Fashion",
+  location: "Bonamoussadi, Douala, Cameroon",
+  referenceArea: "Rond-Point Maetur / Bonamoussadi",
+  primaryPhone: "+237 673 967 583",
+  secondaryPhone: "+237 674 798 007",
+  whatsapp: "+237 674 798 007",
+  instagramHandle: "@shasha_designs5",
+  instagramUrl: "https://www.instagram.com/shasha_designs5",
+  locales: ["en", "fr"],
+  defaultLocale: "en",
+  verificationStatus: "verified",
+  conceptNotice: "ShaSha Designs Concept",
+};

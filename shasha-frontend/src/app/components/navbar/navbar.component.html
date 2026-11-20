@@ -1,0 +1,138 @@
+<!-- Luxury Top Announcement Pill -->
+<div class="announcement-bar">
+  <div class="container-couture announcement-content">
+    <span class="label-caps announcement-tag">DOUALA ATELIER &bull; INTERNATIONAL BESPOKE</span>
+    <span class="announcement-text">
+      @if (shasha.language() === 'en') {
+        Private VIP fittings available in Douala &amp; Paris &bull; Worldwide white-glove shipping
+      } @else {
+        Essayages privés VIP à Douala &amp; Paris &bull; Livraison haute couture internationale
+      }
+    </span>
+    <div class="announcement-actions">
+      <button class="lang-btn label-caps" (click)="shasha.toggleLanguage()">
+        {{ shasha.language() === 'en' ? 'FR' : 'EN' }}
+      </button>
+      <a [href]="shasha.getWhatsAppLink()" target="_blank" class="concierge-link label-caps">
+        <span class="material-symbols-outlined">support_agent</span> CONCIERGE
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Main Editorial Navigation Bar -->
+<header class="main-header">
+  <div class="container-couture nav-container">
+    <!-- Brand Wordmark -->
+    <a href="#" class="brand-wordmark" (click)="scrollTo('hero'); $event.preventDefault()">
+      <span class="brand-title">SHASHA DESIGNS</span>
+      <span class="brand-subtitle">HAUTE COUTURE &bull; CAMEROON</span>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="desktop-nav">
+      <a href="#collections" (click)="scrollTo('collections'); $event.preventDefault()" class="nav-link label-caps">
+        {{ shasha.language() === 'en' ? 'Collections' : 'Collections' }}
+      </a>
+      <a href="#signature" (click)="scrollTo('signature'); $event.preventDefault()" class="nav-link label-caps">
+        {{ shasha.language() === 'en' ? 'AMVCA Archive' : 'Archives AMVCA' }}
+      </a>
+      <a href="#atelier" (click)="scrollTo('atelier'); $event.preventDefault()" class="nav-link label-caps">
+        {{ shasha.language() === 'en' ? 'The Atelier' : 'L’Atelier' }}
+      </a>
+      <a href="#the-house" (click)="scrollTo('the-house'); $event.preventDefault()" class="nav-link label-caps">
+        {{ shasha.language() === 'en' ? 'The House' : 'La Maison' }}
+      </a>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <!-- Sound/Ambient Toggle -->
+      <button 
+        type="button" 
+        class="icon-action-btn" 
+        [class.active]="shasha.isPlayingAmbient()" 
+        (click)="shasha.toggleAmbient()"
+        title="Toggle Runway Ambience">
+        <span class="material-symbols-outlined">
+          {{ shasha.isPlayingAmbient() ? 'volume_up' : 'volume_mute' }}
+        </span>
+      </button>
+
+      <!-- Private Selection / Wishlist -->
+      <button 
+        type="button" 
+        class="icon-action-btn wishlist-btn" 
+        (click)="shasha.openWishlist()"
+        title="Private Selection">
+        <span class="material-symbols-outlined">bookmark_border</span>
+        @if (shasha.wishlist().length > 0) {
+          <span class="wishlist-badge">{{ shasha.wishlist().length }}</span>
+        }
+      </button>
+
+      <!-- Book Consultation CTA -->
+      <button 
+        type="button" 
+        class="btn-obsidian nav-cta-btn" 
+        (click)="shasha.openConsultation()">
+        {{ shasha.language() === 'en' ? 'Private Fitting' : 'Essayage Privé' }}
+      </button>
+
+      <!-- Mobile Hamburger Button -->
+      <button 
+        type="button" 
+        class="mobile-toggle-btn" 
+        (click)="toggleMobileMenu()" 
+        aria-label="Toggle Navigation Menu">
+        <span class="material-symbols-outlined">
+          {{ isMobileMenuOpen ? 'close' : 'menu' }}
+        </span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Editorial Drawer Menu -->
+@if (isMobileMenuOpen) {
+  <div class="mobile-drawer-overlay" (click)="closeMobileMenu()">
+    <div class="mobile-drawer-content" (click)="$event.stopPropagation()">
+      <div class="mobile-drawer-header">
+        <span class="label-caps">SHASHA DESIGNS &bull; NAVIGATION</span>
+        <button class="close-btn" (click)="closeMobileMenu()">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <div class="mobile-nav-links">
+        <a href="#collections" (click)="scrollTo('collections'); $event.preventDefault()">
+          <span class="num">01</span>
+          <span class="text">{{ shasha.language() === 'en' ? 'Collections' : 'Collections' }}</span>
+        </a>
+        <a href="#signature" (click)="scrollTo('signature'); $event.preventDefault()">
+          <span class="num">02</span>
+          <span class="text">{{ shasha.language() === 'en' ? 'AMVCA Spotlight' : 'Projecteurs AMVCA' }}</span>
+        </a>
+        <a href="#atelier" (click)="scrollTo('atelier'); $event.preventDefault()">
+          <span class="num">03</span>
+          <span class="text">{{ shasha.language() === 'en' ? 'The Atelier Craft' : 'Savoir-Faire Atelier' }}</span>
+        </a>
+        <a href="#the-house" (click)="scrollTo('the-house'); $event.preventDefault()">
+          <span class="num">04</span>
+          <span class="text">{{ shasha.language() === 'en' ? 'The House & Heritage' : 'La Maison & Héritage' }}</span>
+        </a>
+      </div>
+
+      <div class="mobile-drawer-footer">
+        <button class="btn-obsidian w-full" (click)="closeMobileMenu(); shasha.openConsultation()">
+          {{ shasha.language() === 'en' ? 'Book Private Consultation' : 'Prendre Rendez-vous' }}
+        </button>
+        <div class="mobile-contact-info">
+          <p class="label-caps">ATELIER DIRECT</p>
+          <a [href]="'tel:' + shasha.phone">{{ shasha.phone }}</a>
+          <p class="address">Bonamoussadi, Douala, Cameroon</p>
+        </div>
+      </div>
+    </div>
+  </div>
+}
