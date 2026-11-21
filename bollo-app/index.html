@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MboaWork | Cameroon's #1 On-Demand Service & Artisan Marketplace</title>
-  <meta name="description" content="Hire rated, verified technicians, plumbers, electricians, mechanics, and artisans across Douala, Yaoundé, Buea, Limbe, and Bamenda." />
+  <title>MboaWork | Cameroon's Trusted Local Artisan & Service Marketplace</title>
+  <meta name="description" content="Connect with verified electricians, plumbers, tailors, technicians, and local creators in Douala, Yaoundé, Bamenda, Buea, and Limbe." />
 
   <!-- Fonts: Plus Jakarta Sans & DM Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,7 +66,7 @@
       to { transform: translateY(0); opacity: 1; }
     }
     .animate-toast {
-      animation: slideDownToast 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: slideDownToast 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
   </style>
 </head>
@@ -74,21 +74,21 @@
 <body class="bg-[#FAF9F5] text-slate-900 font-sans antialiased min-h-screen flex flex-col selection:bg-slate-900 selection:text-white">
 
   <!-- ============================================================ -->
-  <!-- IN-APP BUILT-IN NOTIFICATION & TEMPORARY OTP TOAST -->
+  <!-- IN-APP INSTANT OTP NOTIFICATION BANNER (The Reliable Login Flow) -->
   <!-- ============================================================ -->
-  <div id="inAppToast" class="fixed top-5 right-5 z-[200] max-w-sm w-full bg-slate-900 text-white rounded-3xl shadow-2xl p-4 border border-slate-700 hidden animate-toast">
+  <div id="inAppToast" class="fixed top-5 right-5 z-[200] max-w-sm w-full bg-slate-950 text-white rounded-3xl shadow-2xl p-4 border border-slate-700 hidden animate-toast">
     <div class="flex items-start gap-3">
       <div class="w-10 h-10 rounded-2xl bg-brand-600/30 text-brand-500 flex items-center justify-center shrink-0">
         <i class="fa-solid fa-shield-halved text-emerald-400 text-lg"></i>
       </div>
       <div class="flex-1">
         <div class="flex justify-between items-center">
-          <span class="text-[10px] font-bold text-amber-400 tracking-wider uppercase" id="toastCategory">MBOA SECURITY CODE</span>
-          <span class="text-[10px] text-slate-400">Instant</span>
+          <span class="text-[10px] font-bold text-amber-400 tracking-wider uppercase" id="toastCategory">MBOA SECURITY OTP</span>
+          <span class="text-[10px] text-slate-400">Just Now</span>
         </div>
         <h4 class="text-sm font-bold text-white mt-0.5" id="toastTitle">Temporary Access Code</h4>
         <p class="text-xs text-slate-300 mt-1 leading-relaxed" id="toastBody">
-          Your instant OTP code is: <span class="font-mono font-bold text-amber-400 bg-slate-800 px-2 py-0.5 rounded text-sm tracking-widest" id="toastCode">8492</span>
+          Your one-time login code is: <span class="font-mono font-bold text-amber-400 bg-slate-800 px-2 py-0.5 rounded text-sm tracking-widest" id="toastCode">8492</span>
         </p>
       </div>
       <button onclick="dismissToast()" class="text-slate-400 hover:text-white">
@@ -98,7 +98,7 @@
   </div>
 
   <!-- ============================================================ -->
-  <!-- FLOATING CAPSULE HEADER (Inspired by devfestbamenda.com) -->
+  <!-- FLOATING CAPSULE HEADER (devfestbamenda.com Clean Hierarchy) -->
   <!-- ============================================================ -->
   <header class="pointer-events-none fixed inset-x-0 top-0 z-[100] px-4 py-3 md:px-8 md:py-5">
     <div class="pointer-events-auto mx-auto flex max-w-[1400px] items-center justify-between gap-3">
@@ -106,10 +106,10 @@
       <!-- Left Pill: Brand Capsule -->
       <a href="#" class="flex shrink-0 items-center gap-2.5 rounded-full bg-white px-4 py-2 shadow-sm border border-slate-200/80 transition-transform duration-150 ease-out active:scale-[0.97]">
         <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-brand-700 to-emerald-500 text-white flex items-center justify-center font-black text-sm shadow-sm">
-          <i class="fa-solid fa-screwdriver-wrench text-xs"></i>
+          <i class="fa-solid fa-handshake-angle text-xs"></i>
         </div>
         <div>
-          <span class="font-display font-extrabold text-base tracking-tight text-slate-900 leading-none block">
+          <span class="font-display font-black text-base tracking-tight text-slate-900 leading-none block">
             Mboa<span class="text-brand-600">Work</span>
           </span>
           <span class="text-[9px] font-bold tracking-widest text-slate-400 uppercase">
@@ -120,7 +120,7 @@
 
       <!-- Center Pill: Navigation Links (Desktop) -->
       <nav class="hidden lg:flex items-center gap-1 rounded-full bg-white p-1.5 shadow-sm border border-slate-200/80">
-        <button onclick="switchPillar('services')" id="navPillServices" class="block rounded-full px-4 py-2 text-xs font-bold tracking-widest uppercase transition text-white bg-slate-900 shadow-sm">
+        <button onclick="switchPillar('services')" id="navPillServices" class="block rounded-full px-4 py-2 text-xs font-black tracking-widest uppercase transition text-white bg-slate-900 shadow-sm">
           Book a Pro
         </button>
         <button onclick="switchPillar('shop')" id="navPillShop" class="block rounded-full px-4 py-2 text-xs font-bold tracking-widest uppercase transition text-slate-600 hover:text-slate-900">
@@ -144,7 +144,7 @@
           FR
         </button>
 
-        <!-- Post a Task / Custom Order Pill CTA -->
+        <!-- Post a Task Pill CTA -->
         <button 
           onclick="openPostTaskModal()" 
           class="rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 px-4 md:px-6 py-2.5 text-xs font-black tracking-widest uppercase shadow-sm transition-transform duration-150 ease-out active:scale-[0.97] flex items-center gap-1.5">
@@ -186,13 +186,13 @@
 
         <nav class="flex flex-col space-y-2">
           <button onclick="switchPillar('services'); closeMobileMenu()" class="text-left px-4 py-3 rounded-2xl bg-slate-50 font-bold text-sm text-slate-900">
-            🛠️ Book a Service Pro
+            🛠️ 1. Book a Service Pro
           </button>
           <button onclick="switchPillar('shop'); closeMobileMenu()" class="text-left px-4 py-3 rounded-2xl bg-slate-50 font-bold text-sm text-slate-900">
-            🛒 Shop Local Products
+            🛒 2. Shop Ready Products
           </button>
           <button onclick="switchPillar('tasks'); closeMobileMenu()" class="text-left px-4 py-3 rounded-2xl bg-slate-50 font-bold text-sm text-slate-900">
-            ✨ Post a Custom Task
+            ✨ 3. Post a Custom Task
           </button>
           <a href="#how-it-works" onclick="closeMobileMenu()" class="px-4 py-3 rounded-2xl text-slate-600 font-bold text-sm">
             How It Works
@@ -204,7 +204,7 @@
         <button onclick="openPostTaskModal(); closeMobileMenu()" class="w-full py-3.5 rounded-full bg-amber-400 text-slate-950 font-black text-xs uppercase tracking-widest shadow-md">
           + Post a Task
         </button>
-        <button onclick="openAuthModal(); closeMobileMenu()" class="w-full py-3.5 rounded-full bg-slate-900 text-white font-black text-xs uppercase tracking-widest shadow-md">
+        <button onclick="openAuthModal(); closeMobileMenu()" class="w-full py-3.5 rounded-full bg-slate-950 text-white font-black text-xs uppercase tracking-widest shadow-md">
           Sign In (Instant OTP)
         </button>
       </div>
@@ -212,12 +212,12 @@
   </div>
 
   <!-- ============================================================ -->
-  <!-- HERO SECTION (DevFest Bamenda Aesthetic & Visual Rhythm) -->
+  <!-- HERO SECTION (DevFest Bamenda Aesthetic & High Contrast) -->
   <!-- ============================================================ -->
   <section class="pt-28 md:pt-36 pb-16 md:pb-24 bg-[#FAF9F5] text-slate-900 overflow-hidden relative border-b border-slate-200/70">
     <div class="max-w-[1400px] mx-auto px-6 md:px-8 text-center">
       
-      <!-- Angled DevFest-Style Sticker Badge -->
+      <!-- Angled Sticker Badge -->
       <div class="inline-flex items-center gap-2 mb-6">
         <span class="inline-block rounded-full border-2 border-dashed border-slate-900/40 bg-amber-400 px-4 py-1.5 text-xs font-black uppercase tracking-wider text-slate-950 -rotate-2 shadow-sm">
           ★ OVER 500+ VERIFIED ARTISANS &bull; CAMEROON
@@ -226,7 +226,7 @@
 
       <!-- Main Headline -->
       <h1 class="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.98] text-slate-950 uppercase max-w-5xl mx-auto">
-        Rent Services &amp; Hire Trusted Pros <span class="text-brand-600 lowercase font-normal italic font-serif">in minutes.</span>
+        Hire Trusted Pros &amp; Rent Services <span class="text-brand-600 lowercase font-normal italic font-serif">in minutes.</span>
       </h1>
 
       <!-- Subtitle -->
@@ -234,31 +234,74 @@
         Connect with verified electricians, plumbers, tailors, cleaners, technicians, and local creators in Douala, Yaoundé, Buea, Limbe, and Bamenda.
       </p>
 
-      <!-- Search Capsule Pill Bar -->
+      <!-- Search Capsule Pill Bar with Comprehensive Location Picker -->
       <div class="mt-10 bg-white p-2.5 rounded-3xl md:rounded-full shadow-xl border border-slate-200/80 flex flex-col md:flex-row items-center gap-2 max-w-4xl mx-auto">
         <div class="flex items-center gap-3 flex-1 w-full px-4 py-2">
-          <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+          <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
           <input 
             type="text" 
             id="globalSearchInput" 
             oninput="handleSearch(this.value)" 
-            placeholder="Search AC repair, electrician, hair plaiting, Achu, Toghu..." 
+            placeholder="Search electrician, AC repair, Toghu, Achu, phone fix..." 
             class="w-full bg-transparent text-xs sm:text-sm focus:outline-none text-slate-900 placeholder:text-slate-400" 
           />
         </div>
 
         <div class="h-8 w-px bg-slate-200 hidden md:block"></div>
 
-        <!-- Town Selector Pill -->
+        <!-- Comprehensive Neighborhood & City Dropdown -->
         <div class="flex items-center gap-2 w-full md:w-auto px-4 py-2">
-          <i class="fa-solid fa-location-dot text-brand-600 text-sm"></i>
-          <select id="townSelector" onchange="filterTown(this.value)" class="bg-transparent text-xs sm:text-sm font-semibold text-slate-900 focus:outline-none cursor-pointer w-full md:w-auto">
-            <option value="all">📍 All Cameroon Cities</option>
-            <option value="douala">Douala (Bonapriso, Akwa, Makepe)</option>
-            <option value="yaounde">Yaoundé (Bastos, Mvan, Mendong)</option>
-            <option value="bamenda">Bamenda (Commercial Ave, Up Station, Nkwen)</option>
-            <option value="buea">Buea (Molyko, Clerks Quarters)</option>
-            <option value="limbe">Limbe (Down Beach, New Town)</option>
+          <i class="fa-solid fa-location-dot text-brand-600 text-sm shrink-0"></i>
+          <select id="townSelector" onchange="filterTown(this.value)" class="bg-transparent text-xs sm:text-sm font-bold text-slate-900 focus:outline-none cursor-pointer w-full md:w-auto">
+            <option value="all">📍 All Cameroon Locations</option>
+            
+            <optgroup label="📍 BAMENDA (North West Region)">
+              <option value="bamenda_all">Bamenda — All Quarters</option>
+              <option value="bamenda_commercial">Bamenda — Commercial Avenue</option>
+              <option value="bamenda_station">Bamenda — Up Station &amp; Ayaba</option>
+              <option value="bamenda_nkwen">Bamenda — Nkwen (Mile 2 &amp; 3)</option>
+              <option value="bamenda_mankon">Bamenda — Mankon &amp; Old Council</option>
+              <option value="bamenda_foodmarket">Bamenda — Main Food Market</option>
+              <option value="bamenda_cowstreet">Bamenda — Cow Street</option>
+              <option value="bamenda_mile4">Bamenda — Mile 4 Mankon</option>
+              <option value="bamenda_bambili">Bamenda — Bambili (Univ. Town)</option>
+            </optgroup>
+
+            <optgroup label="📍 DOUALA (Littoral Region)">
+              <option value="douala_all">Douala — All Quarters</option>
+              <option value="douala_akwa">Douala — Akwa (Bd. de la Liberté)</option>
+              <option value="douala_bonanjo">Douala — Bonanjo</option>
+              <option value="douala_bonapriso">Douala — Bonapriso</option>
+              <option value="douala_bonamoussadi">Douala — Bonamoussadi &amp; Makepe</option>
+              <option value="douala_deido">Douala — Deido &amp; Rond-Point</option>
+              <option value="douala_bassa">Douala — Bassa &amp; Ndokoti</option>
+              <option value="douala_yassa">Douala — Yassa &amp; Nyalla</option>
+            </optgroup>
+
+            <optgroup label="📍 YAOUNDÉ (Centre Region)">
+              <option value="yaounde_all">Yaoundé — All Quarters</option>
+              <option value="yaounde_bastos">Yaoundé — Bastos</option>
+              <option value="yaounde_centre">Yaoundé — Centre-Ville &amp; Kennedy</option>
+              <option value="yaounde_mendong">Yaoundé — Mendong &amp; Biyem-Assi</option>
+              <option value="yaounde_mvan">Yaoundé — Mvan &amp; Odza</option>
+              <option value="yaounde_essos">Yaoundé — Essos &amp; Omnisports</option>
+              <option value="yaounde_ngoa">Yaoundé — Ngoa-Ekélé</option>
+            </optgroup>
+
+            <optgroup label="📍 BUEA (South West Region)">
+              <option value="buea_all">Buea — All Quarters</option>
+              <option value="buea_molyko">Buea — Molyko (Silicon Mountain)</option>
+              <option value="buea_clerks">Buea — Clerks Quarters</option>
+              <option value="buea_checkpoint">Buea — Check Point &amp; Great Soppo</option>
+              <option value="buea_bokwango">Buea — Bokwango</option>
+            </optgroup>
+
+            <optgroup label="📍 LIMBE (South West Region)">
+              <option value="limbe_all">Limbe — All Quarters</option>
+              <option value="limbe_downbeach">Limbe — Down Beach</option>
+              <option value="limbe_halfmile">Limbe — Half Mile &amp; New Town</option>
+              <option value="limbe_bota">Limbe — Bota &amp; Isokolo</option>
+            </optgroup>
           </select>
         </div>
 
@@ -270,23 +313,23 @@
         </button>
       </div>
 
-      <!-- Metric Pills Row -->
-      <div class="mt-10 flex flex-wrap justify-center items-center gap-4 text-xs font-bold text-slate-600">
-        <div class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/80 shadow-sm">
-          <i class="fa-solid fa-certificate text-brand-600"></i>
-          <span>ID &amp; Skill Verified</span>
+      <!-- Trust Indicator Badges -->
+      <div class="mt-10 flex flex-wrap justify-center items-center gap-3 text-xs font-bold text-slate-600">
+        <div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/80 shadow-sm">
+          <i class="fa-solid fa-shield-check text-brand-600"></i>
+          <span>CNI Verified Identity</span>
         </div>
         <div class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/80 shadow-sm">
           <i class="fa-solid fa-star text-amber-500"></i>
-          <span>4.9 / 5 Customer Rating</span>
+          <span>4.9/5 Real Customer Reviews</span>
         </div>
         <div class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/80 shadow-sm">
-          <i class="fa-solid fa-wallet text-cobalt"></i>
+          <i class="fa-brands fa-whatsapp text-emerald-600"></i>
+          <span>Direct WhatsApp Chat</span>
+        </div>
+        <div class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/80 shadow-sm">
+          <i class="fa-solid fa-money-bill-wave text-amber-600"></i>
           <span>MTN MoMo &amp; Orange Money</span>
-        </div>
-        <div class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/80 shadow-sm">
-          <i class="fa-solid fa-handshake text-emerald-600"></i>
-          <span>Pay on Completion</span>
         </div>
       </div>
 
@@ -314,7 +357,7 @@
           onclick="switchPillar('shop')" 
           class="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition text-slate-600 hover:text-slate-900 whitespace-nowrap">
           <i class="fa-solid fa-bag-shopping"></i>
-          <span>2. Shop Products</span>
+          <span>2. Shop Ready Products</span>
         </button>
 
         <button 
@@ -328,7 +371,7 @@
 
       <!-- Quick Category Filter Pills -->
       <div class="flex items-center gap-2 overflow-x-auto w-full sm:w-auto" id="quickCategoryPills">
-        <!-- Injected via JavaScript -->
+        <!-- Rendered by JS -->
       </div>
 
     </div>
@@ -351,7 +394,7 @@
           <h2 class="font-display font-black text-3xl md:text-5xl text-slate-950 uppercase tracking-tight">
             Available Service Providers
           </h2>
-          <p class="text-xs sm:text-sm text-slate-500 mt-1">Book rated experts for household fixes, beauty, repairs, and professional assignments.</p>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">Book rated artisans for household fixes, electrical, beauty, repairs, and custom work.</p>
         </div>
         <div class="text-xs font-bold text-slate-700 bg-white px-4 py-2 rounded-full border border-slate-200 shadow-sm">
           Showing <span id="servicesCount" class="text-brand-600 font-black">6 verified pros</span> ready for dispatch
@@ -365,7 +408,7 @@
     </div>
 
     <!-- ------------------------------------------------------------ -->
-    <!-- VIEW 2: SHOP READY PRODUCTS (Authentic Cameroonian Goods) -->
+    <!-- VIEW 2: SHOP READY PRODUCTS (Authentic Local Food & Crafts) -->
     <!-- ------------------------------------------------------------ -->
     <div id="viewShop" class="hidden space-y-8">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-3">
@@ -376,7 +419,7 @@
           <h2 class="font-display font-black text-3xl md:text-5xl text-slate-950 uppercase tracking-tight">
             Shop Ready-Made Products
           </h2>
-          <p class="text-xs sm:text-sm text-slate-500 mt-1">Traditional dishes (Achu, Kati-Kati), Toghu couture, handcrafted furniture, and pastries.</p>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">Authentic Achu &amp; yellow soup, Toghu couture gowns, cane furniture, and natural cosmetics.</p>
         </div>
         <div class="text-xs font-bold text-slate-700 bg-white px-4 py-2 rounded-full border border-slate-200 shadow-sm">
           Showing <span id="shopCount" class="text-brand-600 font-black">8 items</span> ready for pickup or delivery
@@ -394,7 +437,7 @@
     <!-- ------------------------------------------------------------ -->
     <div id="viewTasks" class="hidden space-y-10">
       
-      <!-- High Impact Task Banner -->
+      <!-- Task Hero Banner -->
       <div class="rounded-[2.5rem] border-2 border-slate-900/15 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-950 text-white p-8 md:p-14 shadow-2xl relative overflow-hidden">
         <div class="max-w-2xl relative z-10 space-y-4">
           <span class="inline-block rounded-full bg-amber-400 text-slate-950 px-4 py-1.5 text-xs font-black uppercase tracking-wider -rotate-1 shadow">
@@ -459,7 +502,7 @@
           </div>
           <h4 class="font-display font-black text-lg text-slate-900 uppercase mb-2">Find or Post Task</h4>
           <p class="text-xs text-slate-600 leading-relaxed">
-            Browse verified providers by city or post your custom request with your preferred budget and completion deadline.
+            Filter verified providers by city or quarter, or post your custom request with your preferred budget and completion deadline.
           </p>
         </div>
 
@@ -469,7 +512,7 @@
           </div>
           <h4 class="font-display font-black text-lg text-slate-900 uppercase mb-2">Confirm &amp; Connect</h4>
           <p class="text-xs text-slate-600 leading-relaxed">
-            Review past customer ratings, chat or call directly, and agree on timing. Our verified badge ensures legitimate identity.
+            Review real customer feedback, chat directly on WhatsApp or call. Our verified badge ensures identity check with national CNI.
           </p>
         </div>
 
@@ -479,7 +522,7 @@
           </div>
           <h4 class="font-display font-black text-lg text-slate-900 uppercase mb-2">Pay Securely</h4>
           <p class="text-xs text-slate-600 leading-relaxed">
-            Pay safely upon job completion using MTN Mobile Money, Orange Money, or Cash on hand. No hidden commissions.
+            Pay safely upon job satisfaction using MTN Mobile Money, Orange Money, or Cash on hand. Zero hidden platform deductions.
           </p>
         </div>
       </div>
@@ -488,7 +531,83 @@
   </main>
 
   <!-- ============================================================ -->
-  <!-- MODAL 1: POST A TASK / CUSTOM REQUEST -->
+  <!-- MODAL 1: PROVIDER DETAIL & REVIEWS MODAL (Clean Star Review System) -->
+  <!-- ============================================================ -->
+  <div id="providerDetailModal" class="fixed inset-0 z-[160] bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+      <div class="flex justify-between items-start pb-4 border-b border-slate-100">
+        <div class="flex items-center gap-4">
+          <img id="detailImg" src="" alt="Artisan" class="w-16 h-16 rounded-2xl object-cover border-2 border-emerald-100" />
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 class="font-display font-black text-xl text-slate-950" id="detailName">Provider Name</h3>
+              <span class="inline-flex items-center gap-1 bg-emerald-100 text-emerald-800 text-[10px] font-black px-2 py-0.5 rounded-full uppercase">
+                <i class="fa-solid fa-circle-check"></i> CNI Verified
+              </span>
+            </div>
+            <p class="text-xs font-bold text-brand-700" id="detailTrade">Trade Title</p>
+            <p class="text-[11px] text-slate-500 mt-0.5" id="detailLocation">Location</p>
+          </div>
+        </div>
+        <button onclick="closeProviderDetailModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Rating Breakdown Box -->
+      <div class="mt-4 p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+        <div>
+          <span class="text-xs text-slate-500 font-bold uppercase block">Customer Satisfaction Score</span>
+          <div class="flex items-center gap-2 mt-1">
+            <div class="flex text-amber-500 text-base" id="detailStars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <span class="font-display font-black text-2xl text-slate-900" id="detailRatingNum">4.9</span>
+            <span class="text-xs text-slate-500 font-medium" id="detailReviewsCount">(84 verified reviews)</span>
+          </div>
+        </div>
+
+        <div>
+          <span class="text-[10px] font-bold text-slate-400 uppercase block">Standard Rate</span>
+          <span class="font-display font-black text-lg text-slate-950" id="detailRate">10,000 XAF</span>
+        </div>
+      </div>
+
+      <!-- Bio / Description -->
+      <div class="mt-5 space-y-2">
+        <h4 class="font-display font-black text-sm uppercase text-slate-900">About Artisan &amp; Experience</h4>
+        <p class="text-xs text-slate-600 leading-relaxed" id="detailBio">
+          Artisan biography.
+        </p>
+      </div>
+
+      <!-- Real Customer Reviews List -->
+      <div class="mt-6 pt-5 border-t border-slate-100 space-y-3">
+        <h4 class="font-display font-black text-sm uppercase text-slate-900">Recent Customer Reviews in Cameroon</h4>
+        <div class="space-y-3" id="detailReviewsList">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="mt-6 pt-4 border-t border-slate-100 flex flex-wrap gap-3">
+        <a id="detailWhatsAppBtn" href="#" target="_blank" class="flex-1 py-3 px-4 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider text-center flex items-center justify-center gap-2 transition">
+          <i class="fa-brands fa-whatsapp text-sm"></i>
+          <span>Chat on WhatsApp</span>
+        </a>
+        <button id="detailBookBtn" onclick="" class="flex-1 py-3 px-4 rounded-full bg-slate-950 hover:bg-black text-white font-black text-xs uppercase tracking-wider text-center transition">
+          Book This Pro
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- MODAL 2: POST A TASK / CUSTOM REQUEST -->
   <!-- ============================================================ -->
   <div id="postTaskModal" class="fixed inset-0 z-[150] bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
@@ -505,7 +624,7 @@
       <form onsubmit="handlePostTaskSubmit(event)" class="mt-5 space-y-4 text-xs sm:text-sm">
         <div>
           <label class="block font-bold text-slate-700 mb-1">What do you need done? *</label>
-          <input type="text" id="taskTitle" required placeholder="e.g. Repair Split AC Unit in Bonapriso or Plait Box Braids" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:outline-none" />
+          <input type="text" id="taskTitle" required placeholder="e.g. Repair Split AC Unit in Bonapriso or Plait Box Braids in Bamenda" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:outline-none" />
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -523,13 +642,16 @@
             </select>
           </div>
           <div>
-            <label class="block font-bold text-slate-700 mb-1">City / Town *</label>
+            <label class="block font-bold text-slate-700 mb-1">Target Location *</label>
             <select id="taskTown" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:outline-none bg-white">
-              <option value="Douala">Douala (Bonapriso, Akwa)</option>
-              <option value="Yaoundé">Yaoundé (Bastos, Mvan)</option>
-              <option value="Bamenda">Bamenda (Commercial Ave, Nkwen)</option>
-              <option value="Buea">Buea (Molyko)</option>
-              <option value="Limbe">Limbe (Down Beach)</option>
+              <option value="Bamenda (Commercial Ave)">Bamenda (Commercial Ave)</option>
+              <option value="Bamenda (Up Station)">Bamenda (Up Station)</option>
+              <option value="Bamenda (Nkwen Mile 2)">Bamenda (Nkwen Mile 2)</option>
+              <option value="Douala (Bonapriso)">Douala (Bonapriso)</option>
+              <option value="Douala (Akwa)">Douala (Akwa)</option>
+              <option value="Yaoundé (Bastos)">Yaoundé (Bastos)</option>
+              <option value="Buea (Molyko)">Buea (Molyko)</option>
+              <option value="Limbe (Down Beach)">Limbe (Down Beach)</option>
             </select>
           </div>
         </div>
@@ -566,7 +688,7 @@
   </div>
 
   <!-- ============================================================ -->
-  <!-- MODAL 2: BOOKING & CHECKOUT (MoMo / Orange / Cash) -->
+  <!-- MODAL 3: BOOKING & CHECKOUT (MoMo / Orange / Cash) -->
   <!-- ============================================================ -->
   <div id="bookingModal" class="fixed inset-0 z-[150] bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-slate-200">
@@ -586,7 +708,7 @@
           <div class="font-display font-black text-2xl text-slate-900" id="bookPrice">10,000 XAF</div>
         </div>
         <div class="text-right">
-          <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full">VERIFIED EXPERT</span>
+          <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full">VERIFIED ARTISAN</span>
           <div class="text-xs text-slate-600 mt-1 font-semibold" id="bookProvider">Tanyi Power</div>
         </div>
       </div>
@@ -594,7 +716,7 @@
       <form onsubmit="handleBookingSubmit(event)" class="mt-5 space-y-4 text-xs sm:text-sm">
         <div>
           <label class="block font-bold text-slate-700 mb-1">Your Full Name *</label>
-          <input type="text" id="custName" required placeholder="e.g. Samuel Eto'o Junior" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:outline-none" />
+          <input type="text" id="custName" required placeholder="e.g. Fon Kenneth Che" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:outline-none" />
         </div>
         <div>
           <label class="block font-bold text-slate-700 mb-1">Mobile Number (MTN / Orange) *</label>
@@ -633,7 +755,7 @@
   </div>
 
   <!-- ============================================================ -->
-  <!-- MODAL 3: IN-APP INSTANT OTP AUTH MODAL -->
+  <!-- MODAL 4: IN-APP INSTANT OTP AUTH MODAL -->
   <!-- ============================================================ -->
   <div id="authModal" class="fixed inset-0 z-[150] bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl border border-slate-200">
@@ -641,14 +763,14 @@
         <i class="fa-solid fa-lock"></i>
       </div>
       <h3 class="font-display font-extrabold text-xl text-slate-900 uppercase">Sign In to MboaWork</h3>
-      <p class="text-xs text-slate-500 mt-1">Enter your phone number. We provide an instant notification code with zero SMS cost.</p>
+      <p class="text-xs text-slate-500 mt-1">Enter your Cameroon mobile number. We provide an instant notification code with zero SMS cost.</p>
 
       <div class="mt-4 space-y-3 text-left">
         <div>
           <label class="text-[10px] font-bold text-slate-700 uppercase">Mobile Number</label>
-          <input type="tel" id="authMobile" placeholder="+237 6XX XXX XXX" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:outline-none text-xs" />
+          <input type="tel" id="authMobile" placeholder="+237 670 123 456" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-brand-500 focus:outline-none text-xs" />
         </div>
-        <button onclick="requestInstantOtp()" class="w-full bg-slate-900 hover:bg-black text-white font-bold py-2.5 rounded-full text-xs uppercase tracking-wider transition">
+        <button onclick="requestInstantOtp()" class="w-full bg-slate-950 hover:bg-black text-white font-bold py-2.5 rounded-full text-xs uppercase tracking-wider transition">
           Send Instant Code
         </button>
       </div>
@@ -666,7 +788,7 @@
   </div>
 
   <!-- ============================================================ -->
-  <!-- MODAL 4: VOICE NOTE ASSISTANT -->
+  <!-- MODAL 5: VOICE NOTE ASSISTANT -->
   <!-- ============================================================ -->
   <div id="voiceModal" class="fixed inset-0 z-[150] bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-md w-full p-6 text-center shadow-2xl border border-slate-200">
@@ -684,7 +806,7 @@
       </div>
 
       <div class="flex items-center justify-center gap-3">
-        <button id="voiceBtnRecord" onclick="toggleVoiceRecord()" class="bg-slate-900 hover:bg-black text-white font-bold px-5 py-2.5 rounded-full text-xs flex items-center gap-2 transition">
+        <button id="voiceBtnRecord" onclick="toggleVoiceRecord()" class="bg-slate-950 hover:bg-black text-white font-bold px-5 py-2.5 rounded-full text-xs flex items-center gap-2 transition">
           <i class="fa-solid fa-play"></i>
           <span id="voiceBtnText">Start Speaking</span>
         </button>
@@ -717,13 +839,13 @@
       </div>
 
       <div>
-        <h4 class="text-white font-bold uppercase tracking-wider mb-3">Popular Cities</h4>
+        <h4 class="text-white font-bold uppercase tracking-wider mb-3">Bamenda Quarters</h4>
         <ul class="space-y-2 text-slate-400">
-          <li>Douala (Bonapriso, Akwa, Makepe)</li>
-          <li>Yaoundé (Bastos, Mvan, Mendong)</li>
-          <li>Bamenda (Commercial Ave, Nkwen)</li>
-          <li>Buea (Molyko, Clerks Qtrs)</li>
-          <li>Limbe (Down Beach, New Town)</li>
+          <li>Commercial Avenue &amp; Sonac Street</li>
+          <li>Up Station &amp; Governor's Office</li>
+          <li>Nkwen (Mile 2 &amp; Mile 3)</li>
+          <li>Mankon Food Market &amp; Old Council</li>
+          <li>Cow Street &amp; Bambili</li>
         </ul>
       </div>
 
@@ -746,7 +868,7 @@
     </div>
 
     <div class="max-w-[1400px] mx-auto px-6 md:px-8 mt-12 pt-6 border-t border-slate-800 text-center text-slate-500">
-      &copy; 2026 MboaWork Cameroon. All rights reserved. Built for creators and clients across the national territory.
+      &copy; 2026 MboaWork Cameroon. All rights reserved. Connecting local talents across the national territory.
     </div>
   </footer>
 
@@ -755,85 +877,110 @@
   <!-- ============================================================ -->
   <script>
     // -------------------------------------------------------------
-    // 1. DATASETS (Verified Cameroon Pros & Products)
+    // 1. DATASETS: AUTHENTIC CAMEROONIAN ARTISANS & PRODUCTS
     // -------------------------------------------------------------
     
     // Services / Artisans
     const servicesData = [
       {
         id: "serv-1",
-        name: "Alain Mbida",
-        trade: "Certified AC & Refrigeration Specialist",
-        rate: "15,000 XAF",
-        rateType: "flat diagnostic",
-        town: "douala",
-        townLabel: "Douala (Bonapriso, Akwa)",
-        rating: 4.9,
-        reviews: 78,
-        responseTime: "20 mins",
-        phone: "+237 671 223 344",
-        skills: ["Split AC Repair", "Gas Refill", "Chiller Fixing", "Emergency Calls"],
-        image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=500&q=80"
+        name: "Pa Denis Tanyi",
+        trade: "Master Electrician & Solar Inverter Pro",
+        rate: "10,000 XAF",
+        rateType: "diagnostic & fix",
+        townKey: "bamenda_commercial",
+        townLabel: "Commercial Ave, Bamenda",
+        rating: 5.0,
+        reviewsCount: 84,
+        responseTime: "15 mins",
+        phone: "+237677889900",
+        bio: "Over 14 years specializing in residential electrical installations, inverter and solar battery systems, and circuit diagnostics along Commercial Avenue and Sonac Street in Bamenda.",
+        skills: ["Solar Inverters", "Short Circuit Fix", "House Rewiring", "Generator Service"],
+        image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80",
+        reviews: [
+          { name: "Ndi Emmanuel (Nkwen Mile 3)", rating: 5, date: "3 days ago", comment: "Pa Denis came to my home in Nkwen and solved our inverter tripping problem in under 45 minutes. Very professional elder." },
+          { name: "Dr. Fon Kenneth (Up Station)", rating: 5, date: "Last week", comment: "Excellent wiring job for my clinic near Ayaba hotel. Clean work and fair price." }
+        ]
       },
       {
         id: "serv-2",
-        name: "Tanyi Divine Power",
-        trade: "Master Electrician & Solar Inverter Pro",
-        rate: "10,000 XAF",
-        rateType: "visit & repair",
-        town: "bamenda",
-        townLabel: "Bamenda (Commercial Ave)",
-        rating: 5.0,
-        reviews: 64,
-        responseTime: "15 mins",
-        phone: "+237 677 889 900",
-        skills: ["Solar Backup", "Inverter Repair", "House Wiring", "Short Circuit Fix"],
-        image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=500&q=80"
+        name: "Awa Che Florence",
+        trade: "Hairdresser & Cornrows Specialist",
+        rate: "4,000 XAF",
+        rateType: "per styling",
+        townKey: "bamenda_cowstreet",
+        townLabel: "Cow Street, Bamenda",
+        rating: 4.9,
+        reviewsCount: 68,
+        responseTime: "10 mins",
+        phone: "+237674112233",
+        bio: "Specialist in knotless braids, traditional cornrows, children's hair care, and home visits across Cow Street, Food Market, and Nkwen quarters.",
+        skills: ["Knotless Braids", "Cornrows", "Home Visits", "Kid Styling"],
+        image: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=600&q=80",
+        reviews: [
+          { name: "Mirabel Bih (Commercial Ave)", rating: 5, date: "2 days ago", comment: "She came directly to my shop to plait my hair. Very gentle with natural hair and fast!" },
+          { name: "Mama Gladys (Food Market)", rating: 5, date: "2 weeks ago", comment: "Florence plaited my two daughters for school. Neat cornrows that lasted a month." }
+        ]
       },
       {
         id: "serv-3",
-        name: "Awa Che Florence",
-        trade: "Hair Stylist & Mobile Cornrows Specialist",
-        rate: "4,000 XAF",
-        rateType: "per styling",
-        town: "bamenda",
-        townLabel: "Bamenda (Cow Street)",
-        rating: 4.9,
-        reviews: 52,
-        responseTime: "10 mins",
-        phone: "+237 674 112 233",
-        skills: ["Knotless Braids", "Cornrows", "Home Visits", "Weave Fixing"],
-        image: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=500&q=80"
+        name: "Bih Denis & Sons",
+        trade: "Master Tailor & Toghu Stitching Atelier",
+        rate: "7,500 XAF",
+        rateType: "base stitch",
+        townKey: "bamenda_commercial",
+        townLabel: "Sonac Street, Bamenda",
+        rating: 5.0,
+        reviewsCount: 112,
+        responseTime: "25 mins",
+        phone: "+237670998877",
+        bio: "Heritage Bamenda tailor atelier. We draft, cut, and hand-embroider authentic Grassfields Toghu wedding gowns, ceremonial robes, and bespoke suits.",
+        skills: ["Toghu Needlework", "Men Suits", "Wedding Wear", "Fast Alterations"],
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+        reviews: [
+          { name: "Chief Ndikum (Bafut)", rating: 5, date: "Yesterday", comment: "Master Denis made my ceremonial Toghu gown for the festival. The yellow embroidery precision is royal." },
+          { name: "Christian Ngu (Up Station)", rating: 5, date: "1 week ago", comment: "Brought my suit pants for tightening, done cleanly in 2 hours." }
+        ]
       },
       {
         id: "serv-4",
-        name: "Moustapha Plomberie",
-        trade: "Borehole, Pump & Household Plumber",
-        rate: "8,000 XAF",
-        rateType: "per job",
-        town: "yaounde",
-        townLabel: "Yaoundé (Bastos, Mvan)",
-        rating: 4.8,
-        reviews: 41,
-        responseTime: "30 mins",
-        phone: "+237 675 334 455",
-        skills: ["Pipe Leaks", "Water Pump Hookup", "Toilet Fixtures", "Water Tank"],
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80"
+        name: "Alain Mbida",
+        trade: "Certified AC & Cold Room Specialist",
+        rate: "15,000 XAF",
+        rateType: "diagnostic & fix",
+        townKey: "douala_bonapriso",
+        townLabel: "Bonapriso, Douala",
+        rating: 4.9,
+        reviewsCount: 95,
+        responseTime: "20 mins",
+        phone: "+237671223344",
+        bio: "Specialized in LG, Carrier, and Samsung split air conditioners, gas refills, and compressor maintenance in Bonapriso, Akwa, and Makepe offices.",
+        skills: ["Split AC Repair", "Gas Refill", "Refrigeration", "Emergency Visits"],
+        image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=600&q=80",
+        reviews: [
+          { name: "Sarah K. (Akwa)", rating: 5, date: "4 days ago", comment: "My office AC stopped cooling during a hot afternoon. Alain arrived in 30 mins and fixed the capacitor." },
+          { name: "Jean-Paul M. (Bonapriso)", rating: 5, date: "2 weeks ago", comment: "Very professional technician with clear diagnostic and no hidden pricing." }
+        ]
       },
       {
         id: "serv-5",
-        name: "Bih Denis & Sons",
-        trade: "Master Tailor & Toghu Designer",
-        rate: "7,500 XAF",
-        rateType: "base stitch",
-        town: "bamenda",
-        townLabel: "Bamenda (Commercial Ave)",
-        rating: 5.0,
-        reviews: 89,
-        responseTime: "25 mins",
-        phone: "+237 670 998 877",
-        skills: ["Toghu Embroidery", "Men Suits", "Alterations", "Wedding Wear"],
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80"
+        name: "Peter Nkwen Plumbing",
+        trade: "Borehole, Pump & Household Plumber",
+        rate: "8,000 XAF",
+        rateType: "per job",
+        townKey: "bamenda_nkwen",
+        townLabel: "Nkwen (Mile 2), Bamenda",
+        rating: 4.8,
+        reviewsCount: 47,
+        responseTime: "30 mins",
+        phone: "+237675334455",
+        bio: "Borehole submersible pump installations, overhead water tank plumbing, PVC pipe leak repairs, and modern sanitary installations in Bamenda.",
+        skills: ["Water Pump Hookup", "Borehole Plumbing", "Pipe Leaks", "Toilet Fixtures"],
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80",
+        reviews: [
+          { name: "Pastor Forbi (Mile 4 Mankon)", rating: 5, date: "5 days ago", comment: "Installed our church 3000L water tank and booster pump without any leaks. Trustworthy man." },
+          { name: "Grace T. (Up Station)", rating: 4.5, date: "3 weeks ago", comment: "Fixed my kitchen sink plumbing cleanly." }
+        ]
       },
       {
         id: "serv-6",
@@ -841,14 +988,19 @@
         trade: "Laptop, Smartphone & Logic Board Tech",
         rate: "5,000 XAF",
         rateType: "diagnostic",
-        town: "buea",
-        townLabel: "Buea (Molyko Tech Hub)",
-        rating: 4.8,
-        reviews: 57,
+        townKey: "buea_molyko",
+        townLabel: "Molyko, Buea",
+        rating: 4.9,
+        reviewsCount: 76,
         responseTime: "15 mins",
-        phone: "+237 679 445 566",
-        skills: ["Screen Replacement", "Charging Port Fix", "Battery Fix", "OS Installation"],
-        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80"
+        phone: "+237679445566",
+        bio: "Micro-soldering, iPhone and Android screen replacements, MacBook logic board repair, and Windows OS flashing in the heart of Silicon Mountain.",
+        skills: ["Screen Replacement", "Charging Port Fix", "Battery Replacement", "Logic Board"],
+        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+        reviews: [
+          { name: "Kevin Ashu (UB Student, Molyko)", rating: 5, date: "Yesterday", comment: "Changed my HP laptop battery and cleaned the fan. Laptop no longer overheats." },
+          { name: "Vanessa E. (Check Point)", rating: 5, date: "Last week", comment: "Fast screen replacement on my Samsung phone." }
+        ]
       }
     ];
 
@@ -859,104 +1011,112 @@
         title: "Traditional Achu & Yellow Soup (Cow Skin & Kanda)",
         category: "Food",
         price: 2500,
-        town: "bamenda",
-        townLabel: "Bamenda Food Market",
+        townKey: "bamenda_foodmarket",
+        townLabel: "Main Food Market, Bamenda",
         seller: "Mama Gladys Kitchen",
-        rating: 4.9,
-        reviews: 94,
+        rating: 5.0,
+        reviewsCount: 142,
         image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
-        badge: "Hot & Ready Today"
+        badge: "Pounded Cocoyam & Yellow Soup",
+        desc: "Steaming pounded cocoyam achu served with authentic limestone yellow soup, boiled eggs, seasoned cow skin (kanda) and tender beef."
       },
       {
         id: "prod-2",
         title: "Hand-Embroidered Velvet Toghu Royal Gown",
         category: "Fashion",
         price: 45000,
-        town: "bamenda",
-        townLabel: "Commercial Ave",
+        townKey: "bamenda_commercial",
+        townLabel: "Commercial Ave, Bamenda",
         seller: "Pa Foncha Atelier",
         rating: 5.0,
-        reviews: 48,
+        reviewsCount: 56,
         image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80",
-        badge: "Authentic Craft"
+        badge: "Pure Black Velvet",
+        desc: "Authentic Bamenda Grassfields royal gown with dense geometric needlework in gold, red and white thread. Worn for ceremonies and galas."
       },
       {
         id: "prod-3",
-        title: "Custom 3-Tier Birthday & Event Fondant Cake",
+        title: "Custom 3-Tier Birthday Fondant Cake",
         category: "Pastries",
         price: 18000,
-        town: "douala",
-        townLabel: "Douala Makepe",
-        seller: "SweetDelights CM",
+        townKey: "bamenda_station",
+        townLabel: "Up Station, Bamenda",
+        seller: "SweetBam Pastries",
         rating: 4.8,
-        reviews: 35,
+        reviewsCount: 39,
         image: "https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=600&q=80",
-        badge: "Custom Baked"
+        badge: "Fresh Buttercream & Fondant",
+        desc: "Layered red velvet and vanilla sponge with custom sugarcraft lettering. Prepared on order with 24 hours notice."
       },
       {
         id: "prod-4",
-        title: "Handcrafted Solid Cane Veranda Laundry Basket",
+        title: "Handcrafted Cane Laundry & Veranda Baskets",
         category: "Crafts",
         price: 8500,
-        town: "bamenda",
-        townLabel: "Nkwen Mile 2",
+        townKey: "bamenda_nkwen",
+        townLabel: "Nkwen (Mile 2), Bamenda",
         seller: "Mbah Cane Art",
-        rating: 4.7,
-        reviews: 29,
+        rating: 4.9,
+        reviewsCount: 34,
         image: "https://images.unsplash.com/photo-1595855759920-86582396756a?auto=format&fit=crop&w=600&q=80",
-        badge: "Eco Rattan"
+        badge: "Raffia & Bamboo Cane",
+        desc: "Durable woven rattan and bamboo cane baskets, varnished with natural insect repellent finish for bedrooms and verandas."
       },
       {
         id: "prod-5",
-        title: "Smoked Savory Bushmeat & Grilled Fish Ndoleh",
+        title: "Flame-Grilled Kati-Kati & Steamed Corn Fufu",
         category: "Food",
         price: 3500,
-        town: "douala",
-        townLabel: "Douala Bonamoussadi",
-        seller: "Mama Sophie Saveurs",
+        townKey: "bamenda_nkwen",
+        townLabel: "Mile 3 Nkwen, Bamenda",
+        seller: "Achu & Grill Master",
         rating: 4.9,
-        reviews: 82,
+        reviewsCount: 88,
         image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80",
-        badge: "Chef Special"
+        badge: "Traditional Country Chicken",
+        desc: "Flame-roasted local chicken tossed in savory country butter and local pepper, paired with steamed organic corn fufu."
       },
       {
         id: "prod-6",
-        title: "Raw Shea Butter & Natural Hair Growth Cream",
+        title: "Raw Cold-Pressed Shea Butter & Herbal Hair Cream",
         category: "Health",
         price: 3000,
-        town: "yaounde",
-        townLabel: "Yaoundé Bastos",
-        seller: "BioNature Cameroun",
+        townKey: "bamenda_cowstreet",
+        townLabel: "Cow Street, Bamenda",
+        seller: "Abang Naturals",
         rating: 4.8,
-        reviews: 61,
+        reviewsCount: 65,
         image: "https://images.unsplash.com/photo-1608248597359-5613589b2123?auto=format&fit=crop&w=600&q=80",
-        badge: "100% Organic"
+        badge: "100% Unrefined",
+        desc: "Cold-pressed pure shea butter enriched with neem and rosemary extract for natural hair moisturizing and dry skin relief."
       },
       {
         id: "prod-7",
-        title: "Carved Solid Mahogany Traditional Coffee Stool",
+        title: "Carved Solid Iroko Traditional Grassfields Stool",
         category: "Crafts",
         price: 28000,
-        town: "bamenda",
-        townLabel: "Mile 4 Mankon",
+        townKey: "bamenda_mile4",
+        townLabel: "Mile 4 Mankon, Bamenda",
         seller: "Woodcraft Mankon",
-        rating: 4.9,
-        reviews: 18,
+        rating: 5.0,
+        reviewsCount: 22,
         image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80",
-        badge: "Solid Iroko"
+        badge: "Carved from Single Log",
+        desc: "Hand-carved by elder Mankon sculptors featuring traditional spider motifs of wisdom and community prosperity."
       },
       {
         id: "prod-8",
         title: "Traditional Chevron Beaded Royal Necklaces",
         category: "Crafts",
         price: 6000,
-        town: "bamenda",
-        townLabel: "Old Council",
+        townKey: "bamenda_mankon",
+        townLabel: "Old Council, Bamenda",
         seller: "Che Heritage Beads",
         rating: 4.9,
-        reviews: 24,
+        reviewsCount: 31,
         image: "https://images.unsplash.com/photo-1611591475870-7463690d7945?auto=format&fit=crop&w=600&q=80",
-        badge: "Handwoven"
+        badge: "Hand-Strung Glass Beads",
+        desc: "Sacred color combinations worn during royal ceremonies, title-takings, and traditional weddings in the Grassfields."
       }
     ];
 
@@ -964,33 +1124,33 @@
     const tasksData = [
       {
         id: "task-1",
-        title: "Repair Split AC Unit in Bonapriso Office",
-        category: "AC & Refrigeration",
-        town: "Douala",
-        budget: 15000,
-        deadline: "Today, 4:00 PM",
+        title: "Repair Inverter & Solar Backup at Ayaba Street",
+        category: "Electrical & Solar",
+        town: "Up Station, Bamenda",
+        budget: 20000,
+        deadline: "Today by 5:00 PM",
         bidsCount: 4,
-        desc: "LG Inverter split unit stopped blowing cold air. Suspecting gas leak or capacitor issue."
+        desc: "Inverter stopped switching to battery during load shedding. Need a technician with multimeter to check battery fuses and charging circuit."
       },
       {
         id: "task-2",
-        title: "Emergency Borehole Pump Electrical Tripping",
-        category: "Plumbing & Pumps",
-        town: "Yaoundé",
-        budget: 20000,
-        deadline: "Tomorrow Morning",
-        bidsCount: 3,
-        desc: "Submersible pump trips the breaker when turned on. Need technician with multimeter to test."
+        title: "Stitch 2 Traditional Toghu Gowns for Wedding",
+        category: "Tailoring & Toghu",
+        town: "Commercial Ave, Bamenda",
+        budget: 45000,
+        deadline: "Saturday this week",
+        bidsCount: 6,
+        desc: "Have 6 yards of black velvet already. Need custom red and yellow embroidery for groom and father."
       },
       {
         id: "task-3",
-        title: "Sew Custom Toghu Dress for Wedding Guest",
-        category: "Tailoring & Toghu",
-        town: "Bamenda",
+        title: "Prepare Achu Pot for Family Gathering (30 Guests)",
+        category: "Catering & Food",
+        town: "Nkwen Mile 3, Bamenda",
         budget: 35000,
-        deadline: "Friday this week",
+        deadline: "Sunday Morning",
         bidsCount: 5,
-        desc: "Black velvet cloth already purchased. Need gold and red Grassfields needlework embroidery."
+        desc: "Family memorial gathering. Need experienced cook to prepare pounded achu, yellow soup with kanda, cow legs, and dry fish."
       }
     ];
 
@@ -998,13 +1158,13 @@
     // 2. STATE MANAGEMENT
     // -------------------------------------------------------------
     let currentPillar = 'services'; // 'services' | 'shop' | 'tasks'
-    let selectedTown = 'all';
+    let selectedTownFilter = 'all';
     let searchQuery = '';
     let isVoiceRecording = false;
     let currentLang = 'en';
 
     // -------------------------------------------------------------
-    // 3. PILLAR SWITCHING & UI RENDERING
+    // 3. PILLAR SWITCHING & UI CONTROLS
     // -------------------------------------------------------------
     function switchPillar(pillar) {
       currentPillar = pillar;
@@ -1017,7 +1177,7 @@
       const tShop = document.getElementById('tabShop');
       const tTasks = document.getElementById('tabTasks');
 
-      // Reset all pill styles
+      // Reset all styles
       [pServices, pShop, pTasks].forEach(p => {
         p.className = "block rounded-full px-4 py-2 text-xs font-bold tracking-widest uppercase transition text-slate-600 hover:text-slate-900";
       });
@@ -1030,15 +1190,15 @@
       document.getElementById('viewTasks').classList.add('hidden');
 
       if (pillar === 'services') {
-        pServices.className = "block rounded-full px-4 py-2 text-xs font-bold tracking-widest uppercase transition text-white bg-slate-900 shadow-sm";
+        pServices.className = "block rounded-full px-4 py-2 text-xs font-black tracking-widest uppercase transition text-white bg-slate-900 shadow-sm";
         tServices.className = "flex-1 sm:flex-initial flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-wider transition bg-slate-950 text-white shadow-sm whitespace-nowrap";
         document.getElementById('viewServices').classList.remove('hidden');
       } else if (pillar === 'shop') {
-        pShop.className = "block rounded-full px-4 py-2 text-xs font-bold tracking-widest uppercase transition text-white bg-slate-900 shadow-sm";
+        pShop.className = "block rounded-full px-4 py-2 text-xs font-black tracking-widest uppercase transition text-white bg-slate-900 shadow-sm";
         tShop.className = "flex-1 sm:flex-initial flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-wider transition bg-slate-950 text-white shadow-sm whitespace-nowrap";
         document.getElementById('viewShop').classList.remove('hidden');
       } else if (pillar === 'tasks') {
-        pTasks.className = "block rounded-full px-4 py-2 text-xs font-bold tracking-widest uppercase transition text-white bg-slate-900 shadow-sm";
+        pTasks.className = "block rounded-full px-4 py-2 text-xs font-black tracking-widest uppercase transition text-white bg-slate-900 shadow-sm";
         tTasks.className = "flex-1 sm:flex-initial flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-wider transition bg-slate-950 text-white shadow-sm whitespace-nowrap";
         document.getElementById('viewTasks').classList.remove('hidden');
       }
@@ -1055,7 +1215,15 @@
 
       // 1. Render Services
       const filteredServices = servicesData.filter(s => {
-        const matchTown = (townVal === 'all' || s.town === townVal);
+        let matchTown = true;
+        if (townVal !== 'all') {
+          if (townVal.endsWith('_all')) {
+            const prefix = townVal.split('_')[0];
+            matchTown = s.townKey.startsWith(prefix);
+          } else {
+            matchTown = s.townKey === townVal;
+          }
+        }
         const matchSearch = !searchVal || s.name.toLowerCase().includes(searchVal) || s.trade.toLowerCase().includes(searchVal) || s.skills.some(sk => sk.toLowerCase().includes(searchVal));
         return matchTown && matchSearch;
       });
@@ -1067,31 +1235,47 @@
         sGrid.innerHTML = `
           <div class="col-span-full py-16 text-center bg-white rounded-[2rem] border-2 border-slate-900/10 p-8">
             <i class="fa-solid fa-user-slash text-4xl text-slate-300 mb-3"></i>
-            <h4 class="font-display font-bold text-slate-800 text-lg">No technicians found in this city</h4>
-            <p class="text-xs text-slate-400 mt-1">Try selecting 'All Cameroon Cities' or post a task to receive quotes.</p>
+            <h4 class="font-display font-bold text-slate-800 text-lg">No verified artisans found in this quarter</h4>
+            <p class="text-xs text-slate-400 mt-1">Try selecting 'Bamenda — All Quarters' or post a task to receive quotes.</p>
           </div>
         `;
       } else {
         sGrid.innerHTML = filteredServices.map(serv => `
-          <article class="rounded-[2rem] border-2 border-slate-900/10 bg-white p-6 shadow-sm lift-hover flex flex-col justify-between">
+          <article class="rounded-[2rem] border-2 border-slate-900/10 bg-white p-6 shadow-sm lift-hover flex flex-col justify-between group">
             <div>
               <div class="flex items-start gap-4">
-                <img src="${serv.image}" alt="${serv.name}" class="w-16 h-16 rounded-2xl object-cover border-2 border-emerald-100" />
+                <img src="${serv.image}" alt="${serv.name}" class="w-16 h-16 rounded-2xl object-cover border-2 border-emerald-100 shadow-sm" />
                 <div class="flex-1">
                   <div class="flex items-center gap-1.5">
-                    <h3 class="font-display font-black text-lg text-slate-950">${serv.name}</h3>
-                    <i class="fa-solid fa-circle-check text-brand-600 text-xs" title="ID & Skill Verified"></i>
+                    <h3 class="font-display font-black text-lg text-slate-950 group-hover:text-brand-600 transition cursor-pointer" onclick="openProviderDetail('${serv.id}')">
+                      ${serv.name}
+                    </h3>
+                    <i class="fa-solid fa-circle-check text-brand-600 text-xs" title="CNI & Skill Verified"></i>
                   </div>
                   <p class="text-xs font-bold text-brand-700">${serv.trade}</p>
                   <div class="flex items-center gap-2 text-[11px] text-slate-500 mt-1">
-                    <span><i class="fa-solid fa-location-dot text-slate-400"></i> ${serv.townLabel}</span>
-                    <span>&bull;</span>
-                    <span class="text-amber-500 font-bold"><i class="fa-solid fa-star"></i> ${serv.rating} (${serv.reviews})</span>
+                    <span><i class="fa-solid fa-location-dot text-slate-400 text-xs"></i> ${serv.townLabel}</span>
                   </div>
                 </div>
               </div>
 
-              <div class="mt-4 flex flex-wrap gap-1.5">
+              <!-- Refined Clean Star Review Badge -->
+              <div class="mt-4 flex items-center justify-between">
+                <button type="button" onclick="openProviderDetail('${serv.id}')" class="inline-flex items-center gap-1.5 bg-amber-50/80 hover:bg-amber-100/80 border border-amber-200 px-3 py-1 rounded-full transition cursor-pointer">
+                  <div class="flex text-amber-500 text-xs">
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <span class="font-black text-xs text-amber-950">${serv.rating.toFixed(1)}</span>
+                  <span class="text-[11px] text-amber-800/80 font-medium">(${serv.reviewsCount} reviews)</span>
+                </button>
+
+                <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  Active Now
+                </span>
+              </div>
+
+              <div class="mt-3 flex flex-wrap gap-1.5">
                 ${serv.skills.map(sk => `<span class="bg-slate-100 text-slate-800 text-[10px] font-bold px-2.5 py-1 rounded-md">${sk}</span>`).join('')}
               </div>
             </div>
@@ -1105,8 +1289,8 @@
               </div>
 
               <div class="flex items-center gap-2">
-                <a href="tel:${serv.phone}" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center text-xs transition" title="Call directly">
-                  <i class="fa-solid fa-phone"></i>
+                <a href="https://wa.me/${serv.phone.replace(/[^0-9]/g, '')}?text=Hello%20${encodeURIComponent(serv.name)},%20I%20found%20your%20profile%20on%20MboaWork%20and%20need%20your%20services." target="_blank" class="w-9 h-9 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 flex items-center justify-center text-sm transition" title="Direct WhatsApp Chat">
+                  <i class="fa-brands fa-whatsapp"></i>
                 </a>
                 <button onclick="openBookingModal('${serv.trade} with ${serv.name}', '${serv.rate}', '${serv.name}')" class="px-5 py-2.5 rounded-full bg-slate-950 hover:bg-black text-white text-xs font-black uppercase tracking-wider transition active:scale-[0.97] shadow-sm">
                   Book Pro
@@ -1119,7 +1303,15 @@
 
       // 2. Render Shop Products
       const filteredShop = shopProductsData.filter(p => {
-        const matchTown = (townVal === 'all' || p.town === townVal);
+        let matchTown = true;
+        if (townVal !== 'all') {
+          if (townVal.endsWith('_all')) {
+            const prefix = townVal.split('_')[0];
+            matchTown = p.townKey.startsWith(prefix);
+          } else {
+            matchTown = p.townKey === townVal;
+          }
+        }
         const matchSearch = !searchVal || p.title.toLowerCase().includes(searchVal) || p.seller.toLowerCase().includes(searchVal);
         return matchTown && matchSearch;
       });
@@ -1132,7 +1324,7 @@
           <div>
             <div class="relative h-44 rounded-2xl overflow-hidden bg-slate-100 mb-3">
               <img src="${prod.image}" alt="${prod.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
-              <span class="absolute top-2.5 left-2.5 bg-slate-950/80 backdrop-blur-sm text-white text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">
+              <span class="absolute top-2.5 left-2.5 bg-slate-950/80 backdrop-blur-sm text-white text-[9px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">
                 ${prod.badge}
               </span>
               <span class="absolute bottom-2.5 right-2.5 bg-emerald-600 text-white font-black text-xs px-2.5 py-1 rounded-lg shadow">
@@ -1147,10 +1339,17 @@
             <h4 class="font-display font-black text-sm text-slate-900 leading-snug group-hover:text-brand-600 transition">
               ${prod.title}
             </h4>
+            <p class="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
+              ${prod.desc}
+            </p>
           </div>
 
           <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-            <span class="text-xs font-bold text-slate-700">${prod.seller}</span>
+            <div class="flex items-center gap-1 text-[11px] font-bold text-amber-500">
+              <i class="fa-solid fa-star"></i>
+              <span class="text-slate-800">${prod.rating.toFixed(1)}</span>
+              <span class="text-slate-400 font-normal">(${prod.reviewsCount})</span>
+            </div>
             <button onclick="openBookingModal('${prod.title}', '${prod.price.toLocaleString()} XAF', '${prod.seller}')" class="px-3.5 py-1.5 rounded-full bg-slate-950 text-white text-[11px] font-bold uppercase tracking-wider hover:bg-black transition">
               Buy Now
             </button>
@@ -1173,15 +1372,15 @@
             </div>
             <h4 class="font-display font-black text-base text-slate-900 mb-1">${task.title}</h4>
             <p class="text-xs text-slate-500 leading-relaxed mb-3">${task.desc}</p>
-            <div class="flex items-center gap-3 text-[11px] text-slate-400">
-              <span><i class="fa-solid fa-location-dot"></i> ${task.town}</span>
+            <div class="flex items-center gap-3 text-[11px] text-slate-400 font-medium">
+              <span><i class="fa-solid fa-location-dot text-brand-600"></i> ${task.town}</span>
               <span>&bull;</span>
               <span><i class="fa-regular fa-clock"></i> ${task.deadline}</span>
             </div>
           </div>
 
           <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between">
-            <span class="text-xs font-bold text-emerald-700">${task.bidsCount} pros quoted</span>
+            <span class="text-xs font-bold text-emerald-700">${task.bidsCount} local pros quoted</span>
             <button onclick="submitBidPrompt('${task.title}', ${task.budget})" class="px-4 py-2 rounded-full bg-slate-950 hover:bg-black text-white text-xs font-bold uppercase tracking-wider transition">
               Offer Quote
             </button>
@@ -1191,7 +1390,61 @@
     }
 
     // -------------------------------------------------------------
-    // 5. INTERACTIVE MODAL CONTROLLERS
+    // 5. PROVIDER DETAIL & REVIEWS MODAL CONTROLLER
+    // -------------------------------------------------------------
+    function openProviderDetail(providerId) {
+      const p = servicesData.find(s => s.id === providerId);
+      if (!p) return;
+
+      document.getElementById('detailImg').src = p.image;
+      document.getElementById('detailName').innerText = p.name;
+      document.getElementById('detailTrade').innerText = p.trade;
+      document.getElementById('detailLocation').innerText = p.townLabel;
+      document.getElementById('detailRatingNum').innerText = p.rating.toFixed(1);
+      document.getElementById('detailReviewsCount').innerText = `(${p.reviewsCount} verified reviews)`;
+      document.getElementById('detailRate').innerText = `${p.rate} / ${p.rateType}`;
+      document.getElementById('detailBio').innerText = p.bio;
+
+      // WhatsApp Link
+      const waLink = `https://wa.me/${p.phone.replace(/[^0-9]/g, '')}?text=Hello%20${encodeURIComponent(p.name)},%20I%20am%20contacting%20you%20from%20MboaWork%20for%20a%20service.`;
+      document.getElementById('detailWhatsAppBtn').href = waLink;
+
+      // Book Button
+      document.getElementById('detailBookBtn').onclick = () => {
+        closeProviderDetailModal();
+        openBookingModal(`${p.trade} with ${p.name}`, p.rate, p.name);
+      };
+
+      // Populate Reviews
+      const revList = document.getElementById('detailReviewsList');
+      revList.innerHTML = p.reviews.map(r => `
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80">
+          <div class="flex justify-between items-center text-xs">
+            <span class="font-bold text-slate-800">${r.name}</span>
+            <span class="text-[10px] text-slate-400">${r.date}</span>
+          </div>
+          <div class="flex text-amber-500 text-[10px] my-1">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed italic">"${r.comment}"</p>
+        </div>
+      `).join('');
+
+      document.getElementById('providerDetailModal').classList.remove('hidden');
+      document.getElementById('providerDetailModal').classList.add('flex');
+    }
+
+    function closeProviderDetailModal() {
+      document.getElementById('providerDetailModal').classList.add('hidden');
+      document.getElementById('providerDetailModal').classList.remove('flex');
+    }
+
+    // -------------------------------------------------------------
+    // 6. BOOKING & POST TASK CONTROLLERS
     // -------------------------------------------------------------
     function openBookingModal(title, price, provider) {
       document.getElementById('bookTitle').innerText = title;
@@ -1249,7 +1502,7 @@
 
       closePostTaskModal();
       switchPillar('tasks');
-      showToast("TASK BROADCASTED", `Your task '${title}' has been sent to verified artisans in ${town}!`, "SENT");
+      showToast("TASK BROADCASTED", `Your task '${title}' has been dispatched to verified artisans in ${town}!`, "SENT");
     }
 
     function submitBidPrompt(title, budget) {
@@ -1260,7 +1513,7 @@
     }
 
     // -------------------------------------------------------------
-    // 6. IN-APP INSTANT OTP NOTIFICATION
+    // 7. IN-APP INSTANT OTP NOTIFICATION
     // -------------------------------------------------------------
     function openAuthModal() {
       document.getElementById('authModal').classList.remove('hidden');
@@ -1301,7 +1554,7 @@
     }
 
     // -------------------------------------------------------------
-    // 7. VOICE NOTE HELPER
+    // 8. VOICE NOTE HELPER
     // -------------------------------------------------------------
     function openVoiceModal() {
       document.getElementById('voiceModal').classList.remove('hidden');
@@ -1360,7 +1613,7 @@
     }
 
     function filterTown(town) {
-      selectedTown = town;
+      selectedTownFilter = town;
       renderContent();
     }
 
