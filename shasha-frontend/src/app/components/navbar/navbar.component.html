@@ -1,137 +1,108 @@
-<!-- Luxury Top Announcement Pill -->
-<div class="announcement-bar">
-  <div class="container-couture announcement-content">
-    <span class="label-caps announcement-tag">DOUALA ATELIER &bull; INTERNATIONAL BESPOKE</span>
-    <span class="announcement-text">
-      @if (shasha.language() === 'en') {
-        Private VIP fittings available in Douala &amp; Paris &bull; Worldwide white-glove shipping
-      } @else {
-        Essayages privés VIP à Douala &amp; Paris &bull; Livraison haute couture internationale
-      }
-    </span>
-    <div class="announcement-actions">
-      <button class="lang-btn label-caps" (click)="shasha.toggleLanguage()">
-        {{ shasha.language() === 'en' ? 'FR' : 'EN' }}
-      </button>
-      <a [href]="shasha.getWhatsAppLink()" target="_blank" class="concierge-link label-caps">
-        <span class="material-symbols-outlined">support_agent</span> CONCIERGE
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- Main Editorial Navigation Bar -->
-<header class="main-header">
-  <div class="container-couture nav-container">
-    <!-- Brand Wordmark -->
-    <a href="#" class="brand-wordmark" (click)="scrollTo('hero'); $event.preventDefault()">
-      <span class="brand-title">SHASHA DESIGNS</span>
-      <span class="brand-subtitle">HAUTE COUTURE &bull; CAMEROON</span>
+<!-- Floating Capsule Navigation Bar (Inspired by DevFest Bamenda Clean Hierarchy) -->
+<header class="pointer-events-none fixed inset-x-0 top-0 z-[100] px-4 py-4 md:px-8 md:py-6">
+  <div class="pointer-events-auto mx-auto flex max-w-[1400px] items-center justify-between gap-3">
+    
+    <!-- Left Pill: Brand Wordmark -->
+    <a href="#" (click)="scrollTo('hero'); $event.preventDefault()" class="flex shrink-0 items-center gap-2.5 rounded-full bg-slate-950 text-white px-5 py-2.5 shadow-md transition-transform duration-150 ease-out active:scale-[0.97] hover:bg-black">
+      <span class="w-6 h-6 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center font-black text-xs">
+        S
+      </span>
+      <span class="text-xs md:text-sm font-black tracking-widest uppercase whitespace-nowrap">
+        SHASHA <span class="text-amber-400">DESIGNS</span>
+      </span>
     </a>
 
-    <!-- Desktop Navigation Links -->
-    <nav class="desktop-nav">
-      <a href="#collections" (click)="scrollTo('collections'); $event.preventDefault()" class="nav-link label-caps">
+    <!-- Center Pill: Navigation Links (Desktop) -->
+    <nav class="hidden lg:flex items-center gap-1 rounded-full bg-white/90 backdrop-blur-md px-3 py-1.5 shadow-sm border border-black/10">
+      <a href="#collections" (click)="scrollTo('collections'); $event.preventDefault()" class="block rounded-full px-4 py-2 text-xs font-bold tracking-widest uppercase text-slate-600 hover:text-black hover:bg-black/5 transition">
         {{ shasha.language() === 'en' ? 'Collections' : 'Collections' }}
       </a>
-      <a href="#signature" (click)="scrollTo('signature'); $event.preventDefault()" class="nav-link label-caps">
-        {{ shasha.language() === 'en' ? 'AMVCA Archive' : 'Archives AMVCA' }}
+      <a href="#signature" (click)="scrollTo('signature'); $event.preventDefault()" class="block rounded-full px-4 py-2 text-xs font-bold tracking-widest uppercase text-slate-600 hover:text-black hover:bg-black/5 transition">
+        {{ shasha.language() === 'en' ? 'AMVCA Spotlight' : 'Archives AMVCA' }}
       </a>
-      <a href="#atelier" (click)="scrollTo('atelier'); $event.preventDefault()" class="nav-link label-caps">
+      <a href="#atelier" (click)="scrollTo('atelier'); $event.preventDefault()" class="block rounded-full px-4 py-2 text-xs font-bold tracking-widest uppercase text-slate-600 hover:text-black hover:bg-black/5 transition">
         {{ shasha.language() === 'en' ? 'The Atelier' : 'L’Atelier' }}
       </a>
-      <a href="#the-house" (click)="scrollTo('the-house'); $event.preventDefault()" class="nav-link label-caps">
+      <a href="#the-house" (click)="scrollTo('the-house'); $event.preventDefault()" class="block rounded-full px-4 py-2 text-xs font-bold tracking-widest uppercase text-slate-600 hover:text-black hover:bg-black/5 transition">
         {{ shasha.language() === 'en' ? 'The House' : 'La Maison' }}
       </a>
     </nav>
 
-    <!-- Header Actions -->
-    <div class="header-actions">
-      <!-- Sound/Ambient Toggle -->
+    <!-- Right Pill: Actions & CTA -->
+    <div class="flex items-center gap-2">
+      <!-- Language Switcher Pill -->
       <button 
         type="button" 
-        class="icon-action-btn" 
-        [class.active]="shasha.isPlayingAmbient()" 
-        (click)="shasha.toggleAmbient()"
-        title="Toggle Runway Ambience">
-        <span class="material-symbols-outlined">
-          {{ shasha.isPlayingAmbient() ? 'volume_up' : 'volume_mute' }}
-        </span>
+        (click)="shasha.toggleLanguage()" 
+        class="hidden sm:flex items-center justify-center rounded-full bg-white px-3 py-2 text-xs font-black tracking-wider uppercase shadow-sm border border-black/10 text-slate-800 hover:bg-slate-50 transition">
+        {{ shasha.language() === 'en' ? 'FR' : 'EN' }}
       </button>
 
-      <!-- Private Selection / Wishlist -->
-      <button 
-        type="button" 
-        class="icon-action-btn wishlist-btn" 
-        (click)="shasha.openWishlist()"
-        title="Private Selection">
-        <span class="material-symbols-outlined">bookmark_border</span>
-        @if (shasha.wishlist().length > 0) {
-          <span class="wishlist-badge">{{ shasha.wishlist().length }}</span>
-        }
-      </button>
+      <!-- Concierge WhatsApp Pill -->
+      <a 
+        [href]="shasha.getWhatsAppLink()" 
+        target="_blank" 
+        class="hidden md:inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-xs font-bold tracking-wider uppercase shadow-sm border border-black/10 text-emerald-700 hover:bg-emerald-50 transition">
+        <i class="fa-brands fa-whatsapp text-sm"></i>
+        <span>Concierge</span>
+      </a>
 
-      <!-- Book Consultation CTA -->
+      <!-- Primary CTA Pill -->
       <button 
         type="button" 
-        class="btn-obsidian nav-cta-btn" 
-        (click)="shasha.openConsultation()">
+        (click)="shasha.openConsultation()" 
+        class="rounded-full bg-slate-950 px-5 md:px-7 py-2.5 text-xs font-black tracking-widest uppercase text-white shadow-md transition-transform duration-150 ease-out active:scale-[0.97] hover:bg-black">
         {{ shasha.language() === 'en' ? 'Private Fitting' : 'Essayage Privé' }}
       </button>
 
-      <!-- Mobile Hamburger Button -->
+      <!-- Mobile Menu Toggle Button -->
       <button 
         type="button" 
-        class="mobile-toggle-btn" 
         (click)="toggleMobileMenu()" 
-        aria-label="Toggle Navigation Menu">
-        <span class="material-symbols-outlined">
-          {{ isMobileMenuOpen ? 'close' : 'menu' }}
-        </span>
+        class="lg:hidden flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm border border-black/10 text-slate-800"
+        aria-label="Toggle navigation">
+        <i class="fa-solid" [class.fa-bars]="!isMobileMenuOpen" [class.fa-xmark]="isMobileMenuOpen"></i>
       </button>
     </div>
+
   </div>
 </header>
 
-<!-- Mobile Editorial Drawer Menu -->
+<!-- Mobile Drawer Overlay -->
 @if (isMobileMenuOpen) {
-  <div class="mobile-drawer-overlay" (click)="closeMobileMenu()">
-    <div class="mobile-drawer-content" (click)="$event.stopPropagation()">
-      <div class="mobile-drawer-header">
-        <span class="label-caps">SHASHA DESIGNS &bull; NAVIGATION</span>
-        <button class="close-btn" (click)="closeMobileMenu()">
-          <span class="material-symbols-outlined">close</span>
-        </button>
-      </div>
-
-      <div class="mobile-nav-links">
-        <a href="#collections" (click)="scrollTo('collections'); $event.preventDefault()">
-          <span class="num">01</span>
-          <span class="text">{{ shasha.language() === 'en' ? 'Collections' : 'Collections' }}</span>
-        </a>
-        <a href="#signature" (click)="scrollTo('signature'); $event.preventDefault()">
-          <span class="num">02</span>
-          <span class="text">{{ shasha.language() === 'en' ? 'AMVCA Spotlight' : 'Projecteurs AMVCA' }}</span>
-        </a>
-        <a href="#atelier" (click)="scrollTo('atelier'); $event.preventDefault()">
-          <span class="num">03</span>
-          <span class="text">{{ shasha.language() === 'en' ? 'The Atelier Craft' : 'Savoir-Faire Atelier' }}</span>
-        </a>
-        <a href="#the-house" (click)="scrollTo('the-house'); $event.preventDefault()">
-          <span class="num">04</span>
-          <span class="text">{{ shasha.language() === 'en' ? 'The House & Heritage' : 'La Maison & Héritage' }}</span>
-        </a>
-      </div>
-
-      <div class="mobile-drawer-footer">
-        <button class="btn-obsidian w-full" (click)="closeMobileMenu(); shasha.openConsultation()">
-          {{ shasha.language() === 'en' ? 'Book Private Consultation' : 'Prendre Rendez-vous' }}
-        </button>
-        <div class="mobile-contact-info">
-          <p class="label-caps">ATELIER DIRECT</p>
-          <a [href]="'tel:' + shasha.phone">{{ shasha.phone }}</a>
-          <p class="address">Bonamoussadi, Douala, Cameroon</p>
+  <div class="fixed inset-0 z-[120] bg-black/60 backdrop-blur-sm lg:hidden flex justify-end" (click)="closeMobileMenu()">
+    <div class="w-full max-w-xs bg-white h-full p-6 shadow-2xl flex flex-col justify-between" (click)="$event.stopPropagation()">
+      <div class="space-y-6">
+        <div class="flex justify-between items-center pb-4 border-b border-black/10">
+          <span class="font-display font-black text-sm tracking-wider uppercase text-slate-900">SHASHA DESIGNS</span>
+          <button (click)="closeMobileMenu()" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-700">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
         </div>
+
+        <nav class="flex flex-col space-y-3">
+          <a href="#collections" (click)="scrollTo('collections'); closeMobileMenu(); $event.preventDefault()" class="px-4 py-3 rounded-2xl bg-slate-50 text-slate-900 font-bold text-sm hover:bg-slate-100">
+            01. Collections
+          </a>
+          <a href="#signature" (click)="scrollTo('signature'); closeMobileMenu(); $event.preventDefault()" class="px-4 py-3 rounded-2xl bg-slate-50 text-slate-900 font-bold text-sm hover:bg-slate-100">
+            02. AMVCA Red Carpet
+          </a>
+          <a href="#atelier" (click)="scrollTo('atelier'); closeMobileMenu(); $event.preventDefault()" class="px-4 py-3 rounded-2xl bg-slate-50 text-slate-900 font-bold text-sm hover:bg-slate-100">
+            03. The Atelier Savoir-Faire
+          </a>
+          <a href="#the-house" (click)="scrollTo('the-house'); closeMobileMenu(); $event.preventDefault()" class="px-4 py-3 rounded-2xl bg-slate-50 text-slate-900 font-bold text-sm hover:bg-slate-100">
+            04. The House &amp; Heritage
+          </a>
+        </nav>
+      </div>
+
+      <div class="space-y-3 pt-6 border-t border-black/10">
+        <button (click)="closeMobileMenu(); shasha.openConsultation()" class="w-full py-3.5 rounded-full bg-slate-950 text-white font-black text-xs uppercase tracking-widest shadow-md">
+          Book Private Fitting
+        </button>
+        <a [href]="shasha.getWhatsAppLink()" target="_blank" class="w-full py-3.5 rounded-full border border-black text-slate-950 font-bold text-xs uppercase tracking-widest text-center block">
+          WhatsApp Concierge
+        </a>
       </div>
     </div>
   </div>

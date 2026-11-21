@@ -1,107 +1,104 @@
-<section id="hero" class="hero-section">
-  <div class="container-couture">
-    <!-- Hero Header Text Grid -->
-    <div class="hero-grid">
-      <!-- Left Column: Editorial Statement -->
-      <div class="hero-editorial">
-        <div class="hero-meta">
-          <span class="badge-gold">AUTUMN / WINTER COUTURE &bull; DOUALA</span>
-          <span class="label-caps edition-tag">VOLUME 2026</span>
-        </div>
+<section id="hero" class="pt-28 md:pt-36 pb-20 bg-[#FAF9F5] text-slate-900 overflow-hidden relative">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-8">
+    
+    <!-- Top Editorial Badge (Inspired by DevFest Bamenda Sticker) -->
+    <div class="flex items-center gap-2 mb-8">
+      <span class="inline-block rounded-full border-2 border-dashed border-black/30 bg-amber-400 px-4 py-1.5 text-xs font-black uppercase tracking-wider text-slate-950 -rotate-2 shadow-sm">
+        ★ HAUTE COUTURE CAMEROON &bull; VOLUME 2026
+      </span>
+      <span class="text-xs font-bold uppercase tracking-widest text-slate-400 hidden sm:inline">
+        BONAMOUSSADI ATELIER, DOUALA
+      </span>
+    </div>
 
-        <h1 class="headline-display hero-title">
-          @if (shasha.language() === 'en') {
-            Crafted in Cameroon.<br>
-            <em>Worn Without Borders.</em>
-          } @else {
-            Créé au Cameroun.<br>
-            <em>Porté Sans Frontières.</em>
-          }
+    <!-- Main Headline & Subtitle -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Column: Typography & Action -->
+      <div class="lg:col-span-7 space-y-6">
+        <h1 class="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95] text-slate-950 uppercase">
+          Crafted in Cameroon.<br />
+          <span class="italic font-serif font-normal text-amber-600 lowercase tracking-normal">worn without borders.</span>
         </h1>
 
-        <p class="hero-description">
-          @if (shasha.language() === 'en') {
-            ShaSha Designs is a Douala-born haute couture house redefining modern luxury through the architectural precision of Toghu needlework, sculptural silk brocades, and zero-compromise bespoke tailoring.
-          } @else {
-            ShaSha Designs est une maison de haute couture née à Douala, redéfinissant le luxe moderne par la précision architecturale de la broderie Toghu, des soieries sculpturales et un sur-mesure d’exception.
-          }
+        <p class="text-base sm:text-lg text-slate-600 max-w-xl font-normal leading-relaxed">
+          ShaSha Designs is a Douala-born luxury couture house redefining modern African elegance through the architectural precision of Toghu needlework, sculptural silk brocades, and zero-compromise bespoke tailoring.
         </p>
 
-        <div class="hero-cta-group">
-          <button class="btn-obsidian" (click)="scrollTo('collections')">
-            {{ shasha.language() === 'en' ? 'Explore Collections' : 'Explorer les Collections' }}
-            <span class="material-symbols-outlined">arrow_forward</span>
+        <!-- Big DevFest-Style Pill Buttons -->
+        <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+          <button 
+            type="button"
+            (click)="scrollTo('collections')" 
+            class="px-10 py-5 rounded-full bg-slate-950 hover:bg-black text-white text-xs sm:text-sm font-black tracking-widest uppercase transition-transform duration-150 active:scale-[0.97] shadow-xl flex items-center justify-center gap-3">
+            <span>Explore Collections</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
           </button>
-          <button class="btn-ghost" (click)="shasha.openConsultation()">
-            {{ shasha.language() === 'en' ? 'Book Private Fitting' : 'Réserver un Essayage' }}
-          </button>
-        </div>
-
-        <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-num">200+</span>
-            <span class="label-caps stat-label">Artisan Hours / Gown</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-num">AMVCA</span>
-            <span class="label-caps stat-label">Red Carpet Official</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-num">100%</span>
-            <span class="label-caps stat-label">Handcrafted in Douala</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right Column: Visual Couture Canvas -->
-      <div class="hero-imagery">
-        <!-- Main Primary Visual Frame -->
-        <div class="main-visual-frame img-couture-frame">
-          <img 
-            src="/shasha/hero/shasha-sculptural-pearl-couture-front.png" 
-            alt="ShaSha Sculptural Pearl Couture Front Silhouette"
-            loading="eager"
-            onerror="this.src='/shasha/hero0img.png'">
           
-          <div class="frame-tag">
-            <span class="label-caps">FLAGSHIP LOOK 01 &bull; SCULPTURAL PEARL</span>
+          <button 
+            type="button"
+            (click)="shasha.openConsultation()" 
+            class="px-8 py-5 rounded-full border-2 border-slate-950 hover:bg-slate-100 text-slate-950 text-xs sm:text-sm font-bold tracking-widest uppercase transition-transform duration-150 active:scale-[0.97] text-center">
+            Book Private Atelier Fitting
+          </button>
+        </div>
+
+        <!-- Metric Badges Pill Container -->
+        <div class="mt-8 pt-6 border-t border-black/10 flex flex-wrap items-center gap-8 text-xs">
+          <div>
+            <div class="font-display font-black text-2xl text-slate-950">220+</div>
+            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Hand Hours / Gown</div>
+          </div>
+          <div class="h-8 w-px bg-black/10"></div>
+          <div>
+            <div class="font-display font-black text-2xl text-slate-950">AMVCA</div>
+            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Red Carpet Official</div>
+          </div>
+          <div class="h-8 w-px bg-black/10"></div>
+          <div>
+            <div class="font-display font-black text-2xl text-slate-950">100%</div>
+            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Douala Atelier</div>
           </div>
         </div>
 
-        <!-- Overlapping Inset Visual Frame (Editorial Scrapbook Style per DESIGN.md) -->
-        <div class="inset-visual-frame img-couture-frame">
-          <img 
-            src="/shasha/hero/shasha-blue-white-signature-suit-full-look.png" 
-            alt="Combo Collection Tailored Suit featuring Michèle-Ange Minkata"
-            loading="lazy">
-          <div class="inset-tag">
-            <span class="label-caps">MICHÈLE-ANGE MINKATA</span>
+      </div>
+
+      <!-- Right Column: Visual Frame with Real ShaSha Photography -->
+      <div class="lg:col-span-5 relative">
+        <div class="relative mx-auto max-w-md lg:max-w-none">
+          
+          <!-- Main Hero Image Frame -->
+          <div class="overflow-hidden rounded-[2.5rem] border-2 border-black/15 shadow-2xl bg-white relative">
+            <img 
+              src="/shasha/hero/shasha-blue-white-signature-suit-full-look.png" 
+              alt="Michèle-Ange Minkata wearing ShaSha Combo Collection" 
+              class="w-full h-[540px] object-cover object-top hover:scale-105 transition-transform duration-700 ease-out" 
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none"></div>
+            
+            <div class="absolute bottom-6 left-6 right-6 text-white">
+              <span class="text-[10px] font-bold tracking-widest uppercase text-amber-400 block mb-1">
+                EDITORIAL SPOTLIGHT &bull; COMBO COLLECTION
+              </span>
+              <div class="font-display font-bold text-xl leading-snug">
+                Featuring Michèle-Ange Minkata
+              </div>
+              <p class="text-xs text-slate-300 mt-1">
+                Architecture in cobalt silk brocade and pristine ivory tailoring.
+              </p>
+            </div>
           </div>
+
+          <!-- Floating Accent Sticker Pill -->
+          <div class="absolute -top-4 -right-4 bg-white border-2 border-slate-950 text-slate-950 px-4 py-2 rounded-2xl shadow-xl font-black text-xs uppercase tracking-wider rotate-3 hidden sm:flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Worldwide VIP Shipping</span>
+          </div>
+
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- Bottom Brand Ticker Strip -->
-  <div class="brand-ticker">
-    <div class="ticker-track">
-      <span class="ticker-item label-caps">DOUALA ATELIER &bull; BONAMOUSSADI</span>
-      <span class="ticker-dot">&bull;</span>
-      <span class="ticker-item label-caps">TOGHU HERITAGE NEEDLEPOINT</span>
-      <span class="ticker-dot">&bull;</span>
-      <span class="ticker-item label-caps">MIMIE AT AMVCA 2026</span>
-      <span class="ticker-dot">&bull;</span>
-      <span class="ticker-item label-caps">BESPOKE CEREMONIAL &amp; BRIDAL</span>
-      <span class="ticker-dot">&bull;</span>
-      <span class="ticker-item label-caps">INTERNATIONAL CLIENT WHITE-GLOVE SERVICE</span>
-      <span class="ticker-dot">&bull;</span>
-      <span class="ticker-item label-caps">DOUALA ATELIER &bull; BONAMOUSSADI</span>
-      <span class="ticker-dot">&bull;</span>
-      <span class="ticker-item label-caps">TOGHU HERITAGE NEEDLEPOINT</span>
-      <span class="ticker-dot">&bull;</span>
-      <span class="ticker-item label-caps">MIMIE AT AMVCA 2026</span>
     </div>
+
   </div>
 </section>

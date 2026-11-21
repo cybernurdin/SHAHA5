@@ -1,108 +1,132 @@
-<section id="collections" class="collections-section">
-  <div class="container-couture">
-    <!-- Section Header -->
-    <div class="section-header">
-      <div class="header-left">
-        <span class="label-caps section-sub">ARCHIVE &amp; CURRENT COLLECTIONS</span>
-        <h2 class="headline-section">
-          @if (shasha.language() === 'en') {
-            The Silent Gallery
-          } @else {
-            La Galerie Silencieuse
-          }
+<section id="collections" class="py-24 bg-[#FAF9F5] text-slate-900 border-t border-black/10">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-8">
+    
+    <!-- Section Header (DevFest Bamenda Pattern) -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div>
+        <div class="inline-flex items-center gap-2 rounded-full border-2 border-dashed border-black/20 bg-amber-400 text-slate-950 px-4 py-1.5 text-xs font-black uppercase tracking-widest -rotate-1 shadow-sm mb-3">
+          <span>★ ARCHIVE &amp; CURRENT SILHOUETTES</span>
+        </div>
+        <h2 class="font-display font-black text-4xl md:text-6xl text-slate-950 uppercase tracking-tight">
+          The Silent Gallery
         </h2>
       </div>
-      <p class="header-desc">
-        @if (shasha.language() === 'en') {
-          Each creation is drafted, tailored, and hand-embroidered inside our Douala atelier. Explore limited editions and commissioned masterpieces.
-        } @else {
-          Chaque création est conçue, coupée et brodée à la main dans notre atelier de Douala. Découvrez nos éditions limitées et pièces uniques.
-        }
+      <p class="max-w-md text-sm md:text-base text-slate-600 leading-relaxed">
+        Each silhouette is drafted, structured, and hand-embroidered inside our Douala atelier. Explore limited editions and bespoke commissioned pieces.
       </p>
     </div>
 
-    <!-- Category Filter Tabs -->
-    <div class="filter-bar">
+    <!-- Category Filter Pills (DevFest Style) -->
+    <div class="flex flex-wrap gap-2 mb-12">
       @for (cat of categories; track cat.id) {
         <button 
           type="button" 
-          class="filter-btn label-caps" 
-          [class.active]="shasha.selectedCategory() === cat.id"
-          (click)="selectCategory(cat.id)">
+          (click)="selectCategory(cat.id)"
+          class="px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-150 active:scale-[0.97]"
+          [class.bg-slate-950]="shasha.selectedCategory() === cat.id"
+          [class.text-white]="shasha.selectedCategory() === cat.id"
+          [class.shadow-md]="shasha.selectedCategory() === cat.id"
+          [class.bg-white]="shasha.selectedCategory() !== cat.id"
+          [class.text-slate-700]="shasha.selectedCategory() !== cat.id"
+          [class.border]="shasha.selectedCategory() !== cat.id"
+          [class.border-black/10]="shasha.selectedCategory() !== cat.id"
+          [class.hover:bg-slate-100]="shasha.selectedCategory() !== cat.id">
           {{ cat.label }}
         </button>
       }
     </div>
 
     <!-- Looks Grid -->
-    <div class="looks-grid">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       @for (look of shasha.filteredLooks(); track look.id) {
-        <article class="look-card" (click)="openLook(look)">
-          <!-- Look Image Container -->
-          <div class="look-img-wrapper img-couture-frame">
-            <img [src]="look.image" [alt]="look.title" loading="lazy">
-            
-            <!-- Category & Badge -->
-            <div class="card-badges">
-              <span class="badge-gold">{{ look.categoryLabel }}</span>
-              @if (look.featuredClient) {
-                <span class="badge-toghu">{{ look.featuredClient }}</span>
-              }
-            </div>
+        <article 
+          (click)="openLook(look)"
+          class="rounded-[2rem] border-2 border-black/10 bg-white p-5 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group cursor-pointer">
+          
+          <div>
+            <!-- Image Frame -->
+            <div class="relative h-[420px] rounded-2xl overflow-hidden bg-slate-100 mb-5">
+              <img 
+                [src]="look.image" 
+                [alt]="look.title" 
+                loading="lazy" 
+                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out" 
+              />
+              
+              <!-- Badges -->
+              <div class="absolute top-3 left-3 flex flex-col gap-1.5 items-start">
+                <span class="px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider">
+                  {{ look.categoryLabel }}
+                </span>
+                @if (look.featuredClient) {
+                  <span class="px-3 py-1 rounded-full bg-amber-400 text-slate-950 text-[10px] font-black uppercase tracking-wider shadow">
+                    {{ look.featuredClient }}
+                  </span>
+                }
+              </div>
 
-            <!-- Wishlist Button -->
-            <button 
-              type="button" 
-              class="wishlist-toggle-btn" 
-              [class.active]="shasha.isInWishlist(look.id)"
-              (click)="toggleWishlist($event, look)"
-              title="Add to Private Selection">
-              <span class="material-symbols-outlined">
-                {{ shasha.isInWishlist(look.id) ? 'bookmark' : 'bookmark_border' }}
-              </span>
-            </button>
-
-            <!-- Quick Action Overlay -->
-            <div class="card-hover-actions">
-              <span class="action-label label-caps">
-                {{ shasha.language() === 'en' ? 'Inspect Silhouette &amp; Craft' : 'Inspecter la Silhouette' }}
-                <span class="material-symbols-outlined">visibility</span>
-              </span>
-            </div>
-          </div>
-
-          <!-- Look Meta Information -->
-          <div class="look-meta">
-            <div class="look-title-row">
-              <h3 class="look-title">{{ look.title }}</h3>
-              <span class="look-edition label-caps">{{ look.edition || 'Bespoke Order' }}</span>
-            </div>
-            
-            <p class="look-subtitle">{{ look.subtitle }}</p>
-
-            <div class="look-details-row">
-              <span class="hours-tag label-caps">
-                <span class="material-symbols-outlined">schedule</span>
-                {{ look.hours }} Couture Hours
-              </span>
+              <!-- Wishlist Action Button -->
               <button 
                 type="button" 
-                class="inquire-btn label-caps" 
-                (click)="inquireWhatsApp($event, look)">
-                Inquire <span class="material-symbols-outlined">arrow_outward</span>
+                (click)="toggleWishlist($event, look)"
+                class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur-md text-slate-900 flex items-center justify-center shadow-md hover:bg-white transition"
+                title="Add to Selection">
+                <i class="fa-solid fa-bookmark text-xs" [class.text-amber-500]="shasha.isInWishlist(look.id)" [class.text-slate-400]="!shasha.isInWishlist(look.id)"></i>
               </button>
+
+              <div class="absolute bottom-3 left-3 right-3 bg-slate-950/70 backdrop-blur-md text-white px-3.5 py-2 rounded-xl text-xs font-bold flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span>Inspect Silhouette &amp; Craft</span>
+                <i class="fa-solid fa-eye text-xs"></i>
+              </div>
+            </div>
+
+            <!-- Meta Details -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-baseline">
+                <h3 class="font-display font-extrabold text-lg text-slate-950 leading-snug group-hover:text-amber-600 transition">
+                  {{ look.title }}
+                </h3>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 whitespace-nowrap ml-2">
+                  {{ look.edition || 'Bespoke' }}
+                </span>
+              </div>
+              <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed">
+                {{ look.subtitle }}
+              </p>
             </div>
           </div>
+
+          <!-- Card Bottom Row -->
+          <div class="mt-6 pt-4 border-t border-black/10 flex items-center justify-between">
+            <div class="flex items-center gap-1.5 text-xs text-slate-500 font-bold">
+              <i class="fa-regular fa-clock text-slate-400"></i>
+              <span>{{ look.hours }} Hours</span>
+            </div>
+
+            <button 
+              type="button" 
+              (click)="inquireWhatsApp($event, look)"
+              class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-950 hover:text-amber-600 transition">
+              <span>Inquire</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </button>
+          </div>
+
         </article>
       }
     </div>
 
-    <!-- Empty State if filter yields nothing -->
+    <!-- Empty State -->
     @if (shasha.filteredLooks().length === 0) {
-      <div class="empty-state">
-        <p class="font-display">No silhouettes found in this private archive category.</p>
-        <button class="btn-obsidian" (click)="selectCategory('all')">View All Silhouettes</button>
+      <div class="text-center py-16 bg-white rounded-3xl border border-black/10 p-8">
+        <p class="font-display font-bold text-lg text-slate-800">No silhouettes found in this private archive category.</p>
+        <button 
+          (click)="selectCategory('all')" 
+          class="mt-4 px-6 py-2.5 rounded-full bg-slate-950 text-white text-xs font-bold uppercase tracking-widest">
+          View All Silhouettes
+        </button>
       </div>
     }
+
   </div>
 </section>
